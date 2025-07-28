@@ -1,0 +1,177 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+}
+.freeBox__ehHb1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  max-width: 100%;
+  overflow: auto;
+  min-width: 0;
+  flex-shrink: 0;
+  padding: 6rem 0px 5rem;
+}
+.freeBox__ehHb1 > :global(.__wab_flex-container) {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-width: 0;
+  margin-top: calc(0px - var(--token-sSm8kn4qtmC9));
+  height: calc(100% + var(--token-sSm8kn4qtmC9));
+}
+.freeBox__ehHb1 > :global(.__wab_flex-container) > *,
+.freeBox__ehHb1 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__ehHb1 > :global(.__wab_flex-container) > picture > img,
+.freeBox__ehHb1
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-top: var(--token-sSm8kn4qtmC9);
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__ehHb1 {
+    display: flex;
+    flex-direction: column;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    width: 100%;
+    grid-column-start: 1 !important;
+    grid-column-end: -1 !important;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__ehHb1 > :global(.__wab_flex-container) {
+    flex-direction: column;
+    margin-left: calc(0px - 0px);
+    width: calc(100% + 0px);
+    margin-top: calc(0px - var(--token-4Rjw4-JlxIrC));
+    height: calc(100% + var(--token-4Rjw4-JlxIrC));
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__ehHb1 > :global(.__wab_flex-container) > *,
+  .freeBox__ehHb1 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+  .freeBox__ehHb1 > :global(.__wab_flex-container) > picture > img,
+  .freeBox__ehHb1
+    > :global(.__wab_flex-container)
+    > :global(.__wab_slot)
+    > picture
+    > img {
+    margin-left: 0px;
+    margin-top: var(--token-4Rjw4-JlxIrC);
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .chatProfile:global(.__wab_instance) {
+    width: 100%;
+    min-width: 0;
+  }
+}
+.section {
+  display: grid;
+  position: fixed;
+  align-content: flex-start;
+  justify-items: center;
+  width: auto;
+  padding-left: 0;
+  padding-right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  right: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section > * {
+  grid-column: 4;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .section > * {
+    grid-column: 4;
+  }
+}
+.freeBox__zeizg {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: auto;
+  background: var(--token-XM0Sjp-T1jsV);
+  min-width: 0;
+  padding: var(--token-4Rjw4-JlxIrC);
+}
+.freeBox__zeizg > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-width: 0;
+  margin-left: calc(0px - var(--token-fHvX3UtwHMku));
+  width: calc(100% + var(--token-fHvX3UtwHMku));
+}
+.freeBox__zeizg > :global(.__wab_flex-container) > *,
+.freeBox__zeizg > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__zeizg > :global(.__wab_flex-container) > picture > img,
+.freeBox__zeizg
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: var(--token-fHvX3UtwHMku);
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__zeizg {
+    width: 100%;
+    grid-column-start: 1 !important;
+    grid-column-end: -1 !important;
+  }
+}
+.headerItem:global(.__wab_instance) {
+  position: relative;
+  top: auto;
+  left: auto;
+  z-index: 1;
+}
+.freeBox__o3MKa {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: var(--plsmc-standard-width);
+  height: 100%;
+  max-width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  right: 0;
+  min-width: 0;
+  min-height: 0;
+  padding: 8px;
+}
+.suggstionUser:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.getSession:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}

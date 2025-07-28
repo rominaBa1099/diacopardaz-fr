@@ -1,0 +1,126 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  background: none;
+  border-bottom-width: 0.01px;
+  border-bottom-style: solid;
+  min-width: 0;
+  padding: var(--token-4Rjw4-JlxIrC) var(--token-sSm8kn4qtmC9);
+}
+.root > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-width: 0;
+  margin-left: calc(0px - var(--token-sSm8kn4qtmC9));
+  width: calc(100% + var(--token-sSm8kn4qtmC9));
+}
+.root > :global(.__wab_flex-container) > *,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.root > :global(.__wab_flex-container) > picture > img,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
+  margin-left: var(--token-sSm8kn4qtmC9);
+}
+.metoAvatar:global(.__wab_instance) {
+  max-width: 100%;
+  flex-shrink: 0;
+}
+.freeBox__tde2L {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox__um1Ck {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px;
+}
+.freeBox__s8Zop {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding: 0px;
+}
+.freeBox__s8Zop > :global(.__wab_flex-container) {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: calc(0px - var(--token-sSm8kn4qtmC9));
+  width: calc(100% + var(--token-sSm8kn4qtmC9));
+}
+.freeBox__s8Zop > :global(.__wab_flex-container) > *,
+.freeBox__s8Zop > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__s8Zop > :global(.__wab_flex-container) > picture > img,
+.freeBox__s8Zop
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: var(--token-sSm8kn4qtmC9);
+}
+.metoLabel:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+  align-self: center;
+}
+.img {
+  object-fit: fill;
+  max-width: 100%;
+  width: var(--token-fHvX3UtwHMku);
+  height: auto;
+  flex-shrink: 0;
+}
+.img > picture > img {
+  object-fit: fill;
+}
+.uploudeTime:global(.__wab_instance) {
+  max-width: 100%;
+}
+.metoLineClamp:global(.__wab_instance) {
+  max-width: 100%;
+}
+.text {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  color: var(--token-xIHLtsKT6cI7);
+  font-size: var(--token-o5LqR9FrbNhz);
+}
+.freeBox___4Lxo {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  left: 0;
+  top: 0;
+  right: 0;
+  min-width: 0;
+  min-height: 0;
+  padding: 8px;
+}
