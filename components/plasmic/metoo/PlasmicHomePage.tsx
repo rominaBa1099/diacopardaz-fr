@@ -3225,6 +3225,9 @@ function PlasmicHomePage__RenderFunc(props: {
                         "editPage",
                         "editPage"
                       ),
+                      [sty.stateListeditPage_show_slide2]:
+                        hasVariant($state, "editPage", "editPage") &&
+                        hasVariant($state, "show", "slide2"),
                       [sty.stateListshow_slide2]: hasVariant(
                         $state,
                         "show",
@@ -3317,7 +3320,7 @@ function PlasmicHomePage__RenderFunc(props: {
                                 variablePath: ["selectId"]
                               },
                               operation: 0,
-                              value: $state.stateList.select.value
+                              value: $state.stateList.select.id
                             };
                             return (({
                               variable,
@@ -3777,6 +3780,14 @@ function PlasmicHomePage__RenderFunc(props: {
                   data-plasmic-name={"next"}
                   data-plasmic-override={overrides.next}
                   className={classNames("__wab_instance", sty.next, {
+                    [sty.nexteditPage]: hasVariant(
+                      $state,
+                      "editPage",
+                      "editPage"
+                    ),
+                    [sty.nexteditPage_show_slide2]:
+                      hasVariant($state, "show", "slide2") &&
+                      hasVariant($state, "editPage", "editPage"),
                     [sty.nextshow_main]: hasVariant($state, "show", "main"),
                     [sty.nextshow_slide2]: hasVariant($state, "show", "slide2")
                   })}
@@ -5233,7 +5244,11 @@ function PlasmicHomePage__RenderFunc(props: {
             data-plasmic-name={"edit"}
             data-plasmic-override={overrides.edit}
             className={classNames("__wab_instance", sty.edit, {
+              [sty.editchatViow]: hasVariant($state, "chatViow", "chatViow"),
               [sty.editeditPage]: hasVariant($state, "editPage", "editPage"),
+              [sty.editeditPage_chatViow]:
+                hasVariant($state, "chatViow", "chatViow") &&
+                hasVariant($state, "editPage", "editPage"),
               [sty.editeditPage_selectImage2]:
                 hasVariant($state, "editPage", "editPage") &&
                 hasVariant($state, "selectImage2", "selectImage2"),
@@ -6203,7 +6218,7 @@ function PlasmicHomePage__RenderFunc(props: {
                               variablePath: ["selectId"]
                             },
                             operation: 0,
-                            value: $state.stateList2.select.value
+                            value: $state.stateList2.select.id
                           };
                           return (({
                             variable,
@@ -6670,6 +6685,11 @@ function PlasmicHomePage__RenderFunc(props: {
                   data-plasmic-name={"editProfile"}
                   data-plasmic-override={overrides.editProfile}
                   className={classNames("__wab_instance", sty.editProfile, {
+                    [sty.editProfileeditPage]: hasVariant(
+                      $state,
+                      "editPage",
+                      "editPage"
+                    ),
                     [sty.editProfileselectImage2]: hasVariant(
                       $state,
                       "selectImage2",
@@ -6771,7 +6791,13 @@ function PlasmicHomePage__RenderFunc(props: {
                                 $state.error = "";
                                 if (!$state.editName.value) {
                                   return ($state.error =
-                                    "نام شما نمی تواند خالی باشد");
+                                    "نام شما نمی‌تواند خالی باشد");
+                                } else if (!$state.stateInput2.value) {
+                                  return ($state.error =
+                                    "استان محل زندگی نمی‌تواند خالی باشد");
+                                } else if (!$state.cityInput2.value) {
+                                  return ($state.error =
+                                    "شهر محل زندگی نمی‌تواند خالی باشد");
                                 }
                               })();
                             }
@@ -6839,7 +6865,7 @@ function PlasmicHomePage__RenderFunc(props: {
                                 (() => {
                                   try {
                                     return {
-                                      sex: $state.gender3.value.value,
+                                      sex: $state.radioGroup.value.value,
                                       name: $state.editName.value,
                                       profilePic: $state.imageurl,
                                       birthday: $state.birthday2,

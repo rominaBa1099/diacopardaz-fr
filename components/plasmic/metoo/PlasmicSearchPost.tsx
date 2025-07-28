@@ -791,7 +791,7 @@ function PlasmicSearchPost__RenderFunc(props: {
                               const actionArgs = {
                                 args: [
                                   "POST",
-                                  "https://api2.friendschat.ir/chat/addEvent",
+                                  "https://api.friendschat.ir/chat/addEvent",
                                   undefined,
                                   (() => {
                                     try {
@@ -1030,7 +1030,7 @@ function PlasmicSearchPost__RenderFunc(props: {
         })()}
         url={(() => {
           try {
-            return `https://api2.friendschat.ir/${$props.controller}/${$props.action}`;
+            return `https://api.friendschat.ir/${$props.controller}/${$props.action}`;
           } catch (e) {
             if (
               e instanceof TypeError ||

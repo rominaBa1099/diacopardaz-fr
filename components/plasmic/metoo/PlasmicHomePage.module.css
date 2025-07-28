@@ -615,6 +615,9 @@
 .stateListeditPage:global(.__wab_instance) {
   flex-shrink: 0;
 }
+.stateListeditPage_show_slide2:global(.__wab_instance) {
+  flex-shrink: 0;
+}
 .freeBox__icxYp {
   display: flex;
   flex-direction: column;
