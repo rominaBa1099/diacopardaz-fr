@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--token-Xr0DUWYuCWoP);
+  min-width: 0;
+  padding: var(--token-0uEq3rlr2FOl);
+  border-top: 1px solid var(--token-1BPSlSAT9n2X);
+}
+.footeritem:global(.__wab_instance) {
+  position: relative;
+}
+.text {
+  font-weight: 800;
+}
+.embedHtml:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  width: var(--token-qnJhuc6uXiqh);
+  height: var(--token-qnJhuc6uXiqh);
+}

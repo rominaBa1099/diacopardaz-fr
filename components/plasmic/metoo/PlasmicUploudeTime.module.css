@@ -1,0 +1,29 @@
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  padding: 0px;
+}
+.text {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 11px;
+  color: var(--token-OYSwCNjaZ0lj);
+  text-align: center;
+  min-width: 0;
+}
+.texttextSize_lg {
+  font-size: var(--token-QCzRjySgYUYj);
+}
+.texttextSize_base2 {
+  font-size: var(--token-WKBP9DQDUfyS);
+}
+.texttextSize_small {
+  font-size: var(--token-o5LqR9FrbNhz);
+}
