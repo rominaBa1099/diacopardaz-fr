@@ -22,6 +22,7 @@
     "@plasmicpkgs/react-awesome-reveal": "^3.8.225",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-select": "^2.1.1",
+    
     "@radix-ui/react-slider": "^1.2.0",
     "@radix-ui/react-switch": "^1.1.0",
     "@types/jalaali-js": "^1.1.3",
