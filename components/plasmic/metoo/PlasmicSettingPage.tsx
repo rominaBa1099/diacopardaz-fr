@@ -63,6 +63,7 @@ import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-impor
 import MetoHeader from "../../MetoHeader"; // plasmic-import: kWTQGqg2Dx4y/component
 import MetoLabel from "../../MetoLabel"; // plasmic-import: 4JtC8N_iZ8lG/component
 import HeaderItem from "../../HeaderItem"; // plasmic-import: TkXLJDEhkWy5/component
+import MetoButton from "../../MetoButton"; // plasmic-import: BFnTlSYwdY0-/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -70,6 +71,9 @@ import plasmic_meto_deign_system_css from "../meto_deign_system/plasmic.module.c
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/projectcss
 import sty from "./PlasmicSettingPage.module.css"; // plasmic-import: -uRlja6eTV8U/css
+
+import CircleIcon from "../meto_deign_system/icons/PlasmicIcon__Circle"; // plasmic-import: n4WDawyT-j_R/icon
+import ChevronDownIcon from "../meto_deign_system/icons/PlasmicIcon__ChevronDown"; // plasmic-import: 5EHYKqa8ukVe/icon
 
 createPlasmicElementProxy;
 
@@ -95,6 +99,8 @@ export type PlasmicSettingPage__OverridesType = {
   metoHeader?: Flex__<typeof MetoHeader>;
   metoLabel?: Flex__<typeof MetoLabel>;
   headerItem?: Flex__<typeof HeaderItem>;
+  metoButton?: Flex__<typeof MetoButton>;
+  text?: Flex__<"div">;
 };
 
 export interface DefaultSettingPageProps {
@@ -288,11 +294,77 @@ function PlasmicSettingPage__RenderFunc(props: {
           </MetoLabel>
         </MetoHeader>
       </section>
-      <HeaderItem
-        data-plasmic-name={"headerItem"}
-        data-plasmic-override={overrides.headerItem}
-        className={classNames("__wab_instance", sty.headerItem)}
-      />
+      <Stack__
+        as={"div"}
+        hasGap={true}
+        className={classNames(projectcss.all, sty.freeBox___6Seor)}
+      >
+        {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+          (() => {
+            try {
+              return $state.apiRequest.data.list;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
+              }
+              throw e;
+            }
+          })()
+        ).map((__plasmic_item_0, __plasmic_idx_0) => {
+          const currentItem = __plasmic_item_0;
+          const currentIndex = __plasmic_idx_0;
+          return (
+            <div
+              className={classNames(projectcss.all, sty.freeBox__y6PE)}
+              key={currentIndex}
+            >
+              <HeaderItem
+                data-plasmic-name={"headerItem"}
+                data-plasmic-override={overrides.headerItem}
+                className={classNames("__wab_instance", sty.headerItem)}
+                currentItem={(() => {
+                  try {
+                    return currentItem;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()}
+                setting={true}
+              />
+
+              <MetoButton
+                data-plasmic-name={"metoButton"}
+                data-plasmic-override={overrides.metoButton}
+                className={classNames("__wab_instance", sty.metoButton)}
+                label={
+                  <div
+                    data-plasmic-name={"text"}
+                    data-plasmic-override={overrides.text}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text
+                    )}
+                  >
+                    {
+                      "\u0622\u0646\u0628\u0644\u0627\u06a9 \u06a9\u0631\u062f\u0646"
+                    }
+                  </div>
+                }
+              />
+            </div>
+          );
+        })}
+      </Stack__>
     </div>
   ) as React.ReactElement | null;
 }
@@ -304,13 +376,17 @@ const PlasmicDescendants = {
     "section",
     "metoHeader",
     "metoLabel",
-    "headerItem"
+    "headerItem",
+    "metoButton",
+    "text"
   ],
   apiRequest: ["apiRequest"],
   section: ["section", "metoHeader", "metoLabel"],
   metoHeader: ["metoHeader", "metoLabel"],
   metoLabel: ["metoLabel"],
-  headerItem: ["headerItem"]
+  headerItem: ["headerItem"],
+  metoButton: ["metoButton", "text"],
+  text: ["text"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -322,6 +398,8 @@ type NodeDefaultElementType = {
   metoHeader: typeof MetoHeader;
   metoLabel: typeof MetoLabel;
   headerItem: typeof HeaderItem;
+  metoButton: typeof MetoButton;
+  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -389,6 +467,8 @@ export const PlasmicSettingPage = Object.assign(
     metoHeader: makeNodeComponent("metoHeader"),
     metoLabel: makeNodeComponent("metoLabel"),
     headerItem: makeNodeComponent("headerItem"),
+    metoButton: makeNodeComponent("metoButton"),
+    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicSettingPage
     internalVariantProps: PlasmicSettingPage__VariantProps,

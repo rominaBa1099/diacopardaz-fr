@@ -71,10 +71,16 @@ import sty from "./PlasmicHeaderItem.module.css"; // plasmic-import: TkXLJDEhkWy
 
 createPlasmicElementProxy;
 
-export type PlasmicHeaderItem__VariantMembers = {};
-export type PlasmicHeaderItem__VariantsArgs = {};
+export type PlasmicHeaderItem__VariantMembers = {
+  setting: "setting";
+};
+export type PlasmicHeaderItem__VariantsArgs = {
+  setting?: SingleBooleanChoiceArg<"setting">;
+};
 type VariantPropType = keyof PlasmicHeaderItem__VariantsArgs;
-export const PlasmicHeaderItem__VariantProps = new Array<VariantPropType>();
+export const PlasmicHeaderItem__VariantProps = new Array<VariantPropType>(
+  "setting"
+);
 
 export type PlasmicHeaderItem__ArgsType = {
   currentItem?: any;
@@ -96,6 +102,7 @@ export type PlasmicHeaderItem__OverridesType = {
 export interface DefaultHeaderItemProps {
   currentItem?: any;
   onClick?: (event: any) => void;
+  setting?: SingleBooleanChoiceArg<"setting">;
   className?: string;
 }
 
@@ -138,6 +145,24 @@ function PlasmicHeaderItem__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "setting",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.setting
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   return (
     <Stack__
       as={"div"}
@@ -154,7 +179,8 @@ function PlasmicHeaderItem__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_meto_deign_system_css.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.root
+        sty.root,
+        { [sty.rootsetting]: hasVariant($state, "setting", "setting") }
       )}
       onClick={args.onClick}
     >
@@ -183,7 +209,9 @@ function PlasmicHeaderItem__RenderFunc(props: {
             throw e;
           }
         })()}
-        className={classNames("__wab_instance", sty.metoAvatar)}
+        className={classNames("__wab_instance", sty.metoAvatar, {
+          [sty.metoAvatarsetting]: hasVariant($state, "setting", "setting")
+        })}
         ring={"blue"}
         src={(() => {
           try {
@@ -209,7 +237,9 @@ function PlasmicHeaderItem__RenderFunc(props: {
       <MetoLabel
         data-plasmic-name={"metoLabel"}
         data-plasmic-override={overrides.metoLabel}
-        className={classNames("__wab_instance", sty.metoLabel)}
+        className={classNames("__wab_instance", sty.metoLabel, {
+          [sty.metoLabelsetting]: hasVariant($state, "setting", "setting")
+        })}
       >
         <div
           data-plasmic-name={"text"}
