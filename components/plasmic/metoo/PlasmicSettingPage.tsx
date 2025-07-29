@@ -60,6 +60,8 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: mSKar170aYTo/codeComponent
+import MetoHeader from "../../MetoHeader"; // plasmic-import: kWTQGqg2Dx4y/component
+import MetoLabel from "../../MetoLabel"; // plasmic-import: HXH7JR-ZP-iD/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -88,6 +90,7 @@ export const PlasmicSettingPage__ArgProps = new Array<ArgPropType>(
 export type PlasmicSettingPage__OverridesType = {
   root?: Flex__<"div">;
   apiRequest?: Flex__<typeof ApiRequest>;
+  metoHeader?: Flex__<typeof MetoHeader>;
 };
 
 export interface DefaultSettingPageProps {
@@ -118,9 +121,9 @@ function PlasmicSettingPage__RenderFunc(props: {
       Object.assign(
         {
           selectSetting: {
-            text: "\u06a9\u06cc \u067e\u0631\u0648\u0641\u0627\u06cc\u0644\u0645 \u0631\u0648 \u062f\u06cc\u062f\u061f",
+            text: "\u06a9\u06cc \u0628\u0644\u0627\u06a9\u0645 \u06a9\u0631\u062f\u061f",
             type: "text",
-            action: "getEvent",
+            action: "myBlock",
             premium: true
           },
           token:
@@ -246,13 +249,20 @@ function PlasmicSettingPage__RenderFunc(props: {
         shouldFetch={true}
         url={`https://api.friendschat.ir/chat/${$props.selectSetting.action}`}
       />
+
+      <MetoHeader
+        data-plasmic-name={"metoHeader"}
+        data-plasmic-override={overrides.metoHeader}
+        className={classNames("__wab_instance", sty.metoHeader)}
+      />
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "apiRequest"],
-  apiRequest: ["apiRequest"]
+  root: ["root", "apiRequest", "metoHeader"],
+  apiRequest: ["apiRequest"],
+  metoHeader: ["metoHeader"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -260,6 +270,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   apiRequest: typeof ApiRequest;
+  metoHeader: typeof MetoHeader;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -323,6 +334,7 @@ export const PlasmicSettingPage = Object.assign(
   {
     // Helper components rendering sub-elements
     apiRequest: makeNodeComponent("apiRequest"),
+    metoHeader: makeNodeComponent("metoHeader"),
 
     // Metadata about props expected for PlasmicSettingPage
     internalVariantProps: PlasmicSettingPage__VariantProps,
