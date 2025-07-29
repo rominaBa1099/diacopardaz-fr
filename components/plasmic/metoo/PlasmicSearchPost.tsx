@@ -101,6 +101,7 @@ export type PlasmicSearchPost__ArgsType = {
   action?: string;
   chat2?: (event: any) => void;
   onCurrentuserChange?: (val: string) => void;
+  profile?: () => void;
 };
 type ArgPropType = keyof PlasmicSearchPost__ArgsType;
 export const PlasmicSearchPost__ArgProps = new Array<ArgPropType>(
@@ -116,7 +117,8 @@ export const PlasmicSearchPost__ArgProps = new Array<ArgPropType>(
   "controller",
   "action",
   "chat2",
-  "onCurrentuserChange"
+  "onCurrentuserChange",
+  "profile"
 );
 
 export type PlasmicSearchPost__OverridesType = {
@@ -144,6 +146,7 @@ export interface DefaultSearchPostProps {
   action?: string;
   chat2?: (event: any) => void;
   onCurrentuserChange?: (val: string) => void;
+  profile?: () => void;
   className?: string;
 }
 
@@ -769,8 +772,7 @@ function PlasmicSearchPost__RenderFunc(props: {
                           ? (() => {
                               const actionArgs = {
                                 customFunction: async () => {
-                                  return (currentItem.setLike =
-                                    !currentItem.setLike);
+                                  return (currentItem.setLike = true);
                                 }
                               };
                               return (({ customFunction }) => {
@@ -791,7 +793,7 @@ function PlasmicSearchPost__RenderFunc(props: {
                               const actionArgs = {
                                 args: [
                                   "POST",
-                                  "https://api2.friendschat.ir/chat/addEvent",
+                                  "https://api.friendschat.ir/chat/addEvent",
                                   undefined,
                                   (() => {
                                     try {
@@ -876,6 +878,63 @@ function PlasmicSearchPost__RenderFunc(props: {
                           />
                         </div>
                       }
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateCurrentuser"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["currentuser"]
+                                },
+                                operation: 0,
+                                value: currentItem
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateCurrentuser"] != null &&
+                          typeof $steps["updateCurrentuser"] === "object" &&
+                          typeof $steps["updateCurrentuser"].then === "function"
+                        ) {
+                          $steps["updateCurrentuser"] = await $steps[
+                            "updateCurrentuser"
+                          ];
+                        }
+
+                        $steps["runProfile"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                eventRef: $props["profile"]
+                              };
+                              return (({ eventRef, args }) => {
+                                return eventRef?.(...(args ?? []));
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runProfile"] != null &&
+                          typeof $steps["runProfile"] === "object" &&
+                          typeof $steps["runProfile"].then === "function"
+                        ) {
+                          $steps["runProfile"] = await $steps["runProfile"];
+                        }
+                      }}
                       roundedFull={true}
                       size={"large"}
                     />
@@ -1030,7 +1089,7 @@ function PlasmicSearchPost__RenderFunc(props: {
         })()}
         url={(() => {
           try {
-            return `https://api2.friendschat.ir/${$props.controller}/${$props.action}`;
+            return `https://api.friendschat.ir/${$props.controller}/${$props.action}`;
           } catch (e) {
             if (
               e instanceof TypeError ||

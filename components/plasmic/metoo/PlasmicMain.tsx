@@ -104,6 +104,7 @@ export type PlasmicMain__ArgsType = {
   shop?: any;
   onShopChange?: (val: string) => void;
   userInfo?: any;
+  profile2?: () => void;
 };
 type ArgPropType = keyof PlasmicMain__ArgsType;
 export const PlasmicMain__ArgProps = new Array<ArgPropType>(
@@ -119,7 +120,8 @@ export const PlasmicMain__ArgProps = new Array<ArgPropType>(
   "onBackChange",
   "shop",
   "onShopChange",
-  "userInfo"
+  "userInfo",
+  "profile2"
 );
 
 export type PlasmicMain__OverridesType = {
@@ -148,6 +150,7 @@ export interface DefaultMainProps {
   shop?: any;
   onShopChange?: (val: string) => void;
   userInfo?: any;
+  profile2?: () => void;
   show?: SingleChoiceArg<"chat" | "search" | "dating" | "profile" | "settings">;
   className?: string;
 }
@@ -581,6 +584,7 @@ function PlasmicMain__RenderFunc(props: {
               return;
             }
           }}
+          profile={args.profile2}
           token={(() => {
             try {
               return $props.token;

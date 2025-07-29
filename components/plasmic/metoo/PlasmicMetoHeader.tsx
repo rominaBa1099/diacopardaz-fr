@@ -82,13 +82,16 @@ createPlasmicElementProxy;
 
 export type PlasmicMetoHeader__VariantMembers = {
   chat: "chat";
+  profile: "profile";
 };
 export type PlasmicMetoHeader__VariantsArgs = {
   chat?: SingleBooleanChoiceArg<"chat">;
+  profile?: SingleBooleanChoiceArg<"profile">;
 };
 type VariantPropType = keyof PlasmicMetoHeader__VariantsArgs;
 export const PlasmicMetoHeader__VariantProps = new Array<VariantPropType>(
-  "chat"
+  "chat",
+  "profile"
 );
 
 export type PlasmicMetoHeader__ArgsType = {
@@ -121,6 +124,7 @@ export interface DefaultMetoHeaderProps {
   block?: (event: any) => void;
   danger?: (event: any) => void;
   chat?: SingleBooleanChoiceArg<"chat">;
+  profile?: SingleBooleanChoiceArg<"profile">;
   className?: string;
 }
 
@@ -177,6 +181,12 @@ function PlasmicMetoHeader__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant($state, "chat", "chat") ? false : false
+      },
+      {
+        path: "profile",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.profile
       }
     ],
     [$props, $ctx, $refs]
@@ -205,7 +215,10 @@ function PlasmicMetoHeader__RenderFunc(props: {
         plasmic_meto_deign_system_css.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
-        { [sty.rootchat]: hasVariant($state, "chat", "chat") }
+        {
+          [sty.rootchat]: hasVariant($state, "chat", "chat"),
+          [sty.rootprofile]: hasVariant($state, "profile", "profile")
+        }
       )}
     >
       <Stack__
@@ -217,7 +230,12 @@ function PlasmicMetoHeader__RenderFunc(props: {
       >
         <ChevronRightIcon
           className={classNames(projectcss.all, sty.svg___1H33C, {
-            [sty.svgchat___1H33CCahcx]: hasVariant($state, "chat", "chat")
+            [sty.svgchat___1H33CCahcx]: hasVariant($state, "chat", "chat"),
+            [sty.svgprofile___1H33CxbHW]: hasVariant(
+              $state,
+              "profile",
+              "profile"
+            )
           })}
           onClick={args.onClick}
           role={"img"}
