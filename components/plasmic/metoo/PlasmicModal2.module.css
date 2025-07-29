@@ -42,6 +42,16 @@
     padding: 10px 0px 0px;
   }
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .pcls_f7vrtWVm1kyN {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    padding: var(--token-PeLqyjS2FD-E);
+  }
+}
 .dialogContent:global(.__wab_instance) {
   box-shadow: 0px 4px 16px 0px #00000033;
   background: linear-gradient(
@@ -86,6 +96,11 @@
 }
 .dialogContentbackground_exit:global(.__wab_instance) {
   background: var(--token-sK4wzhDZpNkn);
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .dialogContentbackground_exit:global(.__wab_instance) {
+    border-radius: 15px;
+  }
 }
 .dialogContentbackground_secound:global(.__wab_instance) {
   background: var(--token-R6hzF1vNps-A);

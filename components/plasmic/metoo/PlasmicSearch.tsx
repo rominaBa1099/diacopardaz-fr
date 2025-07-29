@@ -97,6 +97,8 @@ export type PlasmicSearch__ArgsType = {
   onStateIdChange?: (val: string) => void;
   city?: any;
   onCityChange?: (val: string) => void;
+  chatOpen?: (event: any) => void;
+  profile?: () => void;
 };
 type ArgPropType = keyof PlasmicSearch__ArgsType;
 export const PlasmicSearch__ArgProps = new Array<ArgPropType>(
@@ -104,7 +106,9 @@ export const PlasmicSearch__ArgProps = new Array<ArgPropType>(
   "stateId",
   "onStateIdChange",
   "city",
-  "onCityChange"
+  "onCityChange",
+  "chatOpen",
+  "profile"
 );
 
 export type PlasmicSearch__OverridesType = {
@@ -128,6 +132,8 @@ export interface DefaultSearchProps {
   onStateIdChange?: (val: string) => void;
   city?: any;
   onCityChange?: (val: string) => void;
+  chatOpen?: (event: any) => void;
+  profile?: () => void;
   post?: SingleBooleanChoiceArg<"post">;
   className?: string;
 }
@@ -1332,6 +1338,7 @@ function PlasmicSearch__RenderFunc(props: {
             action={"findUser"}
             body={generateStateValueProp($state, ["searchPost", "body"])}
             chat={generateStateValueProp($state, ["searchPost", "chat"])}
+            chat2={args.chatOpen}
             className={classNames("__wab_instance", sty.searchPost, {
               [sty.searchPostpost]: hasVariant($state, "post", "post")
             })}
@@ -1408,6 +1415,7 @@ function PlasmicSearch__RenderFunc(props: {
                 return;
               }
             }}
+            profile={args.profile}
           />
         </Stack__>
         <BackHandler
