@@ -61,7 +61,7 @@ import {
 
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: mSKar170aYTo/codeComponent
 import MetoHeader from "../../MetoHeader"; // plasmic-import: kWTQGqg2Dx4y/component
-import MetoLabel from "../../MetoLabel"; // plasmic-import: HXH7JR-ZP-iD/component
+import MetoLabel from "../../MetoLabel"; // plasmic-import: 4JtC8N_iZ8lG/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -90,7 +90,9 @@ export const PlasmicSettingPage__ArgProps = new Array<ArgPropType>(
 export type PlasmicSettingPage__OverridesType = {
   root?: Flex__<"div">;
   apiRequest?: Flex__<typeof ApiRequest>;
+  section?: Flex__<"section">;
   metoHeader?: Flex__<typeof MetoHeader>;
+  metoLabel?: Flex__<typeof MetoLabel>;
 };
 
 export interface DefaultSettingPageProps {
@@ -250,19 +252,33 @@ function PlasmicSettingPage__RenderFunc(props: {
         url={`https://api.friendschat.ir/chat/${$props.selectSetting.action}`}
       />
 
-      <MetoHeader
-        data-plasmic-name={"metoHeader"}
-        data-plasmic-override={overrides.metoHeader}
-        className={classNames("__wab_instance", sty.metoHeader)}
-      />
+      <section
+        data-plasmic-name={"section"}
+        data-plasmic-override={overrides.section}
+        className={classNames(projectcss.all, sty.section)}
+      >
+        <MetoHeader
+          data-plasmic-name={"metoHeader"}
+          data-plasmic-override={overrides.metoHeader}
+          className={classNames("__wab_instance", sty.metoHeader)}
+        >
+          <MetoLabel
+            data-plasmic-name={"metoLabel"}
+            data-plasmic-override={overrides.metoLabel}
+            className={classNames("__wab_instance", sty.metoLabel)}
+          />
+        </MetoHeader>
+      </section>
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "apiRequest", "metoHeader"],
+  root: ["root", "apiRequest", "section", "metoHeader", "metoLabel"],
   apiRequest: ["apiRequest"],
-  metoHeader: ["metoHeader"]
+  section: ["section", "metoHeader", "metoLabel"],
+  metoHeader: ["metoHeader", "metoLabel"],
+  metoLabel: ["metoLabel"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -270,7 +286,9 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   apiRequest: typeof ApiRequest;
+  section: "section";
   metoHeader: typeof MetoHeader;
+  metoLabel: typeof MetoLabel;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -334,7 +352,9 @@ export const PlasmicSettingPage = Object.assign(
   {
     // Helper components rendering sub-elements
     apiRequest: makeNodeComponent("apiRequest"),
+    section: makeNodeComponent("section"),
     metoHeader: makeNodeComponent("metoHeader"),
+    metoLabel: makeNodeComponent("metoLabel"),
 
     // Metadata about props expected for PlasmicSettingPage
     internalVariantProps: PlasmicSettingPage__VariantProps,
