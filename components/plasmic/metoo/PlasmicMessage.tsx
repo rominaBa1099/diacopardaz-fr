@@ -554,7 +554,6 @@ function PlasmicMessage__RenderFunc(props: {
           })}
         >
           <UploudeTime
-            chat={true}
             className={classNames("__wab_instance", sty.uploudeTime___7Qg8T, {
               [sty.uploudeTimeliomAnswer___7Qg8TeKcc5]: hasVariant(
                 $state,

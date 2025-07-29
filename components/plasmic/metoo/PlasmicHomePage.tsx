@@ -69,6 +69,7 @@ import MetoButton2 from "../../MetoButton"; // plasmic-import: Cz1go1zIfhZZ/comp
 import { BackHandler } from "@/components/BackHandler"; // plasmic-import: SjBUwY_Y_i3-/codeComponent
 import MetoHeader from "../../MetoHeader"; // plasmic-import: kWTQGqg2Dx4y/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
+import UserProfile from "../../UserProfile"; // plasmic-import: 6bHlyAAYDDD1/component
 import ChatPage from "../../ChatPage"; // plasmic-import: yuSY12BxVzUt/component
 import Footer from "../../Footer"; // plasmic-import: DMJTnGkZeMiz/component
 import Main from "../../Main"; // plasmic-import: rrP9wmPRaIEY/component
@@ -92,6 +93,7 @@ import ChevronDownIcon from "../meto_deign_system/icons/PlasmicIcon__ChevronDown
 import CircleIcon2 from "./icons/PlasmicIcon__Circle"; // plasmic-import: RJhoy2uXebLi/icon
 import ChevronDownIcon2 from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: N5pcwqnXvyIA/icon
 import Icon31Icon from "./icons/PlasmicIcon__Icon31"; // plasmic-import: PNl4g-HAg44L/icon
+import Icon11Icon from "./icons/PlasmicIcon__Icon11"; // plasmic-import: dBMGk_1G9adU/icon
 
 createPlasmicElementProxy;
 
@@ -101,6 +103,7 @@ export type PlasmicHomePage__VariantMembers = {
   editPage: "editPage";
   chatViow: "chatViow";
   shop2: "shop2";
+  profile2: "profile2";
 };
 export type PlasmicHomePage__VariantsArgs = {
   show?: SingleChoiceArg<"slide1" | "slide2" | "main">;
@@ -108,6 +111,7 @@ export type PlasmicHomePage__VariantsArgs = {
   editPage?: SingleBooleanChoiceArg<"editPage">;
   chatViow?: SingleBooleanChoiceArg<"chatViow">;
   shop2?: SingleBooleanChoiceArg<"shop2">;
+  profile2?: SingleBooleanChoiceArg<"profile2">;
 };
 type VariantPropType = keyof PlasmicHomePage__VariantsArgs;
 export const PlasmicHomePage__VariantProps = new Array<VariantPropType>(
@@ -115,7 +119,8 @@ export const PlasmicHomePage__VariantProps = new Array<VariantPropType>(
   "selectImage2",
   "editPage",
   "chatViow",
-  "shop2"
+  "shop2",
+  "profile2"
 );
 
 export type PlasmicHomePage__ArgsType = {};
@@ -141,8 +146,9 @@ export type PlasmicHomePage__OverridesType = {
   img?: Flex__<typeof PlasmicImg__>;
   sendImage?: Flex__<typeof MetoButton2>;
   embedHtml?: Flex__<typeof Embed>;
+  profile?: Flex__<typeof Reveal>;
+  userProfile?: Flex__<typeof UserProfile>;
   edit?: Flex__<typeof Reveal>;
-  svg?: Flex__<"svg">;
   editName?: Flex__<typeof MetoTextInput>;
   bio?: Flex__<typeof MetoTextInput>;
   birthday3?: Flex__<typeof MetoTextInput>;
@@ -2271,7 +2277,13 @@ function PlasmicHomePage__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant($state, "show", "main") &&
-          hasVariant($state, "shop2", "shop2")
+          hasVariant($state, "profile2", "profile2")
+            ? false
+            : hasVariant($state, "show", "main") &&
+              hasVariant($state, "shop2", "shop2")
+            ? false
+            : hasVariant($state, "show", "main") &&
+              hasVariant($state, "chatViow", "chatViow")
             ? false
             : hasVariant($state, "show", "main")
             ? true
@@ -2329,6 +2341,70 @@ function PlasmicHomePage__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant($state, "selectImage2", "selectImage2") ? false : false
+      },
+      {
+        path: "profile2",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.profile2
+      },
+      {
+        path: "userProfile.currenteUser",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.currentuser;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return {};
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "splash",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "userProfile.goToChat",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "chatViow", "chatViow")
+            ? (() => {
+                try {
+                  return $state.chatViow ? false : true;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })()
+            : (() => {
+                try {
+                  return $state.chatViow ? false : true;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })()
       }
     ],
     [$props, $ctx, $refs]
@@ -2384,6 +2460,10 @@ function PlasmicHomePage__RenderFunc(props: {
                 hasVariant($state, "selectImage2", "selectImage2"),
               [sty.rooteditPage_show_main]:
                 hasVariant($state, "editPage", "editPage") &&
+                hasVariant($state, "show", "main"),
+              [sty.rootprofile2]: hasVariant($state, "profile2", "profile2"),
+              [sty.rootprofile2_show_main]:
+                hasVariant($state, "profile2", "profile2") &&
                 hasVariant($state, "show", "main"),
               [sty.rootselectImage2]: hasVariant(
                 $state,
@@ -3225,6 +3305,9 @@ function PlasmicHomePage__RenderFunc(props: {
                         "editPage",
                         "editPage"
                       ),
+                      [sty.stateListeditPage_show_slide2]:
+                        hasVariant($state, "editPage", "editPage") &&
+                        hasVariant($state, "show", "slide2"),
                       [sty.stateListshow_slide2]: hasVariant(
                         $state,
                         "show",
@@ -3317,7 +3400,7 @@ function PlasmicHomePage__RenderFunc(props: {
                                 variablePath: ["selectId"]
                               },
                               operation: 0,
-                              value: $state.stateList.select.value
+                              value: $state.stateList.select.id
                             };
                             return (({
                               variable,
@@ -3777,6 +3860,14 @@ function PlasmicHomePage__RenderFunc(props: {
                   data-plasmic-name={"next"}
                   data-plasmic-override={overrides.next}
                   className={classNames("__wab_instance", sty.next, {
+                    [sty.nexteditPage]: hasVariant(
+                      $state,
+                      "editPage",
+                      "editPage"
+                    ),
+                    [sty.nexteditPage_show_slide2]:
+                      hasVariant($state, "show", "slide2") &&
+                      hasVariant($state, "editPage", "editPage"),
                     [sty.nextshow_main]: hasVariant($state, "show", "main"),
                     [sty.nextshow_slide2]: hasVariant($state, "show", "slide2")
                   })}
@@ -5230,10 +5321,310 @@ function PlasmicHomePage__RenderFunc(props: {
             </MetoHeader>
           </section>
           <Reveal
+            data-plasmic-name={"profile"}
+            data-plasmic-override={overrides.profile}
+            className={classNames("__wab_instance", sty.profile, {
+              [sty.profilechatViow]: hasVariant($state, "chatViow", "chatViow"),
+              [sty.profileeditPage]: hasVariant($state, "editPage", "editPage"),
+              [sty.profileeditPage_chatViow]:
+                hasVariant($state, "chatViow", "chatViow") &&
+                hasVariant($state, "editPage", "editPage"),
+              [sty.profileeditPage_profile2]:
+                hasVariant($state, "profile2", "profile2") &&
+                hasVariant($state, "editPage", "editPage"),
+              [sty.profileeditPage_selectImage2]:
+                hasVariant($state, "editPage", "editPage") &&
+                hasVariant($state, "selectImage2", "selectImage2"),
+              [sty.profileeditPage_selectImage2_show_main]:
+                hasVariant($state, "show", "main") &&
+                hasVariant($state, "editPage", "editPage") &&
+                hasVariant($state, "selectImage2", "selectImage2"),
+              [sty.profileeditPage_show_main]:
+                hasVariant($state, "show", "main") &&
+                hasVariant($state, "editPage", "editPage"),
+              [sty.profileprofile2]: hasVariant($state, "profile2", "profile2"),
+              [sty.profileprofile2_chatViow]:
+                hasVariant($state, "chatViow", "chatViow") &&
+                hasVariant($state, "profile2", "profile2"),
+              [sty.profileprofile2_chatViow_show_main]:
+                hasVariant($state, "profile2", "profile2") &&
+                hasVariant($state, "chatViow", "chatViow") &&
+                hasVariant($state, "show", "main"),
+              [sty.profileprofile2_show_main]:
+                hasVariant($state, "show", "main") &&
+                hasVariant($state, "profile2", "profile2"),
+              [sty.profileselectImage2]: hasVariant(
+                $state,
+                "selectImage2",
+                "selectImage2"
+              ),
+              [sty.profileshow_slide1]: hasVariant($state, "show", "slide1")
+            })}
+            damping={hasVariant($state, "editPage", "editPage") ? 0.1 : 0.3}
+            duration={500}
+            effect={
+              hasVariant($state, "editPage", "editPage") ? "fade" : "fade"
+            }
+            reverse={hasVariant($state, "editPage", "editPage") ? false : false}
+            triggerOnce={
+              hasVariant($state, "editPage", "editPage") ? true : true
+            }
+          >
+            <BackHandler
+              active={
+                hasVariant($state, "editPage", "editPage") &&
+                hasVariant($state, "selectImage2", "selectImage2")
+                  ? false
+                  : hasVariant($state, "profile2", "profile2")
+                  ? true
+                  : hasVariant($state, "editPage", "editPage")
+                  ? true
+                  : hasVariant($state, "selectImage2", "selectImage2")
+                  ? true
+                  : false
+              }
+              className={classNames("__wab_instance", sty.backHandler__miJhf, {
+                [sty.backHandlerchatViow_show_main__miJhfXbdYDtd1A]:
+                  hasVariant($state, "show", "main") &&
+                  hasVariant($state, "chatViow", "chatViow"),
+                [sty.backHandlereditPage__miJhfCCwlh]: hasVariant(
+                  $state,
+                  "editPage",
+                  "editPage"
+                ),
+                [sty.backHandlereditPage_selectImage2__miJhfCCwlhBApSq]:
+                  hasVariant($state, "editPage", "editPage") &&
+                  hasVariant($state, "selectImage2", "selectImage2"),
+                [sty.backHandlereditPage_selectImage2_show_main__miJhfCCwlhBApSqDtd1A]:
+                  hasVariant($state, "show", "main") &&
+                  hasVariant($state, "editPage", "editPage") &&
+                  hasVariant($state, "selectImage2", "selectImage2"),
+                [sty.backHandlereditPage_show_main__miJhfCCwlhDtd1A]:
+                  hasVariant($state, "show", "main") &&
+                  hasVariant($state, "editPage", "editPage"),
+                [sty.backHandlerprofile2__miJhfG4G5L]: hasVariant(
+                  $state,
+                  "profile2",
+                  "profile2"
+                ),
+                [sty.backHandlerprofile2_chatViow__miJhfG4G5LXbdY]:
+                  hasVariant($state, "profile2", "profile2") &&
+                  hasVariant($state, "chatViow", "chatViow"),
+                [sty.backHandlerprofile2_chatViow_show_main__miJhfG4G5LXbdYDtd1A]:
+                  hasVariant($state, "profile2", "profile2") &&
+                  hasVariant($state, "show", "main") &&
+                  hasVariant($state, "chatViow", "chatViow"),
+                [sty.backHandlerprofile2_show_main__miJhfG4G5LDtd1A]:
+                  hasVariant($state, "profile2", "profile2") &&
+                  hasVariant($state, "show", "main"),
+                [sty.backHandlerselectImage2__miJhfbApSq]: hasVariant(
+                  $state,
+                  "selectImage2",
+                  "selectImage2"
+                ),
+                [sty.backHandlerselectImage2_show_main__miJhfbApSqDtd1A]:
+                  hasVariant($state, "show", "main") &&
+                  hasVariant($state, "selectImage2", "selectImage2"),
+                [sty.backHandlershow_main__miJhfdtd1A]: hasVariant(
+                  $state,
+                  "show",
+                  "main"
+                ),
+                [sty.backHandlershow_slide1__miJhfcApvt]: hasVariant(
+                  $state,
+                  "show",
+                  "slide1"
+                )
+              })}
+              onBack={async () => {
+                const $steps = {};
+
+                $steps["updateProfile2"] = true
+                  ? (() => {
+                      const actionArgs = { vgroup: "profile2", operation: 6 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, false);
+                        return false;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateProfile2"] != null &&
+                  typeof $steps["updateProfile2"] === "object" &&
+                  typeof $steps["updateProfile2"].then === "function"
+                ) {
+                  $steps["updateProfile2"] = await $steps["updateProfile2"];
+                }
+              }}
+            />
+
+            <UserProfile
+              data-plasmic-name={"userProfile"}
+              data-plasmic-override={overrides.userProfile}
+              back={async event => {
+                const $steps = {};
+
+                $steps["updateProfile2"] = true
+                  ? (() => {
+                      const actionArgs = { vgroup: "profile2", operation: 6 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, false);
+                        return false;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateProfile2"] != null &&
+                  typeof $steps["updateProfile2"] === "object" &&
+                  typeof $steps["updateProfile2"].then === "function"
+                ) {
+                  $steps["updateProfile2"] = await $steps["updateProfile2"];
+                }
+              }}
+              chat={async event => {
+                const $steps = {};
+
+                $steps["updateProfile2"] = true
+                  ? (() => {
+                      const actionArgs = { vgroup: "profile2", operation: 6 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, false);
+                        return false;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateProfile2"] != null &&
+                  typeof $steps["updateProfile2"] === "object" &&
+                  typeof $steps["updateProfile2"].then === "function"
+                ) {
+                  $steps["updateProfile2"] = await $steps["updateProfile2"];
+                }
+
+                $steps["updateChatViow"] = true
+                  ? (() => {
+                      const actionArgs = { vgroup: "chatViow", operation: 4 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, true);
+                        return true;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateChatViow"] != null &&
+                  typeof $steps["updateChatViow"] === "object" &&
+                  typeof $steps["updateChatViow"].then === "function"
+                ) {
+                  $steps["updateChatViow"] = await $steps["updateChatViow"];
+                }
+              }}
+              className={classNames("__wab_instance", sty.userProfile, {
+                [sty.userProfilechatViow]: hasVariant(
+                  $state,
+                  "chatViow",
+                  "chatViow"
+                ),
+                [sty.userProfileprofile2]: hasVariant(
+                  $state,
+                  "profile2",
+                  "profile2"
+                ),
+                [sty.userProfileprofile2_chatViow]:
+                  hasVariant($state, "chatViow", "chatViow") &&
+                  hasVariant($state, "profile2", "profile2")
+              })}
+              currentUser={(() => {
+                try {
+                  return $state.currentuser;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              currenteUser={generateStateValueProp($state, [
+                "userProfile",
+                "currenteUser"
+              ])}
+              goToChat={generateStateValueProp($state, [
+                "userProfile",
+                "goToChat"
+              ])}
+              onCurrenteUserChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "userProfile",
+                  "currenteUser"
+                ]).apply(null, eventArgs);
+
+                if (
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
+                ) {
+                  return;
+                }
+              }}
+              onGoToChatChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "userProfile",
+                  "goToChat"
+                ]).apply(null, eventArgs);
+
+                if (
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
+                ) {
+                  return;
+                }
+              }}
+              token={(() => {
+                try {
+                  return $state.token;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+            />
+          </Reveal>
+          <Reveal
             data-plasmic-name={"edit"}
             data-plasmic-override={overrides.edit}
             className={classNames("__wab_instance", sty.edit, {
+              [sty.editchatViow]: hasVariant($state, "chatViow", "chatViow"),
               [sty.editeditPage]: hasVariant($state, "editPage", "editPage"),
+              [sty.editeditPage_chatViow]:
+                hasVariant($state, "chatViow", "chatViow") &&
+                hasVariant($state, "editPage", "editPage"),
+              [sty.editeditPage_profile2]:
+                hasVariant($state, "editPage", "editPage") &&
+                hasVariant($state, "profile2", "profile2"),
               [sty.editeditPage_selectImage2]:
                 hasVariant($state, "editPage", "editPage") &&
                 hasVariant($state, "selectImage2", "selectImage2"),
@@ -5244,6 +5635,7 @@ function PlasmicHomePage__RenderFunc(props: {
               [sty.editeditPage_show_main]:
                 hasVariant($state, "show", "main") &&
                 hasVariant($state, "editPage", "editPage"),
+              [sty.editprofile2]: hasVariant($state, "profile2", "profile2"),
               [sty.editselectImage2]: hasVariant(
                 $state,
                 "selectImage2",
@@ -5509,15 +5901,17 @@ function PlasmicHomePage__RenderFunc(props: {
                           {"Text"}
                         </div>
                         <Icon31Icon
-                          data-plasmic-name={"svg"}
-                          data-plasmic-override={overrides.svg}
-                          className={classNames(projectcss.all, sty.svg, {
-                            [sty.svgeditPage]: hasVariant(
-                              $state,
-                              "editPage",
-                              "editPage"
-                            )
-                          })}
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg__gm0La,
+                            {
+                              [sty.svgeditPage__gm0LaCCwlh]: hasVariant(
+                                $state,
+                                "editPage",
+                                "editPage"
+                              )
+                            }
+                          )}
                           role={"img"}
                         />
                       </React.Fragment>
@@ -6203,7 +6597,7 @@ function PlasmicHomePage__RenderFunc(props: {
                               variablePath: ["selectId"]
                             },
                             operation: 0,
-                            value: $state.stateList2.select.value
+                            value: $state.stateList2.select.id
                           };
                           return (({
                             variable,
@@ -6670,6 +7064,11 @@ function PlasmicHomePage__RenderFunc(props: {
                   data-plasmic-name={"editProfile"}
                   data-plasmic-override={overrides.editProfile}
                   className={classNames("__wab_instance", sty.editProfile, {
+                    [sty.editProfileeditPage]: hasVariant(
+                      $state,
+                      "editPage",
+                      "editPage"
+                    ),
                     [sty.editProfileselectImage2]: hasVariant(
                       $state,
                       "selectImage2",
@@ -6771,7 +7170,13 @@ function PlasmicHomePage__RenderFunc(props: {
                                 $state.error = "";
                                 if (!$state.editName.value) {
                                   return ($state.error =
-                                    "نام شما نمی تواند خالی باشد");
+                                    "نام شما نمی‌تواند خالی باشد");
+                                } else if (!$state.stateInput2.value) {
+                                  return ($state.error =
+                                    "استان محل زندگی نمی‌تواند خالی باشد");
+                                } else if (!$state.cityInput2.value) {
+                                  return ($state.error =
+                                    "شهر محل زندگی نمی‌تواند خالی باشد");
                                 }
                               })();
                             }
@@ -6839,7 +7244,7 @@ function PlasmicHomePage__RenderFunc(props: {
                                 (() => {
                                   try {
                                     return {
-                                      sex: $state.gender3.value.value,
+                                      sex: $state.radioGroup.value.value,
                                       name: $state.editName.value,
                                       profilePic: $state.imageurl,
                                       birthday: $state.birthday2,
@@ -7042,8 +7447,11 @@ function PlasmicHomePage__RenderFunc(props: {
             </Stack__>
           </Reveal>
           {(
-            hasVariant($state, "editPage", "editPage") &&
-            hasVariant($state, "selectImage2", "selectImage2")
+            hasVariant($state, "profile2", "profile2") &&
+            hasVariant($state, "chatViow", "chatViow")
+              ? true
+              : hasVariant($state, "editPage", "editPage") &&
+                hasVariant($state, "selectImage2", "selectImage2")
               ? true
               : hasVariant($state, "chatViow", "chatViow")
               ? true
@@ -7062,6 +7470,9 @@ function PlasmicHomePage__RenderFunc(props: {
                   "chatViow",
                   "chatViow"
                 ),
+                [sty.chatViow2chatViow_show_main]:
+                  hasVariant($state, "show", "main") &&
+                  hasVariant($state, "chatViow", "chatViow"),
                 [sty.chatViow2editPage]: hasVariant(
                   $state,
                   "editPage",
@@ -7080,6 +7491,9 @@ function PlasmicHomePage__RenderFunc(props: {
                 [sty.chatViow2editPage_show_main]:
                   hasVariant($state, "show", "main") &&
                   hasVariant($state, "editPage", "editPage"),
+                [sty.chatViow2profile2_chatViow]:
+                  hasVariant($state, "profile2", "profile2") &&
+                  hasVariant($state, "chatViow", "chatViow"),
                 [sty.chatViow2selectImage2]: hasVariant(
                   $state,
                   "selectImage2",
@@ -7103,8 +7517,11 @@ function PlasmicHomePage__RenderFunc(props: {
             >
               <BackHandler
                 active={
-                  hasVariant($state, "shop2", "shop2") &&
+                  hasVariant($state, "profile2", "profile2") &&
                   hasVariant($state, "chatViow", "chatViow")
+                    ? false
+                    : hasVariant($state, "shop2", "shop2") &&
+                      hasVariant($state, "chatViow", "chatViow")
                     ? false
                     : hasVariant($state, "chatViow", "chatViow") &&
                       hasVariant($state, "show", "main")
@@ -7147,6 +7564,14 @@ function PlasmicHomePage__RenderFunc(props: {
                     [sty.backHandlereditPage_show_main__c0BwjCCwlhDtd1A]:
                       hasVariant($state, "show", "main") &&
                       hasVariant($state, "editPage", "editPage"),
+                    [sty.backHandlerprofile2__c0BwjG4G5L]: hasVariant(
+                      $state,
+                      "profile2",
+                      "profile2"
+                    ),
+                    [sty.backHandlerprofile2_chatViow__c0BwjG4G5LXbdY]:
+                      hasVariant($state, "profile2", "profile2") &&
+                      hasVariant($state, "chatViow", "chatViow"),
                     [sty.backHandlerselectImage2__c0BwjbApSq]: hasVariant(
                       $state,
                       "selectImage2",
@@ -7230,8 +7655,35 @@ function PlasmicHomePage__RenderFunc(props: {
                     "chatViow",
                     "chatViow"
                   ),
+                  [sty.chatPagechatViow_show_main]:
+                    hasVariant($state, "show", "main") &&
+                    hasVariant($state, "chatViow", "chatViow"),
                   [sty.chatPageshow_main]: hasVariant($state, "show", "main")
                 })}
+                profile2={async () => {
+                  const $steps = {};
+
+                  $steps["updateProfile2"] = true
+                    ? (() => {
+                        const actionArgs = { vgroup: "profile2", operation: 4 };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, true);
+                          return true;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateProfile2"] != null &&
+                    typeof $steps["updateProfile2"] === "object" &&
+                    typeof $steps["updateProfile2"].then === "function"
+                  ) {
+                    $steps["updateProfile2"] = await $steps["updateProfile2"];
+                  }
+                }}
                 shop={async () => {
                   const $steps = {};
 
@@ -7403,6 +7855,14 @@ function PlasmicHomePage__RenderFunc(props: {
               [sty.sectioneditPage_show_main__nMjS9CCwlhDtd1A]:
                 hasVariant($state, "show", "main") &&
                 hasVariant($state, "editPage", "editPage"),
+              [sty.sectionprofile2__nMjS9G4G5L]: hasVariant(
+                $state,
+                "profile2",
+                "profile2"
+              ),
+              [sty.sectionprofile2_show_main__nMjS9G4G5LDtd1A]:
+                hasVariant($state, "show", "main") &&
+                hasVariant($state, "profile2", "profile2"),
               [sty.sectionshop2_show_main__nMjS9Walo1Dtd1A]:
                 hasVariant($state, "show", "main") &&
                 hasVariant($state, "shop2", "shop2"),
@@ -7631,6 +8091,9 @@ function PlasmicHomePage__RenderFunc(props: {
                 [sty.mainchatViow_show_main]:
                   hasVariant($state, "show", "main") &&
                   hasVariant($state, "chatViow", "chatViow"),
+                [sty.mainprofile2_show_main]:
+                  hasVariant($state, "show", "main") &&
+                  hasVariant($state, "profile2", "profile2"),
                 [sty.mainshop2_show_main]:
                   hasVariant($state, "show", "main") &&
                   hasVariant($state, "shop2", "shop2"),
@@ -7901,6 +8364,50 @@ function PlasmicHomePage__RenderFunc(props: {
                     $steps["updateSelectId"] = await $steps["updateSelectId"];
                   }
                 }).apply(null, eventArgs);
+              }}
+              profileOpen={async () => {
+                const $steps = {};
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return console.log("akhcaschak");
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+
+                $steps["updateProfile2"] = true
+                  ? (() => {
+                      const actionArgs = { vgroup: "profile2", operation: 4 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, true);
+                        return true;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateProfile2"] != null &&
+                  typeof $steps["updateProfile2"] === "object" &&
+                  typeof $steps["updateProfile2"].then === "function"
+                ) {
+                  $steps["updateProfile2"] = await $steps["updateProfile2"];
+                }
               }}
               shop={generateStateValueProp($state, ["main", "shop"])}
               show={(() => {
@@ -8494,31 +9001,6 @@ function PlasmicHomePage__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["updateShow"] = true
-                ? (() => {
-                    const actionArgs = {
-                      vgroup: "show",
-                      operation: 0,
-                      value: "main"
-                    };
-                    return (({ vgroup, value }) => {
-                      if (typeof value === "string") {
-                        value = [value];
-                      }
-
-                      $stateSet($state, vgroup, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateShow"] != null &&
-                typeof $steps["updateShow"] === "object" &&
-                typeof $steps["updateShow"].then === "function"
-              ) {
-                $steps["updateShow"] = await $steps["updateShow"];
-              }
-
               $steps["logInstall"] = (
                 localStorage.getItem("install") ? false : true
               )
@@ -8748,6 +9230,60 @@ function PlasmicHomePage__RenderFunc(props: {
               ) {
                 $steps["updateUserInfo"] = await $steps["updateUserInfo"];
               }
+
+              $steps["updateSplash"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["splash"]
+                      },
+                      operation: 4
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      const oldValue = $stateGet(objRoot, variablePath);
+                      $stateSet(objRoot, variablePath, !oldValue);
+                      return !oldValue;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateSplash"] != null &&
+                typeof $steps["updateSplash"] === "object" &&
+                typeof $steps["updateSplash"].then === "function"
+              ) {
+                $steps["updateSplash"] = await $steps["updateSplash"];
+              }
+
+              $steps["updateShow"] = true
+                ? (() => {
+                    const actionArgs = {
+                      vgroup: "show",
+                      operation: 0,
+                      value: "main"
+                    };
+                    return (({ vgroup, value }) => {
+                      if (typeof value === "string") {
+                        value = [value];
+                      }
+
+                      $stateSet($state, vgroup, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateShow"] != null &&
+                typeof $steps["updateShow"] === "object" &&
+                typeof $steps["updateShow"].then === "function"
+              ) {
+                $steps["updateShow"] = await $steps["updateShow"];
+              }
             }}
           />
 
@@ -8877,6 +9413,87 @@ function PlasmicHomePage__RenderFunc(props: {
             }}
             open={generateStateValueProp($state, ["shopModal", "open"])}
           />
+
+          {(() => {
+            try {
+              return $state.splash;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <div className={classNames(projectcss.all, sty.freeBox__xtNon)}>
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__xj2Sh)}
+              >
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__nySsk)}
+                  displayHeight={"auto"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"150px"}
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/metoo/images/unnamedPng.png",
+                    fullWidth: 512,
+                    fullHeight: 512,
+                    aspectRatio: undefined
+                  }}
+                />
+
+                <MetoLabel
+                  className={classNames("__wab_instance", sty.metoLabel__gxNaO)}
+                  size={"lg"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__etito
+                    )}
+                  >
+                    {"\u0645\u06cc\u062a\u0648"}
+                  </div>
+                </MetoLabel>
+                <MetoLabel
+                  className={classNames("__wab_instance", sty.metoLabel__n4QX)}
+                  size={"lg"}
+                >
+                  {
+                    "\u0645\u0644\u0627\u0642\u0627\u062a \u0648 \u0622\u0634\u0646\u0627\u06cc\u06cc \u0628\u0627 \u062f\u0648\u0633\u062a\u0627\u0646"
+                  }
+                </MetoLabel>
+              </Stack__>
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__v6NUl)}
+              >
+                <MetoLabel
+                  className={classNames("__wab_instance", sty.metoLabel__n1TqB)}
+                  size={"lg"}
+                >
+                  {
+                    "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc ..."
+                  }
+                </MetoLabel>
+                <Icon11Icon
+                  className={classNames(projectcss.all, sty.svg__wmPuT)}
+                  role={"img"}
+                />
+              </Stack__>
+            </div>
+          ) : null}
         </div>
       </div>
     </React.Fragment>
@@ -8903,8 +9520,9 @@ const PlasmicDescendants = {
     "img",
     "sendImage",
     "embedHtml",
+    "profile",
+    "userProfile",
     "edit",
-    "svg",
     "editName",
     "bio",
     "birthday3",
@@ -8961,9 +9579,10 @@ const PlasmicDescendants = {
   img: ["img"],
   sendImage: ["sendImage"],
   embedHtml: ["embedHtml"],
+  profile: ["profile", "userProfile"],
+  userProfile: ["userProfile"],
   edit: [
     "edit",
-    "svg",
     "editName",
     "bio",
     "birthday3",
@@ -8975,7 +9594,6 @@ const PlasmicDescendants = {
     "addres2",
     "editProfile"
   ],
-  svg: ["svg"],
   editName: ["editName"],
   bio: ["bio"],
   birthday3: ["birthday3"],
@@ -9020,8 +9638,9 @@ type NodeDefaultElementType = {
   img: typeof PlasmicImg__;
   sendImage: typeof MetoButton2;
   embedHtml: typeof Embed;
+  profile: typeof Reveal;
+  userProfile: typeof UserProfile;
   edit: typeof Reveal;
-  svg: "svg";
   editName: typeof MetoTextInput;
   bio: typeof MetoTextInput;
   birthday3: typeof MetoTextInput;
@@ -9122,8 +9741,9 @@ export const PlasmicHomePage = Object.assign(
     img: makeNodeComponent("img"),
     sendImage: makeNodeComponent("sendImage"),
     embedHtml: makeNodeComponent("embedHtml"),
+    profile: makeNodeComponent("profile"),
+    userProfile: makeNodeComponent("userProfile"),
     edit: makeNodeComponent("edit"),
-    svg: makeNodeComponent("svg"),
     editName: makeNodeComponent("editName"),
     bio: makeNodeComponent("bio"),
     birthday3: makeNodeComponent("birthday3"),

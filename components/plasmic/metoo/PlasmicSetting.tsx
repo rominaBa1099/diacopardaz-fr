@@ -77,9 +77,19 @@ export type PlasmicSetting__VariantsArgs = {};
 type VariantPropType = keyof PlasmicSetting__VariantsArgs;
 export const PlasmicSetting__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicSetting__ArgsType = { userInfo?: any };
+export type PlasmicSetting__ArgsType = {
+  userInfo?: any;
+  selectItem?: any;
+  onSelectItemChange?: (val: string) => void;
+  onclick?: () => void;
+};
 type ArgPropType = keyof PlasmicSetting__ArgsType;
-export const PlasmicSetting__ArgProps = new Array<ArgPropType>("userInfo");
+export const PlasmicSetting__ArgProps = new Array<ArgPropType>(
+  "userInfo",
+  "selectItem",
+  "onSelectItemChange",
+  "onclick"
+);
 
 export type PlasmicSetting__OverridesType = {
   root?: Flex__<"div">;
@@ -89,6 +99,9 @@ export type PlasmicSetting__OverridesType = {
 
 export interface DefaultSettingProps {
   userInfo?: any;
+  selectItem?: any;
+  onSelectItemChange?: (val: string) => void;
+  onclick?: () => void;
   className?: string;
 }
 
@@ -144,7 +157,7 @@ function PlasmicSetting__RenderFunc(props: {
                 {
                   text: "کی پروفایلم رو دید؟",
                   type: "text",
-                  action: "viewProfile",
+                  action: "getEvent",
                   number: $props.userInfo.userInfo.cView,
                   premium: true
                 },
@@ -161,7 +174,7 @@ function PlasmicSetting__RenderFunc(props: {
                 {
                   text: "خرید اشتراک",
                   type: "button",
-                  action: "buySubscription",
+                  action: "shop",
                   number: 3,
                   style: "primary",
                   premium: false
@@ -172,14 +185,14 @@ function PlasmicSetting__RenderFunc(props: {
                 {
                   text: "کی بلاکم کرد؟",
                   type: "text",
-                  action: "blockInfo",
+                  action: "whoBlock",
                   // "number": $props.userInfo.userInfo.c,
                   premium: true
                 },
                 {
                   text: "افرادی که بلاک کردم",
                   type: "action",
-                  action: "blockedUsers",
+                  action: "myBlock",
                   // "number": 5,
                   premium: false
                 },
@@ -207,7 +220,7 @@ function PlasmicSetting__RenderFunc(props: {
                 {
                   text: "افرادی که لایک کردم",
                   type: "action",
-                  action: "likedUsers",
+                  action: "myLike",
                   // "number": 8,
                   premium: false
                 },
@@ -313,6 +326,14 @@ function PlasmicSetting__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "selectItem",
+        type: "writable",
+        variableType: "object",
+
+        valueProp: "selectItem",
+        onChangeProp: "onSelectItemChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -446,6 +467,59 @@ function PlasmicSetting__RenderFunc(props: {
               className={classNames("__wab_instance", sty.settingItem)}
               currentItem={currentItem}
               key={currentIndex}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateSelectItem"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["selectItem"]
+                        },
+                        operation: 0,
+                        value: currentItem
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateSelectItem"] != null &&
+                  typeof $steps["updateSelectItem"] === "object" &&
+                  typeof $steps["updateSelectItem"].then === "function"
+                ) {
+                  $steps["updateSelectItem"] = await $steps["updateSelectItem"];
+                }
+
+                $steps["runOnclick"] = true
+                  ? (() => {
+                      const actionArgs = { eventRef: $props["onclick"] };
+                      return (({ eventRef, args }) => {
+                        return eventRef?.(...(args ?? []));
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runOnclick"] != null &&
+                  typeof $steps["runOnclick"] === "object" &&
+                  typeof $steps["runOnclick"].then === "function"
+                ) {
+                  $steps["runOnclick"] = await $steps["runOnclick"];
+                }
+              }}
               type={(() => {
                 try {
                   return currentItem.type;

@@ -78,10 +78,14 @@ import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: -Krn7G6yGJ2
 
 createPlasmicElementProxy;
 
-export type PlasmicPost__VariantMembers = {};
-export type PlasmicPost__VariantsArgs = {};
+export type PlasmicPost__VariantMembers = {
+  profile: "profile";
+};
+export type PlasmicPost__VariantsArgs = {
+  profile?: SingleBooleanChoiceArg<"profile">;
+};
 type VariantPropType = keyof PlasmicPost__VariantsArgs;
-export const PlasmicPost__VariantProps = new Array<VariantPropType>();
+export const PlasmicPost__VariantProps = new Array<VariantPropType>("profile");
 
 export type PlasmicPost__ArgsType = {
   children?: React.ReactNode;
@@ -111,6 +115,7 @@ export interface DefaultPostProps {
   onLoadChange?: (val: string) => void;
   image?: string;
   onImageChange?: (val: string) => void;
+  profile?: SingleBooleanChoiceArg<"profile">;
   className?: string;
 }
 
@@ -170,6 +175,12 @@ function PlasmicPost__RenderFunc(props: {
 
         valueProp: "image",
         onChangeProp: "onImageChange"
+      },
+      {
+        path: "profile",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.profile
       }
     ],
     [$props, $ctx, $refs]
@@ -195,7 +206,8 @@ function PlasmicPost__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_meto_deign_system_css.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.root
+        sty.root,
+        { [sty.rootprofile]: hasVariant($state, "profile", "profile") }
       )}
       style={(() => {
         try {
@@ -215,7 +227,9 @@ function PlasmicPost__RenderFunc(props: {
         data-plasmic-name={"img"}
         data-plasmic-override={overrides.img}
         alt={""}
-        className={classNames(sty.img)}
+        className={classNames(sty.img, {
+          [sty.imgprofile]: hasVariant($state, "profile", "profile")
+        })}
         displayHeight={"50vh"}
         displayMaxHeight={"none"}
         displayMaxWidth={"100%"}
@@ -244,7 +258,15 @@ function PlasmicPost__RenderFunc(props: {
         })()}
       />
 
-      <div className={classNames(projectcss.all, sty.freeBox__bgg0E)}>
+      <div
+        className={classNames(projectcss.all, sty.freeBox__bgg0E, {
+          [sty.freeBoxprofile__bgg0EwPqum]: hasVariant(
+            $state,
+            "profile",
+            "profile"
+          )
+        })}
+      >
         {renderPlasmicSlot({
           defaultContents: (
             <React.Fragment>

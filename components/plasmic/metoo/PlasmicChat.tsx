@@ -84,13 +84,15 @@ export type PlasmicChat__ArgsType = {
   currentuser?: any;
   onCurrentuserChange?: (val: string) => void;
   chatOpen?: () => void;
+  profileOpen?: () => void;
 };
 type ArgPropType = keyof PlasmicChat__ArgsType;
 export const PlasmicChat__ArgProps = new Array<ArgPropType>(
   "token",
   "currentuser",
   "onCurrentuserChange",
-  "chatOpen"
+  "chatOpen",
+  "profileOpen"
 );
 
 export type PlasmicChat__OverridesType = {
@@ -107,6 +109,7 @@ export interface DefaultChatProps {
   currentuser?: any;
   onCurrentuserChange?: (val: string) => void;
   chatOpen?: () => void;
+  profileOpen?: () => void;
   className?: string;
 }
 
@@ -638,6 +641,22 @@ function PlasmicChat__RenderFunc(props: {
                     $steps["updateCurrentuser"] = await $steps[
                       "updateCurrentuser"
                     ];
+                  }
+
+                  $steps["runProfileOpen"] = true
+                    ? (() => {
+                        const actionArgs = { eventRef: $props["profileOpen"] };
+                        return (({ eventRef, args }) => {
+                          return eventRef?.(...(args ?? []));
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runProfileOpen"] != null &&
+                    typeof $steps["runProfileOpen"] === "object" &&
+                    typeof $steps["runProfileOpen"].then === "function"
+                  ) {
+                    $steps["runProfileOpen"] = await $steps["runProfileOpen"];
                   }
                 }}
               />

@@ -41,6 +41,12 @@
   min-width: 0;
   padding: var(--token-x0W5E5oV4ZKj) 0px 0px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__jitew {
+    justify-content: center;
+    align-items: center;
+  }
+}
 .freeBoxpazireshAnswer__jitewKKt1C {
   display: none;
 }
@@ -52,7 +58,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBoxliomAnswer__jiteweKcc5 {
-    width: 25px;
+    width: 100%;
+    min-width: 0;
   }
 }
 .freeBoxloadingMessage__jitew4FR {

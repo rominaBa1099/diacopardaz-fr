@@ -260,6 +260,7 @@ function PlasmicModal2__RenderFunc(props: {
           [sty.dialogbackground_dark_fullScreen]:
             hasVariant($state, "background", "dark") &&
             hasVariant($state, "fullScreen", "fullScreen"),
+          [sty.dialogbackground_exit]: hasVariant($state, "background", "exit"),
           [sty.dialogfullScreen]: hasVariant(
             $state,
             "fullScreen",
@@ -283,8 +284,12 @@ function PlasmicModal2__RenderFunc(props: {
       }}
       open={generateStateValueProp($state, ["dialog", "open"])}
       overlayClassName={classNames({
+        [sty["pcls_OYaogGck2gAt"]]: hasVariant($state, "background", "exit"),
         [sty["pcls_YBOsXAYWhJ9Q"]]:
           hasVariant($state, "fullScreen", "fullScreen") &&
+          hasVariant(globalVariants, "screen", "mobileOnly"),
+        [sty["pcls_f7vrtWVm1kyN"]]:
+          hasVariant($state, "background", "exit") &&
           hasVariant(globalVariants, "screen", "mobileOnly"),
         [sty["pcls_n6G3cyGV6NeA"]]: hasVariant(
           globalVariants,

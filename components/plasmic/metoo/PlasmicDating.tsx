@@ -90,6 +90,7 @@ export type PlasmicDating__ArgsType = {
   token?: string;
   chatOpen?: (event: any) => void;
   onCurrentuserChange?: (val: string) => void;
+  profile?: () => void;
 };
 type ArgPropType = keyof PlasmicDating__ArgsType;
 export const PlasmicDating__ArgProps = new Array<ArgPropType>(
@@ -97,7 +98,8 @@ export const PlasmicDating__ArgProps = new Array<ArgPropType>(
   "onFilterChange",
   "token",
   "chatOpen",
-  "onCurrentuserChange"
+  "onCurrentuserChange",
+  "profile"
 );
 
 export type PlasmicDating__OverridesType = {
@@ -114,6 +116,7 @@ export interface DefaultDatingProps {
   token?: string;
   chatOpen?: (event: any) => void;
   onCurrentuserChange?: (val: string) => void;
+  profile?: () => void;
   className?: string;
 }
 
@@ -566,6 +569,7 @@ function PlasmicDating__RenderFunc(props: {
             return;
           }
         }}
+        profile={args.profile}
       />
 
       <Modal2

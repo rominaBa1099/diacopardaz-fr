@@ -104,6 +104,9 @@ export type PlasmicMain__ArgsType = {
   shop?: any;
   onShopChange?: (val: string) => void;
   userInfo?: any;
+  profileOpen?: () => void;
+  settingClick?: () => void;
+  selectSetting?: any;
 };
 type ArgPropType = keyof PlasmicMain__ArgsType;
 export const PlasmicMain__ArgProps = new Array<ArgPropType>(
@@ -119,7 +122,10 @@ export const PlasmicMain__ArgProps = new Array<ArgPropType>(
   "onBackChange",
   "shop",
   "onShopChange",
-  "userInfo"
+  "userInfo",
+  "profileOpen",
+  "settingClick",
+  "selectSetting"
 );
 
 export type PlasmicMain__OverridesType = {
@@ -148,6 +154,9 @@ export interface DefaultMainProps {
   shop?: any;
   onShopChange?: (val: string) => void;
   userInfo?: any;
+  profileOpen?: () => void;
+  settingClick?: () => void;
+  selectSetting?: any;
   show?: SingleChoiceArg<"chat" | "search" | "dating" | "profile" | "settings">;
   className?: string;
 }
@@ -320,7 +329,8 @@ function PlasmicMain__RenderFunc(props: {
               { id: 30, title: "\u0647\u0645\u062f\u0627\u0646" },
               { id: 31, title: "\u06cc\u0632\u062f" }
             ]
-          }
+          },
+          selectSetting: {}
         },
         Object.fromEntries(
           Object.entries(props.args).filter(([_, v]) => v !== undefined)
@@ -457,6 +467,13 @@ function PlasmicMain__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "setting.selectItem",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          $props["selectSetting"]
       }
     ],
     [$props, $ctx, $refs]
@@ -581,6 +598,7 @@ function PlasmicMain__RenderFunc(props: {
               return;
             }
           }}
+          profile={args.profileOpen}
           token={(() => {
             try {
               return $props.token;
@@ -599,6 +617,25 @@ function PlasmicMain__RenderFunc(props: {
       <Search
         data-plasmic-name={"search"}
         data-plasmic-override={overrides.search}
+        chatOpen={async event => {
+          const $steps = {};
+
+          $steps["runChatOpen"] = true
+            ? (() => {
+                const actionArgs = { eventRef: $props["chatOpen"] };
+                return (({ eventRef, args }) => {
+                  return eventRef?.(...(args ?? []));
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["runChatOpen"] != null &&
+            typeof $steps["runChatOpen"] === "object" &&
+            typeof $steps["runChatOpen"].then === "function"
+          ) {
+            $steps["runChatOpen"] = await $steps["runChatOpen"];
+          }
+        }}
         city={generateStateValueProp($state, ["search", "city"])}
         className={classNames("__wab_instance", sty.search, {
           [sty.searchshow_chat]: hasVariant($state, "show", "chat"),
@@ -666,6 +703,25 @@ function PlasmicMain__RenderFunc(props: {
               $steps["updateStateId"] = await $steps["updateStateId"];
             }
           }).apply(null, eventArgs);
+        }}
+        profile={async () => {
+          const $steps = {};
+
+          $steps["runProfileOpen"] = true
+            ? (() => {
+                const actionArgs = { eventRef: $props["profileOpen"] };
+                return (({ eventRef, args }) => {
+                  return eventRef?.(...(args ?? []));
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["runProfileOpen"] != null &&
+            typeof $steps["runProfileOpen"] === "object" &&
+            typeof $steps["runProfileOpen"].then === "function"
+          ) {
+            $steps["runProfileOpen"] = await $steps["runProfileOpen"];
+          }
         }}
         stateId={generateStateValueProp($state, ["search", "stateId"])}
       />
@@ -753,6 +809,25 @@ function PlasmicMain__RenderFunc(props: {
               }
             }).apply(null, eventArgs);
           }}
+          profileOpen={async () => {
+            const $steps = {};
+
+            $steps["runProfile2"] = true
+              ? (() => {
+                  const actionArgs = { eventRef: $props["profileOpen"] };
+                  return (({ eventRef, args }) => {
+                    return eventRef?.(...(args ?? []));
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["runProfile2"] != null &&
+              typeof $steps["runProfile2"] === "object" &&
+              typeof $steps["runProfile2"].then === "function"
+            ) {
+              $steps["runProfile2"] = await $steps["runProfile2"];
+            }
+          }}
         />
       </Reveal>
       <Profile
@@ -798,6 +873,22 @@ function PlasmicMain__RenderFunc(props: {
         className={classNames("__wab_instance", sty.setting, {
           [sty.settingshow_settings]: hasVariant($state, "show", "settings")
         })}
+        onSelectItemChange={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["setting", "selectItem"]).apply(
+            null,
+            eventArgs
+          );
+
+          if (
+            eventArgs.length > 1 &&
+            eventArgs[1] &&
+            eventArgs[1]._plasmic_state_init_
+          ) {
+            return;
+          }
+        }}
+        onclick={args.settingClick}
+        selectItem={generateStateValueProp($state, ["setting", "selectItem"])}
         userInfo={(() => {
           try {
             return $props.userInfo;

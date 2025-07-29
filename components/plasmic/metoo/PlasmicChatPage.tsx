@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import Message from "../../Message"; // plasmic-import: n7ndL0BhVm4-/component
 import MetoMultilineTextInput from "../../MetoMultilineTextInput"; // plasmic-import: XEFn2jGZQC6Q/component
 import MetoButton from "../../MetoButton"; // plasmic-import: BFnTlSYwdY0-/component
@@ -71,6 +72,7 @@ import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: mSKar170aYTo/codeComponent
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
 
@@ -83,6 +85,7 @@ import sty from "./PlasmicChatPage.module.css"; // plasmic-import: yuSY12BxVzUt/
 
 import Icon119Icon from "./icons/PlasmicIcon__Icon119"; // plasmic-import: YZnu0BGKqfAx/icon
 import Icon6Icon from "./icons/PlasmicIcon__Icon6"; // plasmic-import: x-B0c-1mf1j1/icon
+import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: qjqRxaSKggf6/icon
 import Icon7Icon from "./icons/PlasmicIcon__Icon7"; // plasmic-import: EYm8WNjOOVtF/icon
 import CircleIcon from "../meto_deign_system/icons/PlasmicIcon__Circle"; // plasmic-import: n4WDawyT-j_R/icon
 import ChevronDownIcon from "../meto_deign_system/icons/PlasmicIcon__ChevronDown"; // plasmic-import: 5EHYKqa8ukVe/icon
@@ -102,6 +105,7 @@ export type PlasmicChatPage__ArgsType = {
   sessionid?: number;
   back?: (event: any) => void;
   shop?: () => void;
+  profile2?: () => void;
 };
 type ArgPropType = keyof PlasmicChatPage__ArgsType;
 export const PlasmicChatPage__ArgProps = new Array<ArgPropType>(
@@ -109,11 +113,13 @@ export const PlasmicChatPage__ArgProps = new Array<ArgPropType>(
   "userData",
   "sessionid",
   "back",
-  "shop"
+  "shop",
+  "profile2"
 );
 
 export type PlasmicChatPage__OverridesType = {
   root?: Flex__<"div">;
+  reveal?: Flex__<typeof Reveal>;
   message?: Flex__<typeof Message>;
   multilineTextInput2?: Flex__<typeof MetoMultilineTextInput>;
   metoHeader?: Flex__<typeof MetoHeader>;
@@ -133,6 +139,7 @@ export interface DefaultChatPageProps {
   sessionid?: number;
   back?: (event: any) => void;
   shop?: () => void;
+  profile2?: () => void;
   className?: string;
 }
 
@@ -160,49 +167,50 @@ function PlasmicChatPage__RenderFunc(props: {
           token:
             "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjEyNjg1MzMiLCJleHBpcmUiOjE3NTI1Njc3Mjd9.gfYr_i2s7WPRRXAOY10kp25hRWrtuchU2vxVrTEzHdN_ixVpPVW0jSP5M4hm7hu3FjiRhGaV-C4nALAs4BPL7g",
           userData: {
-            id: 200838,
-            bri: 0,
-            name: "\u0633\u0627\u062c\u062f\u0647 \u0627\u0628\u062a\u0647\u06cc",
+            id: 143845,
+            bri: 1,
+            name: "\u06cc\u0627\u0633\u0645\u0646",
             username: "",
             cluster: 1,
-            viewd:
-              "0,502452,502412,500899,499010,498238,497120,496499,495441,495339,493369,492693,492664,492125,491409,490829,489528,489301,488013,487939,487934,483928,483084,481174,481125,480276,479924,478870,478103,478041,478005,710356,710349,710299,698840,698642,698631,475778,475489,475411,473960,472472,472470,470010,468503,468394,467296,467269,467057,465018,463944,461554,461402,459578,452018,451227,450768,449649,439942,439578,432888",
+            viewd: "0",
             mobile: null,
-            city: "\u0627\u0635\u063a\u0631\u0622\u0628\u0627\u062f",
-            state: "\u0627\u0635\u0641\u0647\u0627\u0646",
-            age: 15,
+            city: "\u062a\u0628\u0631\u06cc\u0632",
+            state:
+              "\u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646 \u0634\u0631\u0642\u06cc",
+            age: 24,
             address:
-              "\u06af\u0648\u0644\u0628\u0627\u06a9\u0647 \u06a9\u0648\u0686\u0647 \u0627\u0633\u06af\u0631\u062e\u0627\u0646 \u067e\u0644\u0627\u06a9 \u0628\u06cc\u0633\u062a \u067e\u0646\u062c",
+              "\u062e\u06cc\u0627\u0628\u0627\u0646 \u0648\u0644\u06cc\u0639\u0635\u0631",
             sex: "female",
-            cLike: 162,
-            cView: 177,
-            cMyView: 52,
-            cMyLike: 6,
+            cReadyMessage: 0,
+            cLike: 31468,
+            cView: 141670,
+            cMyView: 0,
+            cMyLike: 0,
             isVip: 0,
             isPromote: 0,
             isPromoteDate: null,
             premiumEndDate: null,
-            lastActivity: "2025-05-18 14:31:22",
-            lastActivityDate: "2025-05-18",
+            lastActivity: "2025-07-29 10:31:53",
+            lastActivityDate: "2025-07-29",
             activeGoldenTick: 0,
-            eventBlock: 0,
-            eventSeen: 177,
+            eventBlock: 935,
+            eventSeen: 141670,
             eventMessage: 0,
-            eventLike: 162,
+            eventLike: 31467,
             imei: "",
             email: null,
-            version: "1.0.5 BAZAR",
-            appid: 1,
-            regDate: "2024-11-03",
-            timestamp: "2024-11-03 20:20:55",
-            refCode: "d1b8c0",
+            version: "1.0.3 BAZAR",
+            appid: 0,
+            regDate: "2024-10-07",
+            timestamp: "2024-10-07 11:23:27",
+            refCode: "bot107",
             _referedBy: null,
             refCount: 0,
-            stars: 168,
-            weeklyStars: 168,
+            stars: 557015,
+            weeklyStars: 557015,
             cLikeCP: 0,
             weeklyCLikeCP: 0,
-            tokenBot: "/liom_8b802f",
+            tokenBot: "/liom_bot107",
             hamyarEshgh: null,
             hamyarEshgh_gap: null,
             partnerName: null,
@@ -212,7 +220,7 @@ function PlasmicChatPage__RenderFunc(props: {
             lang: "fa",
             postLang: "fa",
             marital_status: "0",
-            birthdayDate: "1388-05-31",
+            birthdayDate: "1370-01-10",
             dueDate: null,
             pLast_time: null,
             length: null,
@@ -225,7 +233,7 @@ function PlasmicChatPage__RenderFunc(props: {
             avatar: 1,
             socialAvatar: 1,
             overall: 0,
-            profilePic: "",
+            profilePic: "https://liom.storage.c2.liara.space/inRel/4.png",
             bio: "",
             header: " ",
             background: "",
@@ -239,7 +247,7 @@ function PlasmicChatPage__RenderFunc(props: {
             superAdmin: 0,
             isBlock: 0,
             isVisible_news: null,
-            isVisible_broadcast: 1,
+            isVisible_broadcast: 0,
             checker: 0,
             blogger: 0,
             notif_like: 0,
@@ -259,10 +267,9 @@ function PlasmicChatPage__RenderFunc(props: {
             suspectName: 0,
             suspectUserName: 0,
             uuid: null,
-            bot: 0,
+            bot: 1,
             isCheck: 0,
-            req_id: 200838,
-            setLike: false
+            req_id: 143845
           }
         },
         Object.fromEntries(
@@ -406,6 +413,12 @@ function PlasmicChatPage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "messeg",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -438,234 +451,246 @@ function PlasmicChatPage__RenderFunc(props: {
         sty.root
       )}
     >
-      {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-        (() => {
-          try {
-            return $state.chats;
-          } catch (e) {
-            if (
-              e instanceof TypeError ||
-              e?.plasmicType === "PlasmicUndefinedDataError"
-            ) {
-              return [];
-            }
-            throw e;
-          }
-        })()
-      ).map((__plasmic_item_0, __plasmic_idx_0) => {
-        const currentItem = __plasmic_item_0;
-        const currentIndex = __plasmic_idx_0;
-        return (() => {
-          const child$Props = {
-            className: classNames("__wab_instance", sty.message),
-            inApp: false,
-            key: currentIndex,
-            liomAnswer: (() => {
-              try {
-                return currentItem.sender == "زهرا";
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return [];
-                }
-                throw e;
+      <Reveal
+        data-plasmic-name={"reveal"}
+        data-plasmic-override={overrides.reveal}
+        className={classNames("__wab_instance", sty.reveal)}
+        direction={"up"}
+        triggerOnce={true}
+      >
+        {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+          (() => {
+            try {
+              return $state.chats;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
               }
-            })(),
-            onShowtimeChange: async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
+              throw e;
+            }
+          })()
+        ).map((__plasmic_item_0, __plasmic_idx_0) => {
+          const currentItem = __plasmic_item_0;
+          const currentIndex = __plasmic_idx_0;
+          return (() => {
+            const child$Props = {
+              className: classNames("__wab_instance", sty.message),
+              inApp: false,
+              key: currentIndex,
+              liomAnswer: (() => {
+                try {
+                  return currentItem.self;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })(),
+              onShowtimeChange: async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "message",
+                  __plasmic_idx_0,
+                  "showtime"
+                ]).apply(null, eventArgs);
+
+                if (
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
+                ) {
+                  return;
+                }
+              },
+              posttime: (() => {
+                try {
+                  return currentItem.timestamp;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })(),
+              showtime: generateStateValueProp($state, [
                 "message",
                 __plasmic_idx_0,
                 "showtime"
-              ]).apply(null, eventArgs);
-
-              if (
-                eventArgs.length > 1 &&
-                eventArgs[1] &&
-                eventArgs[1]._plasmic_state_init_
-              ) {
-                return;
-              }
-            },
-            posttime: (() => {
-              try {
-                return currentItem.timestamp;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return undefined;
-                }
-                throw e;
-              }
-            })(),
-            showtime: generateStateValueProp($state, [
-              "message",
-              __plasmic_idx_0,
-              "showtime"
-            ]),
-            slot: (
-              <React.Fragment>
-                <div className={classNames(projectcss.all, sty.freeBox__eKWsp)}>
-                  <Icon119Icon
-                    className={classNames(projectcss.all, sty.svg__xUuW)}
-                    role={"img"}
-                  />
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__hinyf)}>
-                  <Icon119Icon
-                    className={classNames(projectcss.all, sty.svg___9N69K)}
-                    role={"img"}
-                  />
-
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__dwIz3
-                    )}
-                  >
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return "ویرایش پاسخ";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
-                  </div>
-                </div>
-              </React.Fragment>
-            )
-          };
-
-          initializePlasmicStates(
-            $state,
-            [
-              {
-                name: "message[].showtime",
-                initFunc: ({ $props, $state, $queries }) =>
-                  (() => {
-                    try {
-                      return (() => {
-                        const currentDate = currentItem.timestamp.split(" ")[0];
-                        const previousDate =
-                          $state.chats[currentIndex - 1].timestamp.split(
-                            " "
-                          )[0];
-                        return !previousDate || currentDate !== previousDate;
-                      })();
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return false;
-                      }
-                      throw e;
-                    }
-                  })()
-              }
-            ],
-            [__plasmic_idx_0]
-          );
-          return (
-            <Message
-              data-plasmic-name={"message"}
-              data-plasmic-override={overrides.message}
-              {...child$Props}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__xgPKr,
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? `text-box  ${(() => {})()}`
-                    : undefined
-                )}
-                id={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return currentItem.id
-                            ? ""
-                            : currentItem.animation
-                            ? currentItem.animation
-                            : "";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : (() => {
-                        try {
-                          return currentItem.id
-                            ? ""
-                            : currentItem.from == "system"
-                            ? `typedtext` + currentIndex
-                            : "";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()
-                }
-                style={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? {
-                        display: "inline-block",
-                        width: "auto",
-                        "overflow-wrap": "break-word"
-                      }
-                    : undefined
-                }
-              >
+              ]),
+              slot: (
                 <React.Fragment>
-                  {(() => {
-                    try {
-                      return currentItem.message;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return "Lorem ipsum dolor sit amet,";
-                      }
-                      throw e;
-                    }
-                  })()}
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__eKWsp)}
+                  >
+                    <Icon119Icon
+                      className={classNames(projectcss.all, sty.svg__xUuW)}
+                      role={"img"}
+                    />
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__hinyf)}
+                  >
+                    <Icon119Icon
+                      className={classNames(projectcss.all, sty.svg___9N69K)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__dwIz3
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return "ویرایش پاسخ";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                  </div>
                 </React.Fragment>
-              </div>
-            </Message>
-          );
-        })();
-      })}
+              )
+            };
+
+            initializePlasmicStates(
+              $state,
+              [
+                {
+                  name: "message[].showtime",
+                  initFunc: ({ $props, $state, $queries }) =>
+                    (() => {
+                      try {
+                        return (() => {
+                          const currentDate =
+                            currentItem.timestamp.split(" ")[0];
+                          const previousDate =
+                            $state.chats[currentIndex - 1].timestamp.split(
+                              " "
+                            )[0];
+                          return !previousDate || currentDate !== previousDate;
+                        })();
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return false;
+                        }
+                        throw e;
+                      }
+                    })()
+                }
+              ],
+              [__plasmic_idx_0]
+            );
+            return (
+              <Message
+                data-plasmic-name={"message"}
+                data-plasmic-override={overrides.message}
+                {...child$Props}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xgPKr,
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? `text-box  ${(() => {})()}`
+                      : undefined
+                  )}
+                  id={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? (() => {
+                          try {
+                            return currentItem.id
+                              ? ""
+                              : currentItem.animation
+                              ? currentItem.animation
+                              : "";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      : (() => {
+                          try {
+                            return currentItem.id
+                              ? ""
+                              : currentItem.from == "system"
+                              ? `typedtext` + currentIndex
+                              : "";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
+                  style={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? {
+                          display: "inline-block",
+                          width: "auto",
+                          "overflow-wrap": "break-word"
+                        }
+                      : undefined
+                  }
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return currentItem.message;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "Lorem ipsum dolor sit amet,";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+              </Message>
+            );
+          })();
+        })}
+      </Reveal>
       <section className={classNames(projectcss.all, sty.section___61NzU)}>
         <MetoMultilineTextInput
           data-plasmic-name={"multilineTextInput2"}
           data-plasmic-override={overrides.multilineTextInput2}
           className={classNames("__wab_instance", sty.multilineTextInput2)}
-          endIcon={true}
           onValueChange={async (...eventArgs: any) => {
             generateStateOnChangeProp($state, [
               "multilineTextInput2",
@@ -679,137 +704,19 @@ function PlasmicChatPage__RenderFunc(props: {
             ) {
               return;
             }
-          }}
-          slot={
-            <Icon7Icon
-              className={classNames(projectcss.all, sty.svg__z35Vr)}
-              role={"img"}
-            />
-          }
-          startIcon={true}
-          value={generateStateValueProp($state, [
-            "multilineTextInput2",
-            "value"
-          ])}
-        >
-          <Icon6Icon
-            aria-disabled={(() => {
-              try {
-                return $state.load;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return undefined;
-                }
-                throw e;
-              }
-            })()}
-            className={classNames(projectcss.all, sty.svg__hGiGu)}
-            onClick={async event => {
+
+            (async val => {
               const $steps = {};
 
-              $steps["updateLoad"] = true
+              $steps["updateMesseg"] = true
                 ? (() => {
                     const actionArgs = {
                       variable: {
                         objRoot: $state,
-                        variablePath: ["load"]
-                      },
-                      operation: 4
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      const oldValue = $stateGet(objRoot, variablePath);
-                      $stateSet(objRoot, variablePath, !oldValue);
-                      return !oldValue;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateLoad"] != null &&
-                typeof $steps["updateLoad"] === "object" &&
-                typeof $steps["updateLoad"].then === "function"
-              ) {
-                $steps["updateLoad"] = await $steps["updateLoad"];
-              }
-
-              $steps["send"] =
-                $state.multilineTextInput2.value != ""
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          "POST",
-                          "https://api.friendschat.ir/chat/sendChat",
-                          undefined,
-                          (() => {
-                            try {
-                              return {
-                                sessionID: $state.sessionId,
-                                message: $state.multilineTextInput2.value,
-                                isReadyMessage: $state.isReadyMessage
-                              };
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })(),
-                          (() => {
-                            try {
-                              return {
-                                headers: {
-                                  appid: "your-app-id",
-                                  Authorization: $props.token,
-                                  "Content-Type": "application/json",
-                                  Version: "1.0"
-                                }
-                              };
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
-              if (
-                $steps["send"] != null &&
-                typeof $steps["send"] === "object" &&
-                typeof $steps["send"].then === "function"
-              ) {
-                $steps["send"] = await $steps["send"];
-              }
-
-              $steps["updateMultilineTextInput2Value"] = $steps.send?.data
-                ?.success
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["multilineTextInput2", "value"]
+                        variablePath: ["messeg"]
                       },
                       operation: 0,
-                      value: ""
+                      value: $state.multilineTextInput2.value
                     };
                     return (({ variable, value, startIndex, deleteCount }) => {
                       if (!variable) {
@@ -823,63 +730,308 @@ function PlasmicChatPage__RenderFunc(props: {
                   })()
                 : undefined;
               if (
-                $steps["updateMultilineTextInput2Value"] != null &&
-                typeof $steps["updateMultilineTextInput2Value"] === "object" &&
-                typeof $steps["updateMultilineTextInput2Value"].then ===
-                  "function"
+                $steps["updateMesseg"] != null &&
+                typeof $steps["updateMesseg"] === "object" &&
+                typeof $steps["updateMesseg"].then === "function"
               ) {
-                $steps["updateMultilineTextInput2Value"] = await $steps[
-                  "updateMultilineTextInput2Value"
-                ];
+                $steps["updateMesseg"] = await $steps["updateMesseg"];
               }
-
-              $steps["runShop"] = !$steps.send?.data?.success
-                ? (() => {
-                    const actionArgs = { eventRef: $props["shop"] };
-                    return (({ eventRef, args }) => {
-                      return eventRef?.(...(args ?? []));
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
+            }).apply(null, eventArgs);
+          }}
+          slot={
+            <Icon7Icon
+              className={classNames(projectcss.all, sty.svg__z35Vr)}
+              role={"img"}
+            />
+          }
+          startIcon={true}
+          value={generateStateValueProp($state, [
+            "multilineTextInput2",
+            "value"
+          ])}
+        >
+          {(() => {
+            try {
+              return !$state.load;
+            } catch (e) {
               if (
-                $steps["runShop"] != null &&
-                typeof $steps["runShop"] === "object" &&
-                typeof $steps["runShop"].then === "function"
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
               ) {
-                $steps["runShop"] = await $steps["runShop"];
+                return true;
               }
+              throw e;
+            }
+          })() ? (
+            <Icon6Icon
+              aria-disabled={(() => {
+                try {
+                  return $state.load;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              className={classNames(projectcss.all, sty.svg__hGiGu)}
+              id={"send"}
+              onClick={async event => {
+                const $steps = {};
 
-              $steps["updateLoad2"] = true
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["load"]
-                      },
-                      operation: 4
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
+                $steps["updateLoad"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["load"]
+                        },
+                        operation: 4
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
 
-                      const oldValue = $stateGet(objRoot, variablePath);
-                      $stateSet(objRoot, variablePath, !oldValue);
-                      return !oldValue;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
+                        const oldValue = $stateGet(objRoot, variablePath);
+                        $stateSet(objRoot, variablePath, !oldValue);
+                        return !oldValue;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateLoad"] != null &&
+                  typeof $steps["updateLoad"] === "object" &&
+                  typeof $steps["updateLoad"].then === "function"
+                ) {
+                  $steps["updateLoad"] = await $steps["updateLoad"];
+                }
+
+                $steps["send"] =
+                  $state.messeg != ""
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            "POST",
+                            "https://api.friendschat.ir/chat/sendChat",
+                            undefined,
+                            (() => {
+                              try {
+                                return {
+                                  sessionID: $state.sessionId,
+                                  message: $state.messeg,
+                                  isReadyMessage: $state.isReadyMessage
+                                };
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })(),
+                            (() => {
+                              try {
+                                return {
+                                  headers: {
+                                    appid: "your-app-id",
+                                    Authorization: $props.token,
+                                    "Content-Type": "application/json",
+                                    Version: "1.0"
+                                  }
+                                };
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()
+                          ]
+                        };
+                        return $globalActions["Fragment.apiRequest"]?.apply(
+                          null,
+                          [...actionArgs.args]
+                        );
+                      })()
+                    : undefined;
+                if (
+                  $steps["send"] != null &&
+                  typeof $steps["send"] === "object" &&
+                  typeof $steps["send"].then === "function"
+                ) {
+                  $steps["send"] = await $steps["send"];
+                }
+
+                $steps["runCode"] = $steps.send?.data?.success
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            const now = new Date();
+                            const date = now.toISOString().split("T")[0];
+                            const time = now.toTimeString().split(" ")[0];
+                            const timestamp = `${date} ${time}`;
+                            const shamsiDate = new Intl.DateTimeFormat(
+                              "fa-IR",
+                              {
+                                year: "numeric",
+                                month: "numeric",
+                                day: "numeric"
+                              }
+                            ).format(now);
+                            const timestamp_fa = `${shamsiDate.replace(
+                              /\//g,
+                              "\u066B"
+                            )} ${time}`;
+                            return $state.chats.push({
+                              message: $state.messeg,
+                              sessionID: $state.sessionId,
+                              date: date,
+                              timestamp: timestamp,
+                              timestamp_fa: timestamp_fa,
+                              self: true
+                            });
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+
+                $steps["updateMultilineTextInput2Value"] = $steps.send?.data
+                  ?.success
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["multilineTextInput2", "value"]
+                        },
+                        operation: 0,
+                        value: ""
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateMultilineTextInput2Value"] != null &&
+                  typeof $steps["updateMultilineTextInput2Value"] ===
+                    "object" &&
+                  typeof $steps["updateMultilineTextInput2Value"].then ===
+                    "function"
+                ) {
+                  $steps["updateMultilineTextInput2Value"] = await $steps[
+                    "updateMultilineTextInput2Value"
+                  ];
+                }
+
+                $steps["runShop"] = !$steps.send?.data?.success
+                  ? (() => {
+                      const actionArgs = { eventRef: $props["shop"] };
+                      return (({ eventRef, args }) => {
+                        return eventRef?.(...(args ?? []));
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runShop"] != null &&
+                  typeof $steps["runShop"] === "object" &&
+                  typeof $steps["runShop"].then === "function"
+                ) {
+                  $steps["runShop"] = await $steps["runShop"];
+                }
+
+                $steps["updateLoad2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["load"]
+                        },
+                        operation: 4
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        const oldValue = $stateGet(objRoot, variablePath);
+                        $stateSet(objRoot, variablePath, !oldValue);
+                        return !oldValue;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateLoad2"] != null &&
+                  typeof $steps["updateLoad2"] === "object" &&
+                  typeof $steps["updateLoad2"].then === "function"
+                ) {
+                  $steps["updateLoad2"] = await $steps["updateLoad2"];
+                }
+              }}
+              role={"img"}
+            />
+          ) : null}
+          {(() => {
+            try {
+              return $state.load;
+            } catch (e) {
               if (
-                $steps["updateLoad2"] != null &&
-                typeof $steps["updateLoad2"] === "object" &&
-                typeof $steps["updateLoad2"].then === "function"
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
               ) {
-                $steps["updateLoad2"] = await $steps["updateLoad2"];
+                return true;
               }
-            }}
-            role={"img"}
-          />
+              throw e;
+            }
+          })() ? (
+            <Icon12Icon
+              className={classNames(projectcss.all, sty.svg__yGgbA)}
+              role={"img"}
+            />
+          ) : null}
         </MetoMultilineTextInput>
         {(() => {
           try {
@@ -1046,6 +1198,7 @@ function PlasmicChatPage__RenderFunc(props: {
             }
           })()}
           onClick={args.back}
+          profile2={args.profile2}
         >
           <MetoLabel
             className={classNames("__wab_instance", sty.metoLabel__c8Bkj)}
@@ -1743,13 +1896,12 @@ function PlasmicChatPage__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["updateMultilineTextInput2Value"] = $state.radioGroup
-                    .value
+                  $steps["updateMesseg"] = $state.radioGroup.value
                     ? (() => {
                         const actionArgs = {
                           variable: {
                             objRoot: $state,
-                            variablePath: ["multilineTextInput2", "value"]
+                            variablePath: ["messeg"]
                           },
                           operation: 0,
                           value: $state.radioGroup.value
@@ -1771,15 +1923,60 @@ function PlasmicChatPage__RenderFunc(props: {
                       })()
                     : undefined;
                   if (
-                    $steps["updateMultilineTextInput2Value"] != null &&
-                    typeof $steps["updateMultilineTextInput2Value"] ===
-                      "object" &&
-                    typeof $steps["updateMultilineTextInput2Value"].then ===
-                      "function"
+                    $steps["updateMesseg"] != null &&
+                    typeof $steps["updateMesseg"] === "object" &&
+                    typeof $steps["updateMesseg"].then === "function"
                   ) {
-                    $steps["updateMultilineTextInput2Value"] = await $steps[
-                      "updateMultilineTextInput2Value"
+                    $steps["updateMesseg"] = await $steps["updateMesseg"];
+                  }
+
+                  $steps["invokeGlobalAction"] = true
+                    ? (() => {
+                        const actionArgs = { args: [1000] };
+                        return $globalActions["Fragment.wait"]?.apply(null, [
+                          ...actionArgs.args
+                        ]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction"] != null &&
+                    typeof $steps["invokeGlobalAction"] === "object" &&
+                    typeof $steps["invokeGlobalAction"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction"] = await $steps[
+                      "invokeGlobalAction"
                     ];
+                  }
+
+                  $steps["runCode"] = $state.radioGroup.value
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              const element =
+                                window.document.getElementById("send");
+                              if (element) {
+                                const clickEvent = new MouseEvent("click", {
+                                  bubbles: true,
+                                  cancelable: true,
+                                  view: window
+                                });
+                                return element.dispatchEvent(clickEvent);
+                              }
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
                   }
 
                   $steps["updateMultilineTextInputValue2"] = !$state.radioGroup
@@ -1889,9 +2086,7 @@ function PlasmicChatPage__RenderFunc(props: {
         data-plasmic-override={overrides.session}
         body={(() => {
           try {
-            return {
-              userID: $props.userData.id
-            };
+            return { userID: $props.userData.id };
           } catch (e) {
             if (
               e instanceof TypeError ||
@@ -2203,7 +2398,9 @@ function PlasmicChatPage__RenderFunc(props: {
         intervalSeconds={2}
         isRunning={(() => {
           try {
-            return $state.getChat?.data?.list ? true : false;
+            return (() => {
+              return $state.getChat?.data?.list ? true : false;
+            })();
           } catch (e) {
             if (
               e instanceof TypeError ||
@@ -2294,6 +2491,7 @@ function PlasmicChatPage__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "reveal",
     "message",
     "multilineTextInput2",
     "metoHeader",
@@ -2306,6 +2504,7 @@ const PlasmicDescendants = {
     "getChat",
     "timer"
   ],
+  reveal: ["reveal", "message"],
   message: ["message"],
   multilineTextInput2: ["multilineTextInput2"],
   metoHeader: ["metoHeader"],
@@ -2323,6 +2522,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  reveal: typeof Reveal;
   message: typeof Message;
   multilineTextInput2: typeof MetoMultilineTextInput;
   metoHeader: typeof MetoHeader;
@@ -2396,6 +2596,7 @@ export const PlasmicChatPage = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    reveal: makeNodeComponent("reveal"),
     message: makeNodeComponent("message"),
     multilineTextInput2: makeNodeComponent("multilineTextInput2"),
     metoHeader: makeNodeComponent("metoHeader"),

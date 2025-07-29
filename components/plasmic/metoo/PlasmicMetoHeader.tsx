@@ -82,13 +82,16 @@ createPlasmicElementProxy;
 
 export type PlasmicMetoHeader__VariantMembers = {
   chat: "chat";
+  profile: "profile";
 };
 export type PlasmicMetoHeader__VariantsArgs = {
   chat?: SingleBooleanChoiceArg<"chat">;
+  profile?: SingleBooleanChoiceArg<"profile">;
 };
 type VariantPropType = keyof PlasmicMetoHeader__VariantsArgs;
 export const PlasmicMetoHeader__VariantProps = new Array<VariantPropType>(
-  "chat"
+  "chat",
+  "profile"
 );
 
 export type PlasmicMetoHeader__ArgsType = {
@@ -97,6 +100,7 @@ export type PlasmicMetoHeader__ArgsType = {
   image?: string;
   block?: (event: any) => void;
   danger?: (event: any) => void;
+  profile2?: () => void;
 };
 type ArgPropType = keyof PlasmicMetoHeader__ArgsType;
 export const PlasmicMetoHeader__ArgProps = new Array<ArgPropType>(
@@ -104,7 +108,8 @@ export const PlasmicMetoHeader__ArgProps = new Array<ArgPropType>(
   "onClick",
   "image",
   "block",
-  "danger"
+  "danger",
+  "profile2"
 );
 
 export type PlasmicMetoHeader__OverridesType = {
@@ -120,7 +125,9 @@ export interface DefaultMetoHeaderProps {
   image?: string;
   block?: (event: any) => void;
   danger?: (event: any) => void;
+  profile2?: () => void;
   chat?: SingleBooleanChoiceArg<"chat">;
+  profile?: SingleBooleanChoiceArg<"profile">;
   className?: string;
 }
 
@@ -177,6 +184,12 @@ function PlasmicMetoHeader__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant($state, "chat", "chat") ? false : false
+      },
+      {
+        path: "profile",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.profile
       }
     ],
     [$props, $ctx, $refs]
@@ -205,7 +218,13 @@ function PlasmicMetoHeader__RenderFunc(props: {
         plasmic_meto_deign_system_css.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
-        { [sty.rootchat]: hasVariant($state, "chat", "chat") }
+        {
+          [sty.rootchat]: hasVariant($state, "chat", "chat"),
+          [sty.rootchat_profile]:
+            hasVariant($state, "chat", "chat") &&
+            hasVariant($state, "profile", "profile"),
+          [sty.rootprofile]: hasVariant($state, "profile", "profile")
+        }
       )}
     >
       <Stack__
@@ -217,39 +236,73 @@ function PlasmicMetoHeader__RenderFunc(props: {
       >
         <ChevronRightIcon
           className={classNames(projectcss.all, sty.svg___1H33C, {
-            [sty.svgchat___1H33CCahcx]: hasVariant($state, "chat", "chat")
+            [sty.svgchat___1H33CCahcx]: hasVariant($state, "chat", "chat"),
+            [sty.svgprofile___1H33CxbHW]: hasVariant(
+              $state,
+              "profile",
+              "profile"
+            )
           })}
           onClick={args.onClick}
           role={"img"}
         />
 
-        <MetoAvatar
-          data-plasmic-name={"metoAvatar"}
-          data-plasmic-override={overrides.metoAvatar}
-          className={classNames("__wab_instance", sty.metoAvatar, {
-            [sty.metoAvatarchat]: hasVariant($state, "chat", "chat")
+        <Stack__
+          as={"div"}
+          hasGap={true}
+          className={classNames(projectcss.all, sty.freeBox__msYF, {
+            [sty.freeBoxchat__msYFCahcx]: hasVariant($state, "chat", "chat"),
+            [sty.freeBoxchat_profile__msYFCahcxXbHW]:
+              hasVariant($state, "chat", "chat") &&
+              hasVariant($state, "profile", "profile")
           })}
-          src={(() => {
-            try {
-              return (() => {
-                if (!/\.[^/.]+$/.test($props.image)) {
-                  return ($props.image += ".jpg");
-                } else {
-                  return $props.image;
-                }
-              })();
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()}
-        />
+          onClick={async event => {
+            const $steps = {};
 
+            $steps["runProfile2"] = true
+              ? (() => {
+                  const actionArgs = { eventRef: $props["profile2"] };
+                  return (({ eventRef, args }) => {
+                    return eventRef?.(...(args ?? []));
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["runProfile2"] != null &&
+              typeof $steps["runProfile2"] === "object" &&
+              typeof $steps["runProfile2"].then === "function"
+            ) {
+              $steps["runProfile2"] = await $steps["runProfile2"];
+            }
+          }}
+        >
+          <MetoAvatar
+            data-plasmic-name={"metoAvatar"}
+            data-plasmic-override={overrides.metoAvatar}
+            className={classNames("__wab_instance", sty.metoAvatar, {
+              [sty.metoAvatarchat]: hasVariant($state, "chat", "chat")
+            })}
+            src={(() => {
+              try {
+                return (() => {
+                  if (!/\.[^/.]+$/.test($props.image)) {
+                    return ($props.image += ".jpg");
+                  } else {
+                    return $props.image;
+                  }
+                })();
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
+          />
+        </Stack__>
         {renderPlasmicSlot({
           defaultContents: (
             <MetoLabel
@@ -266,7 +319,10 @@ function PlasmicMetoHeader__RenderFunc(props: {
         data-plasmic-override={overrides.popover}
         arrow={true}
         className={classNames("__wab_instance", sty.popover, {
-          [sty.popoverchat]: hasVariant($state, "chat", "chat")
+          [sty.popoverchat]: hasVariant($state, "chat", "chat"),
+          [sty.popoverchat_profile]:
+            hasVariant($state, "chat", "chat") &&
+            hasVariant($state, "profile", "profile")
         })}
         color={
           hasVariant($state, "chat", "chat")
@@ -491,7 +547,7 @@ function PlasmicMetoHeader__RenderFunc(props: {
         placement={hasVariant($state, "chat", "chat") ? "bottom" : undefined}
         popoverScopeClassName={sty["popover__popover"]}
         title={null}
-        trigger={hasVariant($state, "chat", "chat") ? "click" : undefined}
+        trigger={hasVariant($state, "chat", "chat") ? "click" : "hover"}
       >
         {(hasVariant($state, "chat", "chat") ? true : false) ? (
           <Icon8Icon

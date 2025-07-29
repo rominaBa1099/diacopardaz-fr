@@ -241,9 +241,9 @@ function PlasmicUploudeTime__RenderFunc(props: {
                   const years = Math.floor(months / 12);
                   let output = "";
                   if (minutes < 60) {
-                    output = `${minutes} دقیقه پیش`;
+                    output = `امروز`;
                   } else if (hours < 24) {
-                    output = `${hours} ساعت پیش`;
+                    output = `امروز`;
                   } else if (days < 7) {
                     output = `${days} روز پیش`;
                   } else {

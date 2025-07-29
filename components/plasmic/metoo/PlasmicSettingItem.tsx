@@ -87,10 +87,14 @@ export const PlasmicSettingItem__VariantProps = new Array<VariantPropType>(
   "back"
 );
 
-export type PlasmicSettingItem__ArgsType = { currentItem?: any };
+export type PlasmicSettingItem__ArgsType = {
+  currentItem?: any;
+  onClick?: (event: any) => void;
+};
 type ArgPropType = keyof PlasmicSettingItem__ArgsType;
 export const PlasmicSettingItem__ArgProps = new Array<ArgPropType>(
-  "currentItem"
+  "currentItem",
+  "onClick"
 );
 
 export type PlasmicSettingItem__OverridesType = {
@@ -102,6 +106,7 @@ export type PlasmicSettingItem__OverridesType = {
 
 export interface DefaultSettingItemProps {
   currentItem?: any;
+  onClick?: (event: any) => void;
   type?: SingleChoiceArg<"button" | "hr">;
   back?: SingleChoiceArg<"onScaffold" | "primary">;
   className?: string;
@@ -200,6 +205,7 @@ function PlasmicSettingItem__RenderFunc(props: {
           [sty.roottype_hr]: hasVariant($state, "type", "hr")
         }
       )}
+      onClick={args.onClick}
     >
       <div
         className={classNames(projectcss.all, sty.freeBox__hlqhR, {
