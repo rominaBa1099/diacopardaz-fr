@@ -1,4 +1,3 @@
-// pages/_app.tsx
 import "@/styles/globals.css";
 import "@/styles/date-picker.css";
 
@@ -8,18 +7,18 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState<"light" | "dark">("dark"); // پیش‌فرض
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
     const urlTheme = new URLSearchParams(window.location.search).get("theme");
     if (urlTheme === "light" || urlTheme === "dark") {
       setTheme(urlTheme);
-      document.documentElement.setAttribute("data-theme", urlTheme); // برای CSS هم
+      document.documentElement.setAttribute("data-theme", urlTheme);
     }
   }, []);
 
   return (
-    <PlasmicRootProvider Head={Head} globalVariants={[{ name: "Theme", value: theme }]}>
+    <PlasmicRootProvider Head={Head} globalContexts={{ Theme: theme }}>
       <Component {...pageProps} />
     </PlasmicRootProvider>
   );
