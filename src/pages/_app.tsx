@@ -4,18 +4,20 @@ import "@/styles/date-picker.css";
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const [theme, setTheme] = useState<"light" | "dark">("dark"); // مقدار پیش‌فرض
+
   useEffect(() => {
-    const theme = new URLSearchParams(window.location.search).get('theme');
-    if (theme === 'light' || theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', theme);
+    const urlTheme = new URLSearchParams(window.location.search).get("theme");
+    if (urlTheme === "light" || urlTheme === "dark") {
+      setTheme(urlTheme);
     }
   }, []);
 
   return (
-    <PlasmicRootProvider Head={Head}>
+    <PlasmicRootProvider Head={Head} globalContexts={{ Theme: theme }}>
       <Component {...pageProps} />
     </PlasmicRootProvider>
   );
