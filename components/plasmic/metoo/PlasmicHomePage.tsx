@@ -2631,6 +2631,11 @@ function PlasmicHomePage__RenderFunc(props: {
                             "selectImage2",
                             "selectImage2"
                           ),
+                          [sty.metoLabelshow_slide1__zx1GqcApvt]: hasVariant(
+                            $state,
+                            "show",
+                            "slide1"
+                          ),
                           [sty.metoLabelshow_slide2__zx1GqtKbpy]: hasVariant(
                             $state,
                             "show",
@@ -2644,7 +2649,14 @@ function PlasmicHomePage__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__icCfI
+                          sty.text__icCfI,
+                          {
+                            [sty.textshow_slide1__icCfIcApvt]: hasVariant(
+                              $state,
+                              "show",
+                              "slide1"
+                            )
+                          }
                         )}
                       >
                         {
@@ -2732,7 +2744,14 @@ function PlasmicHomePage__RenderFunc(props: {
                   <MetoLabel
                     className={classNames(
                       "__wab_instance",
-                      sty.metoLabel__sIZiw
+                      sty.metoLabel__sIZiw,
+                      {
+                        [sty.metoLabelshow_slide1__sIZiwcApvt]: hasVariant(
+                          $state,
+                          "show",
+                          "slide1"
+                        )
+                      }
                     )}
                     size={"lg"}
                   >
@@ -2740,7 +2759,14 @@ function PlasmicHomePage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__mgXy7
+                        sty.text__mgXy7,
+                        {
+                          [sty.textshow_slide1__mgXy7CApvt]: hasVariant(
+                            $state,
+                            "show",
+                            "slide1"
+                          )
+                        }
                       )}
                     >
                       {
@@ -3193,6 +3219,11 @@ function PlasmicHomePage__RenderFunc(props: {
                           $state,
                           "editPage",
                           "editPage"
+                        ),
+                        [sty.metoLabelshow_slide1__k4A59CApvt]: hasVariant(
+                          $state,
+                          "show",
+                          "slide1"
                         ),
                         [sty.metoLabelshow_slide2__k4A59TKbpy]: hasVariant(
                           $state,
@@ -4067,7 +4098,7 @@ function PlasmicHomePage__RenderFunc(props: {
                                 };
                                 return setCookie(
                                   "token",
-                                  JSON.stringify($state.paramsObject.token),
+                                  $steps.newV2.data.data.token,
                                   3650
                                 );
                               })();
