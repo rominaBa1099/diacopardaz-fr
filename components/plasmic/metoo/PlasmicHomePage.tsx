@@ -9401,7 +9401,7 @@ function PlasmicHomePage__RenderFunc(props: {
               }
 
               $steps["updateShow"] =
-                $steps.getToken != ""
+                $state.token != ""
                   ? (() => {
                       const actionArgs = {
                         vgroup: "show",
@@ -9427,7 +9427,7 @@ function PlasmicHomePage__RenderFunc(props: {
               }
 
               $steps["updateShow2"] =
-                $steps.getToken == ""
+                $state.token == ""
                   ? (() => {
                       const actionArgs = {
                         vgroup: "show",
