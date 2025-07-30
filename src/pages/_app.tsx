@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 // اینو اضافه کن، چون Plasmic این Provider رو ساخته
-import { ThemeContextProvider } from "@/components/plasmic/metoo/PlasmicGlobalVariant__Theme";
+import { ThemeContextProvider } from "../../components/plasmic/metoo/PlasmicGlobalVariant__Theme";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
