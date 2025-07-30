@@ -64,6 +64,8 @@ import LoadingCompopnentGray from "../../LoadingCompopnentGray"; // plasmic-impo
 import UnLike from "../../UnLike"; // plasmic-import: V5DgyhAzYz_C/component
 import Like2 from "../../Like2"; // plasmic-import: GBScca95RuOo/component
 
+import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_meto_deign_system_css from "../meto_deign_system/plasmic.module.css"; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/projectcss
@@ -288,6 +290,10 @@ function PlasmicMessage__RenderFunc(props: {
     $refs
   });
 
+  const globalVariants = ensureGlobalVariants({
+    theme: useTheme()
+  });
+
   return (
     <div
       data-plasmic-name={"root"}
@@ -304,6 +310,16 @@ function PlasmicMessage__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
         {
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
           [sty.rootbot]: hasVariant($state, "bot", "bot"),
           [sty.rootbot_endMessege]:
             hasVariant($state, "bot", "bot") &&

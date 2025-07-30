@@ -4,11 +4,11 @@
   position: relative;
   width: 100%;
   height: auto;
-  background: var(--token-Xr0DUWYuCWoP);
+  background: var(--token-av6EF1yYpyXk);
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
   min-width: 0;
   padding: var(--token-sSm8kn4qtmC9);
-  border-bottom: 1px solid var(--token-1BPSlSAT9n2X);
+  border-bottom: 1px solid var(--token-VYtYTUY82i0T);
 }
 .root > :global(.__wab_flex-container) {
   flex-direction: row;
@@ -25,7 +25,7 @@
   margin-left: var(--token-sSm8kn4qtmC9);
 }
 .rootchat {
-  background: var(--token-XM0Sjp-T1jsV);
+  background: var(--token-lI7p7XYFfy5v);
   border-bottom-width: 0px;
 }
 .rootchat > :global(.__wab_flex-container) {

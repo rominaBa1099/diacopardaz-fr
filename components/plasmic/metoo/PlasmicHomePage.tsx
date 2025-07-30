@@ -79,6 +79,7 @@ import { DatePickers } from "@/components/DatePickers"; // plasmic-import: iVNUV
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import ShopModal from "../../ShopModal"; // plasmic-import: -kGhM5VnTq5-/component
 
+import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
 import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -2417,6 +2418,7 @@ function PlasmicHomePage__RenderFunc(props: {
   });
 
   const globalVariants = ensureGlobalVariants({
+    theme: useTheme(),
     screen: useScreenVariantsmqI86KQCt1()
   });
 
@@ -2446,6 +2448,16 @@ function PlasmicHomePage__RenderFunc(props: {
             plasmic_antd_5_hostless_css.plasmic_tokens,
             sty.root,
             {
+              [projectcss.global_theme_light]: hasVariant(
+                globalVariants,
+                "theme",
+                "light"
+              ),
+              [projectcss.global_theme_light]: hasVariant(
+                globalVariants,
+                "theme",
+                "light"
+              ),
               [sty.rootchatViow]: hasVariant($state, "chatViow", "chatViow"),
               [sty.rootchatViow_show_main]:
                 hasVariant($state, "chatViow", "chatViow") &&
@@ -2461,6 +2473,16 @@ function PlasmicHomePage__RenderFunc(props: {
               [sty.rooteditPage_show_main]:
                 hasVariant($state, "editPage", "editPage") &&
                 hasVariant($state, "show", "main"),
+              [sty.rootglobal_theme_dark]: hasVariant(
+                globalVariants,
+                "theme",
+                "dark"
+              ),
+              [sty.rootglobal_theme_light]: hasVariant(
+                globalVariants,
+                "theme",
+                "light"
+              ),
               [sty.rootprofile2]: hasVariant($state, "profile2", "profile2"),
               [sty.rootprofile2_show_main]:
                 hasVariant($state, "profile2", "profile2") &&
@@ -8448,6 +8470,16 @@ function PlasmicHomePage__RenderFunc(props: {
                 "editPage",
                 "editPage"
               ),
+              [sty.stateApiglobal_theme_dark]: hasVariant(
+                globalVariants,
+                "theme",
+                "dark"
+              ),
+              [sty.stateApiglobal_theme_light]: hasVariant(
+                globalVariants,
+                "theme",
+                "light"
+              ),
               [sty.stateApiselectImage2]: hasVariant(
                 $state,
                 "selectImage2",
@@ -9469,9 +9501,17 @@ function PlasmicHomePage__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.metoLabel__n4QX)}
                   size={"lg"}
                 >
-                  {
-                    "\u0645\u0644\u0627\u0642\u0627\u062a \u0648 \u0622\u0634\u0646\u0627\u06cc\u06cc \u0628\u0627 \u062f\u0648\u0633\u062a\u0627\u0646"
-                  }
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__k2FDk
+                    )}
+                  >
+                    {
+                      "\u0645\u0644\u0627\u0642\u0627\u062a \u0648 \u0622\u0634\u0646\u0627\u06cc\u06cc \u0628\u0627 \u062f\u0648\u0633\u062a\u0627\u0646"
+                    }
+                  </div>
                 </MetoLabel>
               </Stack__>
               <Stack__

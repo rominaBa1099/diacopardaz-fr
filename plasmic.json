@@ -2301,6 +2301,12 @@
         "name": "Screen",
         "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
         "contextFilePath": "plasmic/metoo/PlasmicGlobalVariant__Screen.tsx"
+      },
+      {
+        "id": "G0urM0rvD4xu",
+        "name": "Theme",
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "contextFilePath": "plasmic/metoo/PlasmicGlobalVariant__Theme.tsx"
       }
     ]
   },

@@ -61,6 +61,8 @@ import {
 
 import { BaseButton } from "@plasmicpkgs/react-aria/skinny/registerButton";
 
+import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_meto_deign_system_css from "../meto_deign_system/plasmic.module.css"; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/projectcss
@@ -312,6 +314,10 @@ function PlasmicMetoButton__RenderFunc(props: {
     $refs
   });
 
+  const globalVariants = ensureGlobalVariants({
+    theme: useTheme()
+  });
+
   const [$ccVariants, setDollarCcVariants] = React.useState<
     Record<string, boolean>
   >({
@@ -350,6 +356,16 @@ function PlasmicMetoButton__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
         {
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
           [sty.rootcolor_errorDestructive]: hasVariant(
             $state,
             "color",

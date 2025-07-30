@@ -1,6 +1,6 @@
 .root:global(.__wab_instance) {
   position: relative;
-  background: var(--token-_7pr2NDrmunV);
+  background: var(--token-T923AFgI9ADB);
   display: flex;
   cursor: pointer;
   box-sizing: border-box;
@@ -10,7 +10,7 @@
   line-height: var(--token-rkrGzSWUSqkc);
   outline-style: none;
   text-decoration-line: none;
-  color: var(--token-_7pr2NDrmunV);
+  color: var(--token-T923AFgI9ADB);
   border-radius: var(--token-gfSc6nOUrtA7);
   padding: 0rem;
   border-width: 0px;
@@ -22,7 +22,7 @@
   cursor: not-allowed;
 }
 .rootcolor_neutral:global(.__wab_instance) {
-  background: var(--token-R6hzF1vNps-A);
+  background: var(--token-XxA5v4jPgFPD);
 }
 .rootcolor_muted:global(.__wab_instance) {
   background: var(--token-00_c3pLKJQ1Y);
@@ -383,7 +383,7 @@
 }
 .text__u0Osw {
   white-space: pre;
-  color: var(--token-Xr0DUWYuCWoP);
+  color: var(--token-av6EF1yYpyXk);
   transition-property: all;
   transition-duration: 1s;
   transform: none;

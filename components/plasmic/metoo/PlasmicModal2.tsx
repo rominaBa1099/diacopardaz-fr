@@ -66,6 +66,7 @@ import { DialogClose } from "@plasmicpkgs/radix-ui";
 import { BackHandler } from "@/components/BackHandler"; // plasmic-import: SjBUwY_Y_i3-/codeComponent
 
 import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
+import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -232,7 +233,8 @@ function PlasmicModal2__RenderFunc(props: {
   });
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsmqI86KQCt1()
+    screen: useScreenVariantsmqI86KQCt1(),
+    theme: useTheme()
   });
 
   return (
@@ -251,6 +253,16 @@ function PlasmicModal2__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.dialog,
         {
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
           [sty.dialogbackground_black]: hasVariant(
             $state,
             "background",
@@ -309,7 +321,19 @@ function PlasmicModal2__RenderFunc(props: {
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         plasmic_meto_deign_system_css.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens
+        plasmic_antd_5_hostless_css.plasmic_tokens,
+        {
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          )
+        }
       )}
       triggerSlot={null}
     >
@@ -362,7 +386,19 @@ function PlasmicModal2__RenderFunc(props: {
           projectcss.plasmic_mixins,
           projectcss.plasmic_tokens,
           plasmic_meto_deign_system_css.plasmic_tokens,
-          plasmic_antd_5_hostless_css.plasmic_tokens
+          plasmic_antd_5_hostless_css.plasmic_tokens,
+          {
+            [projectcss.global_theme_light]: hasVariant(
+              globalVariants,
+              "theme",
+              "light"
+            ),
+            [projectcss.global_theme_light]: hasVariant(
+              globalVariants,
+              "theme",
+              "light"
+            )
+          }
         )}
       >
         <section

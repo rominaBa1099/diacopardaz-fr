@@ -69,6 +69,8 @@ import MetoButton from "../../MetoButton"; // plasmic-import: BFnTlSYwdY0-/compo
 import SearchPost from "../../SearchPost"; // plasmic-import: Q5aLBQV7Zpaw/component
 import { BackHandler } from "@/components/BackHandler"; // plasmic-import: SjBUwY_Y_i3-/codeComponent
 
+import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_meto_deign_system_css from "../meto_deign_system/plasmic.module.css"; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/projectcss
@@ -532,6 +534,10 @@ function PlasmicSearch__RenderFunc(props: {
     $refs
   });
 
+  const globalVariants = ensureGlobalVariants({
+    theme: useTheme()
+  });
+
   return (
     <div
       data-plasmic-name={"root"}
@@ -547,7 +553,19 @@ function PlasmicSearch__RenderFunc(props: {
         plasmic_meto_deign_system_css.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
-        { [sty.rootpost]: hasVariant($state, "post", "post") }
+        {
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
+          [sty.rootpost]: hasVariant($state, "post", "post")
+        }
       )}
     >
       <Reveal

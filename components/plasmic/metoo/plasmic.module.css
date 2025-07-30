@@ -99,6 +99,32 @@
   --plasmic-token-llight-p: var(--token-NMlPBuBf3O-T);
   --token-ROIp7_8JJjfw: 10px;
   --plasmic-token-unnamed-style-token: var(--token-ROIp7_8JJjfw);
+  --token-mwLkV5i6q5ad: #ffffff;
+  --plasmic-token-basic-unnamed-style-token: var(--token-mwLkV5i6q5ad);
+  --token-NZ6RWKlEJd18: #cacaca;
+  --plasmic-token-unnamed-style-token-2: var(--token-NZ6RWKlEJd18);
+  --token-9m-YybIiBHzE: #ffffff;
+  --plasmic-token-unnamed-style-token-3: var(--token-9m-YybIiBHzE);
+  --token-av6EF1yYpyXk: #10182b;
+  --plasmic-token-scaffold: var(--token-av6EF1yYpyXk);
+  --token-lI7p7XYFfy5v: #182033;
+  --plasmic-token-on-scaffold: var(--token-lI7p7XYFfy5v);
+  --token-262qQVmAaKDN: #e8e4d9;
+  --plasmic-token-txt-color: var(--token-262qQVmAaKDN);
+  --token-uDh9W46eXNLr: #640278;
+  --plasmic-token-purpel: var(--token-uDh9W46eXNLr);
+  --token-MALUK6_fMH3W: #182033;
+  --plasmic-token-card-background: var(--token-MALUK6_fMH3W);
+  --token-VYtYTUY82i0T: #e8e4d9;
+  --plasmic-token-border-2: var(--token-VYtYTUY82i0T);
+  --token-l1PA9WWRWVf-: #e0e0e0;
+  --plasmic-token-header-icon: var(--token-l1PA9WWRWVf-);
+  --token-XxA5v4jPgFPD: #272738;
+  --plasmic-token-secondary-button: var(--token-XxA5v4jPgFPD);
+  --token-c1T518Z6qEaF: #405380;
+  --plasmic-token-primary-orange: var(--token-c1T518Z6qEaF);
+  --token-T923AFgI9ADB: #405380;
+  --plasmic-token-primary-red: var(--token-T923AFgI9ADB);
 }
 
 @media (min-width: 0px) and (max-width: 768px) {
@@ -106,6 +132,13 @@
     --token-vtjHg1QRQzJ4: #00af65;
     --plasmic-token-green: var(--token-vtjHg1QRQzJ4);
   }
+}
+
+.plasmic_tokens:where(.global_theme_light) {
+  --token-ogWdes-7EpdM: #3f4079;
+  --plasmic-token-brand: var(--token-ogWdes-7EpdM);
+  --token-av6EF1yYpyXk: #d3d3d3;
+  --plasmic-token-scaffold: var(--token-av6EF1yYpyXk);
 }
 
 .plasmic_tokens {
@@ -118,7 +151,9 @@
   );
 }
 
-.plasmic_default_styles {
+.plasmic_default_styles,
+.plasmic_default_styles:where(.global_theme_light),
+.plasmic_default_styles:where(.global_theme_dark) {
   --mixin-FO7r3qjEIqcx_font-family: "Inter", sans-serif;
   --mixin-FO7r3qjEIqcx_font-size: 16px;
   --mixin-FO7r3qjEIqcx_font-weight: 400;
@@ -242,7 +277,9 @@
   --mixin-ORdTRJpGgClO_white-space: pre-wrap;
 }
 
-.plasmic_mixins {
+.plasmic_mixins,
+.plasmic_mixins:where(.global_theme_light),
+.plasmic_mixins:where(.global_theme_dark) {
   --mixin-9JpUSlwfCwP1_white-space: pre-wrap;
   --plasmic-mixin-backgrond_white-space: var(--mixin-9JpUSlwfCwP1_white-space);
   --mixin-lvkohYURVY22_white-space: pre-wrap;
