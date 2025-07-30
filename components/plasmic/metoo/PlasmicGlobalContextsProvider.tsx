@@ -199,7 +199,7 @@ export default function GlobalContextsProvider(
                       fontSize: "16px",
                       fontWeight: "400",
                       lineHeight: "1.5",
-                      color: "#535353",
+                      color: "#ffffff",
                       letterSpacing: "normal"
                     }
                   : undefined
