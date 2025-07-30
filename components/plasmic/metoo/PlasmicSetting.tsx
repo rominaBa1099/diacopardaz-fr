@@ -84,13 +84,15 @@ export type PlasmicSetting__ArgsType = {
   selectItem?: any;
   onSelectItemChange?: (val: string) => void;
   onclick?: () => void;
+  token?: string;
 };
 type ArgPropType = keyof PlasmicSetting__ArgsType;
 export const PlasmicSetting__ArgProps = new Array<ArgPropType>(
   "userInfo",
   "selectItem",
   "onSelectItemChange",
-  "onclick"
+  "onclick",
+  "token"
 );
 
 export type PlasmicSetting__OverridesType = {
@@ -104,6 +106,7 @@ export interface DefaultSettingProps {
   selectItem?: any;
   onSelectItemChange?: (val: string) => void;
   onclick?: () => void;
+  token?: string;
   className?: string;
 }
 
