@@ -1205,11 +1205,7 @@ function PlasmicSearchPost__RenderFunc(props: {
         }}
         shouldFetch={(() => {
           try {
-            return (
-              $state.chat &&
-              Object.keys($state.body).length != 0 &&
-              $props.token != ""
-            );
+            return $state.chat && Object.keys($state.body).length != 0;
           } catch (e) {
             if (
               e instanceof TypeError ||
