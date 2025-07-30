@@ -33,8 +33,46 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+    /* 🎯 تم اصلی - تاریک */
+  --primary-red: #405380;
+  --primary-orange: #405380;
+
+  --header-icon: #E0E0E0;
+
+  --secondary-button: #272738;
+
+  --border-2: #e8e4d9;
+  --card-background: #182033;
+
+  --scaffold: #10182b;
+  --on-scaffold: #182033;
+
+  --txt-color: #e8e4d9;
+
+  --purpel: #640278;
   }
 }
+
+[data-theme="light"] {
+  /* 🌞 تم روشن */
+  --primary-red: #3366cc;           /* آبی ملایم‌تر */
+  --primary-orange: #f18f01;        /* نارنجی روشن */
+  
+  --header-icon: #333333;           /* خاکستری تیره برای آیکون */
+  
+  --secondary-button: #f0f0f0;      /* دکمه فرعی روشن */
+  
+  --border-2: #cccccc;              /* مرز روشن‌تر */
+  --card-background: #ffffff;       /* پس‌زمینه کارت سفید */
+  
+  --scaffold: #f9f9f9;              /* پس‌زمینه صفحه */
+  --on-scaffold: #ffffff;           /* سطح روی صفحه */
+  
+  --txt-color: #1a1a1a;             /* متن تیره */
+  
+  --purpel: #7444BC;   
+  }
+
 
 @layer base {
   * {
