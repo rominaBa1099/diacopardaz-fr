@@ -2238,7 +2238,7 @@ function PlasmicChatPage__RenderFunc(props: {
         }}
         shouldFetch={(() => {
           try {
-            return $props.sessionid == null;
+            return $props.sessionid == null && $props.token != "";
           } catch (e) {
             if (
               e instanceof TypeError ||
