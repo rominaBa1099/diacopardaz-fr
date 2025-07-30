@@ -201,6 +201,16 @@
       }
     },
     {
+      "name": "Basic/Unnamed Style Token",
+      "type": "color",
+      "value": "#ffffff",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "mwLkV5i6q5ad"
+      }
+    },
+    {
       "name": "Brand/Brand",
       "type": "color",
       "value": "#2563EB",
@@ -1821,6 +1831,26 @@
       }
     },
     {
+      "name": "Unnamed Style Token 2",
+      "type": "color",
+      "value": "#CACACA",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "NZ6RWKlEJd18"
+      }
+    },
+    {
+      "name": "Unnamed Style Token 3",
+      "type": "color",
+      "value": "#ffffff",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "9m-YybIiBHzE"
+      }
+    },
+    {
       "name": "Warning/Warning",
       "type": "color",
       "value": "#FACC15",
@@ -1901,6 +1931,16 @@
       }
     },
     {
+      "name": "border2",
+      "type": "color",
+      "value": "#E8E4D9",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "VYtYTUY82i0T"
+      }
+    },
+    {
       "name": "brand",
       "type": "color",
       "value": "#3F4079",
@@ -1918,6 +1958,16 @@
       "meta": {
         "projectId": "2X77A6CrJVTC8zJTD8qsTc",
         "id": "QfZnmJdPMmOB"
+      }
+    },
+    {
+      "name": "cardBackground",
+      "type": "color",
+      "value": "#182033",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "MALUK6_fMH3W"
       }
     },
     {
@@ -2001,6 +2051,16 @@
       }
     },
     {
+      "name": "headerIcon",
+      "type": "color",
+      "value": "#E0E0E0",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "l1PA9WWRWVf-"
+      }
+    },
+    {
       "name": "input placeholder",
       "type": "color",
       "value": "rgb(230,230,230)",
@@ -2038,6 +2098,16 @@
       "meta": {
         "projectId": "2X77A6CrJVTC8zJTD8qsTc",
         "id": "XM0Sjp-T1jsV"
+      }
+    },
+    {
+      "name": "onScaffold",
+      "type": "color",
+      "value": "#182033",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "lI7p7XYFfy5v"
       }
     },
     {
@@ -2081,6 +2151,16 @@
       }
     },
     {
+      "name": "primaryOrange",
+      "type": "color",
+      "value": "#405380",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "c1T518Z6qEaF"
+      }
+    },
+    {
       "name": "primaryRed",
       "type": "color",
       "value": "#405380",
@@ -2091,6 +2171,16 @@
       }
     },
     {
+      "name": "primaryRed",
+      "type": "color",
+      "value": "#405380",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "T923AFgI9ADB"
+      }
+    },
+    {
       "name": "purpel",
       "type": "color",
       "value": "#640278",
@@ -2098,6 +2188,16 @@
       "meta": {
         "projectId": "2X77A6CrJVTC8zJTD8qsTc",
         "id": "trzHNPZZ5Rbt"
+      }
+    },
+    {
+      "name": "purpel",
+      "type": "color",
+      "value": "#640278",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "uDh9W46eXNLr"
       }
     },
     {
@@ -2131,6 +2231,16 @@
       }
     },
     {
+      "name": "scaffold",
+      "type": "color",
+      "value": "#10182B",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "av6EF1yYpyXk"
+      }
+    },
+    {
       "name": "secondaryButton",
       "type": "color",
       "value": "#272738",
@@ -2138,6 +2248,16 @@
       "meta": {
         "projectId": "2X77A6CrJVTC8zJTD8qsTc",
         "id": "R6hzF1vNps-A"
+      }
+    },
+    {
+      "name": "secondaryButton",
+      "type": "color",
+      "value": "#272738",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "XxA5v4jPgFPD"
       }
     },
     {
@@ -2208,6 +2328,16 @@
       "meta": {
         "projectId": "2X77A6CrJVTC8zJTD8qsTc",
         "id": "jweVjWnVhV8b"
+      }
+    },
+    {
+      "name": "txtColor",
+      "type": "color",
+      "value": "#E8E4D9",
+      "category": "color",
+      "meta": {
+        "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
+        "id": "262qQVmAaKDN"
       }
     }
   ],

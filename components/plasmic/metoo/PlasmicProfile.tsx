@@ -64,6 +64,7 @@ import MetoButton from "../../MetoButton"; // plasmic-import: BFnTlSYwdY0-/compo
 import { SwiperSlider } from "@/components/SwiperSlider"; // plasmic-import: 1MaU8rw9HIJe/codeComponent
 
 import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
+import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -221,7 +222,8 @@ function PlasmicProfile__RenderFunc(props: {
   });
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsmqI86KQCt1()
+    screen: useScreenVariantsmqI86KQCt1(),
+    theme: useTheme()
   });
 
   return (
@@ -238,7 +240,19 @@ function PlasmicProfile__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_meto_deign_system_css.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.root
+        sty.root,
+        {
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          )
+        }
       )}
     >
       <Stack__

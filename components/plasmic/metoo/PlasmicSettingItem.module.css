@@ -8,7 +8,7 @@
   background: none;
   min-width: 0;
   padding: var(--token-4Rjw4-JlxIrC) 0px;
-  border-bottom: 1px solid var(--token-XM0Sjp-T1jsV);
+  border-bottom: 1px solid var(--token-lI7p7XYFfy5v);
 }
 .root > :global(.__wab_flex-container) {
   flex-direction: row;
@@ -32,13 +32,13 @@
   padding: 0px;
 }
 .rootback_onScaffold {
-  background: var(--token-XM0Sjp-T1jsV);
+  background: var(--token-lI7p7XYFfy5v);
   padding-top: var(--token-x0W5E5oV4ZKj);
   padding-bottom: var(--token-x0W5E5oV4ZKj);
   border-radius: var(--token-4Rjw4-JlxIrC);
 }
 .rootback_primary {
-  background: var(--token-_7pr2NDrmunV);
+  background: var(--token-T923AFgI9ADB);
   padding-top: var(--token-qnJhuc6uXiqh);
   padding-bottom: var(--token-qnJhuc6uXiqh);
   border-radius: var(--token-4Rjw4-JlxIrC);
@@ -109,7 +109,7 @@
   max-width: 100%;
   font-weight: 700;
   font-size: var(--token-o5LqR9FrbNhz);
-  background: var(--token-ie3T06_XAZZB);
+  background: var(--token-c1T518Z6qEaF);
   color: var(--token-xIHLtsKT6cI7);
   border-radius: var(--token-4Rjw4-JlxIrC);
   padding: var(--token-JLnei8msY981) var(--token-JLnei8msY981)

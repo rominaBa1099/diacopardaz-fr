@@ -63,6 +63,8 @@ import MetoLabel from "../../MetoLabel"; // plasmic-import: 4JtC8N_iZ8lG/compone
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import SettingItem from "../../SettingItem"; // plasmic-import: TBGwfoojuj_s/component
 
+import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_meto_deign_system_css from "../meto_deign_system/plasmic.module.css"; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/projectcss
@@ -345,6 +347,10 @@ function PlasmicSetting__RenderFunc(props: {
     $refs
   });
 
+  const globalVariants = ensureGlobalVariants({
+    theme: useTheme()
+  });
+
   return (
     <div
       data-plasmic-name={"root"}
@@ -359,7 +365,19 @@ function PlasmicSetting__RenderFunc(props: {
         projectcss.plasmic_tokens,
         plasmic_meto_deign_system_css.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
-        sty.root
+        sty.root,
+        {
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          ),
+          [projectcss.global_theme_light]: hasVariant(
+            globalVariants,
+            "theme",
+            "light"
+          )
+        }
       )}
     >
       <Stack__

@@ -1,5 +1,5 @@
 .root {
-  background: var(--token-Xr0DUWYuCWoP);
+  background: var(--token-av6EF1yYpyXk);
   display: grid;
   flex-direction: column;
   width: 100%;
@@ -388,7 +388,7 @@
 }
 .text__ddN0 {
   white-space: pre;
-  color: var(--token-Xr0DUWYuCWoP);
+  color: var(--token-av6EF1yYpyXk);
   transition-property: all;
   transition-duration: 1s;
   transform: none;

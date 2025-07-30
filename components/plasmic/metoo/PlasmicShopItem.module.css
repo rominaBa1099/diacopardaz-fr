@@ -32,7 +32,7 @@
 }
 .rootselect {
   background: none;
-  border: var(--token-JLnei8msY981) solid var(--token-trzHNPZZ5Rbt);
+  border: var(--token-JLnei8msY981) solid var(--token-uDh9W46eXNLr);
 }
 .metoLabel:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
@@ -86,7 +86,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  background: var(--token-trzHNPZZ5Rbt);
+  background: var(--token-uDh9W46eXNLr);
   align-self: center;
   color: var(--token-xIHLtsKT6cI7);
   font-size: var(--token-lgQGklG9Zegu);
