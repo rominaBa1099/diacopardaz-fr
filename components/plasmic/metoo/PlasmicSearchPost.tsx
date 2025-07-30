@@ -424,6 +424,61 @@ function PlasmicSearchPost__RenderFunc(props: {
                   __plasmic_idx_0,
                   "load"
                 ]),
+                onClick: async event => {
+                  const $steps = {};
+
+                  $steps["updateCurrentuser"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["currentuser"]
+                          },
+                          operation: 0,
+                          value: currentItem
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateCurrentuser"] != null &&
+                    typeof $steps["updateCurrentuser"] === "object" &&
+                    typeof $steps["updateCurrentuser"].then === "function"
+                  ) {
+                    $steps["updateCurrentuser"] = await $steps[
+                      "updateCurrentuser"
+                    ];
+                  }
+
+                  $steps["runChat2"] = true
+                    ? (() => {
+                        const actionArgs = { eventRef: $props["chat2"] };
+                        return (({ eventRef, args }) => {
+                          return eventRef?.(...(args ?? []));
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runChat2"] != null &&
+                    typeof $steps["runChat2"] === "object" &&
+                    typeof $steps["runChat2"].then === "function"
+                  ) {
+                    $steps["runChat2"] = await $steps["runChat2"];
+                  }
+                },
                 onImageChange: async (...eventArgs: any) => {
                   generateStateOnChangeProp($state, [
                     "post",

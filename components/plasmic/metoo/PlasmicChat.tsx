@@ -831,7 +831,19 @@ function PlasmicChat__RenderFunc(props: {
             }
           }).apply(null, eventArgs);
         }}
-        shouldFetch={true}
+        shouldFetch={(() => {
+          try {
+            return $props.token != "";
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return true;
+            }
+            throw e;
+          }
+        })()}
         url={"https://api.friendschat.ir/chat/suggstionUser"}
       />
 
@@ -993,7 +1005,19 @@ function PlasmicChat__RenderFunc(props: {
             }
           }).apply(null, eventArgs);
         }}
-        shouldFetch={true}
+        shouldFetch={(() => {
+          try {
+            return $props.token != "";
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return true;
+            }
+            throw e;
+          }
+        })()}
         url={"https://api.friendschat.ir/chat/getSession"}
       />
     </div>

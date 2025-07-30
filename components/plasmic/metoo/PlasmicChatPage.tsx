@@ -465,241 +465,246 @@ function PlasmicChatPage__RenderFunc(props: {
         }
       )}
     >
-      <Reveal
-        data-plasmic-name={"reveal"}
-        data-plasmic-override={overrides.reveal}
-        className={classNames("__wab_instance", sty.reveal)}
-        direction={"up"}
-        triggerOnce={true}
-      >
-        {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-          (() => {
-            try {
-              return $state.chats;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return [];
-              }
-              throw e;
-            }
-          })()
-        ).map((__plasmic_item_0, __plasmic_idx_0) => {
-          const currentItem = __plasmic_item_0;
-          const currentIndex = __plasmic_idx_0;
-          return (() => {
-            const child$Props = {
-              className: classNames("__wab_instance", sty.message),
-              inApp: false,
-              key: currentIndex,
-              liomAnswer: (() => {
-                try {
-                  return currentItem.self;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return [];
-                  }
-                  throw e;
+      <div className={classNames(projectcss.all, sty.freeBox__zZeFg)}>
+        <Reveal
+          data-plasmic-name={"reveal"}
+          data-plasmic-override={overrides.reveal}
+          className={classNames("__wab_instance", sty.reveal)}
+          damping={0.3}
+          direction={"up"}
+          triggerOnce={true}
+        >
+          {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+            (() => {
+              try {
+                return $state.chats;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return [];
                 }
-              })(),
-              onShowtimeChange: async (...eventArgs: any) => {
-                generateStateOnChangeProp($state, [
+                throw e;
+              }
+            })()
+          ).map((__plasmic_item_0, __plasmic_idx_0) => {
+            const currentItem = __plasmic_item_0;
+            const currentIndex = __plasmic_idx_0;
+            return (() => {
+              const child$Props = {
+                className: classNames("__wab_instance", sty.message),
+                inApp: false,
+                key: currentIndex,
+                liomAnswer: (() => {
+                  try {
+                    return currentItem.self;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
+                    }
+                    throw e;
+                  }
+                })(),
+                onShowtimeChange: async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "message",
+                    __plasmic_idx_0,
+                    "showtime"
+                  ]).apply(null, eventArgs);
+
+                  if (
+                    eventArgs.length > 1 &&
+                    eventArgs[1] &&
+                    eventArgs[1]._plasmic_state_init_
+                  ) {
+                    return;
+                  }
+                },
+                posttime: (() => {
+                  try {
+                    return currentItem.timestamp;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })(),
+                showtime: generateStateValueProp($state, [
                   "message",
                   __plasmic_idx_0,
                   "showtime"
-                ]).apply(null, eventArgs);
-
-                if (
-                  eventArgs.length > 1 &&
-                  eventArgs[1] &&
-                  eventArgs[1]._plasmic_state_init_
-                ) {
-                  return;
-                }
-              },
-              posttime: (() => {
-                try {
-                  return currentItem.timestamp;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
-                  }
-                  throw e;
-                }
-              })(),
-              showtime: generateStateValueProp($state, [
-                "message",
-                __plasmic_idx_0,
-                "showtime"
-              ]),
-              slot: (
-                <React.Fragment>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__eKWsp)}
-                  >
-                    <Icon119Icon
-                      className={classNames(projectcss.all, sty.svg__xUuW)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__hinyf)}
-                  >
-                    <Icon119Icon
-                      className={classNames(projectcss.all, sty.svg___9N69K)}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__dwIz3
-                      )}
-                    >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return "ویرایش پاسخ";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
-                    </div>
-                  </div>
-                </React.Fragment>
-              )
-            };
-
-            initializePlasmicStates(
-              $state,
-              [
-                {
-                  name: "message[].showtime",
-                  initFunc: ({ $props, $state, $queries }) =>
-                    (() => {
-                      try {
-                        return (() => {
-                          const currentDate =
-                            currentItem.timestamp.split(" ")[0];
-                          const previousDate =
-                            $state.chats[currentIndex - 1].timestamp.split(
-                              " "
-                            )[0];
-                          return !previousDate || currentDate !== previousDate;
-                        })();
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return false;
-                        }
-                        throw e;
-                      }
-                    })()
-                }
-              ],
-              [__plasmic_idx_0]
-            );
-            return (
-              <Message
-                data-plasmic-name={"message"}
-                data-plasmic-override={overrides.message}
-                {...child$Props}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__xgPKr,
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? `text-box  ${(() => {})()}`
-                      : undefined
-                  )}
-                  id={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return currentItem.id
-                              ? ""
-                              : currentItem.animation
-                              ? currentItem.animation
-                              : "";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return currentItem.id
-                              ? ""
-                              : currentItem.from == "system"
-                              ? `typedtext` + currentIndex
-                              : "";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                  }
-                  style={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? {
-                          display: "inline-block",
-                          width: "auto",
-                          "overflow-wrap": "break-word"
-                        }
-                      : undefined
-                  }
-                >
+                ]),
+                slot: (
                   <React.Fragment>
-                    {(() => {
-                      try {
-                        return currentItem.message;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "Lorem ipsum dolor sit amet,";
-                        }
-                        throw e;
-                      }
-                    })()}
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__eKWsp)}
+                    >
+                      <Icon119Icon
+                        className={classNames(projectcss.all, sty.svg__xUuW)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__hinyf)}
+                    >
+                      <Icon119Icon
+                        className={classNames(projectcss.all, sty.svg___9N69K)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__dwIz3
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return "ویرایش پاسخ";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
+                    </div>
                   </React.Fragment>
-                </div>
-              </Message>
-            );
-          })();
-        })}
-      </Reveal>
+                )
+              };
+
+              initializePlasmicStates(
+                $state,
+                [
+                  {
+                    name: "message[].showtime",
+                    initFunc: ({ $props, $state, $queries }) =>
+                      (() => {
+                        try {
+                          return (() => {
+                            const currentDate =
+                              currentItem.timestamp.split(" ")[0];
+                            const previousDate =
+                              $state.chats[currentIndex - 1].timestamp.split(
+                                " "
+                              )[0];
+                            return (
+                              !previousDate || currentDate !== previousDate
+                            );
+                          })();
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return false;
+                          }
+                          throw e;
+                        }
+                      })()
+                  }
+                ],
+                [__plasmic_idx_0]
+              );
+              return (
+                <Message
+                  data-plasmic-name={"message"}
+                  data-plasmic-override={overrides.message}
+                  {...child$Props}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__xgPKr,
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? `text-box  ${(() => {})()}`
+                        : undefined
+                    )}
+                    id={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? (() => {
+                            try {
+                              return currentItem.id
+                                ? ""
+                                : currentItem.animation
+                                ? currentItem.animation
+                                : "";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        : (() => {
+                            try {
+                              return currentItem.id
+                                ? ""
+                                : currentItem.from == "system"
+                                ? `typedtext` + currentIndex
+                                : "";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                    }
+                    style={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? {
+                            display: "inline-block",
+                            width: "auto",
+                            "overflow-wrap": "break-word"
+                          }
+                        : undefined
+                    }
+                  >
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return currentItem.message;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "Lorem ipsum dolor sit amet,";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  </div>
+                </Message>
+              );
+            })();
+          })}
+        </Reveal>
+      </div>
       <section className={classNames(projectcss.all, sty.section___61NzU)}>
         <MetoMultilineTextInput
           data-plasmic-name={"multilineTextInput2"}

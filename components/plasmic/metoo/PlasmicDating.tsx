@@ -584,6 +584,19 @@ function PlasmicDating__RenderFunc(props: {
           }
         }}
         profile={args.profile}
+        token={(() => {
+          try {
+            return $props.token;
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return undefined;
+            }
+            throw e;
+          }
+        })()}
       />
 
       <Modal2

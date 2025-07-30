@@ -95,6 +95,7 @@ export type PlasmicPost__ArgsType = {
   onLoadChange?: (val: string) => void;
   image?: string;
   onImageChange?: (val: string) => void;
+  onClick?: (event: any) => void;
 };
 type ArgPropType = keyof PlasmicPost__ArgsType;
 export const PlasmicPost__ArgProps = new Array<ArgPropType>(
@@ -102,7 +103,8 @@ export const PlasmicPost__ArgProps = new Array<ArgPropType>(
   "load",
   "onLoadChange",
   "image",
-  "onImageChange"
+  "onImageChange",
+  "onClick"
 );
 
 export type PlasmicPost__OverridesType = {
@@ -117,6 +119,7 @@ export interface DefaultPostProps {
   onLoadChange?: (val: string) => void;
   image?: string;
   onImageChange?: (val: string) => void;
+  onClick?: (event: any) => void;
   profile?: SingleBooleanChoiceArg<"profile">;
   className?: string;
 }
@@ -255,6 +258,7 @@ function PlasmicPost__RenderFunc(props: {
         displayMinWidth={"0"}
         displayWidth={"100%"}
         loading={"eager"}
+        onClick={args.onClick}
         src={(() => {
           try {
             return (() => {

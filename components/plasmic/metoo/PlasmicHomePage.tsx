@@ -4057,29 +4057,25 @@ function PlasmicHomePage__RenderFunc(props: {
                     )
                       ? (() => {
                           const actionArgs = {
-                            args: [
-                              undefined,
-                              "userToken",
-                              (() => {
-                                try {
-                                  return $steps.newV2?.data?.data.token;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
-                                }
-                              })(),
-                              { days: 3, path: "/" }
-                            ]
+                            customFunction: async () => {
+                              return (() => {
+                                var setCookie = (name, value, days) => {
+                                  const expires = new Date(
+                                    Date.now() + days * 86400000
+                                  ).toUTCString();
+                                  document.cookie = `${name}=${value}; expires=${expires}; path=/; secure; SameSite=Lax`;
+                                };
+                                return setCookie(
+                                  "token",
+                                  JSON.stringify($state.paramsObject.token),
+                                  3650
+                                );
+                              })();
+                            }
                           };
-                          return $globalActions[
-                            "Fragment.cookieManager"
-                          ]?.apply(null, [...actionArgs.args]);
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
@@ -4099,9 +4095,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                $state.userInfo = $steps.newV2?.data;
-                                return ($state.token =
-                                  $steps.newV2?.data?.data?.token);
+                                return ($state.userInfo = $steps.newV2?.data);
                               })();
                             }
                           };
@@ -9251,50 +9245,34 @@ function PlasmicHomePage__RenderFunc(props: {
                 $steps["logLaunch"] = await $steps["logLaunch"];
               }
 
-              $steps["getToken"] = true
-                ? (() => {
-                    const actionArgs = { args: [undefined, "token"] };
-                    return $globalActions["Fragment.cookieManager"]?.apply(
-                      null,
-                      [...actionArgs.args]
-                    );
-                  })()
-                : undefined;
-              if (
-                $steps["getToken"] != null &&
-                typeof $steps["getToken"] === "object" &&
-                typeof $steps["getToken"].then === "function"
-              ) {
-                $steps["getToken"] = await $steps["getToken"];
-              }
-
-              $steps["updateToken"] = $steps.getToken
+              $steps["runCode"] = true
                 ? (() => {
                     const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["token"]
-                      },
-                      operation: 0,
-                      value: $steps.getToken
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
+                      customFunction: async () => {
+                        return (() => {
+                          var getCookie = name => {
+                            const cookies = document.cookie.split("; ");
+                            for (let cookie of cookies) {
+                              const [key, value] = cookie.split("=");
+                              if (key === name) return JSON.parse(value);
+                            }
+                            return "";
+                          };
+                          return ($state.token = getCookie("token"));
+                        })();
                       }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
                     })?.apply(null, [actionArgs]);
                   })()
                 : undefined;
               if (
-                $steps["updateToken"] != null &&
-                typeof $steps["updateToken"] === "object" &&
-                typeof $steps["updateToken"].then === "function"
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
               ) {
-                $steps["updateToken"] = await $steps["updateToken"];
+                $steps["runCode"] = await $steps["runCode"];
               }
 
               $steps["usersData"] =
