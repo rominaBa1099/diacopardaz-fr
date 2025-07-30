@@ -1203,8 +1203,7 @@ function PlasmicHomePage__RenderFunc(props: {
         path: "token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjEyNjg1MzMiLCJleHBpcmUiOjE3NTI1Njc3Mjd9.gfYr_i2s7WPRRXAOY10kp25hRWrtuchU2vxVrTEzHdN_ixVpPVW0jSP5M4hm7hu3FjiRhGaV-C4nALAs4BPL7g"
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       },
       {
         path: "editName.value",
@@ -2516,6 +2515,11 @@ function PlasmicHomePage__RenderFunc(props: {
             data-plasmic-override={overrides.slide1}
             className={classNames("__wab_instance", sty.slide1, {
               [sty.slide1editPage]: hasVariant($state, "editPage", "editPage"),
+              [sty.slide1global_theme_dark]: hasVariant(
+                globalVariants,
+                "theme",
+                "dark"
+              ),
               [sty.slide1selectImage2]: hasVariant(
                 $state,
                 "selectImage2",
@@ -4421,6 +4425,11 @@ function PlasmicHomePage__RenderFunc(props: {
               [sty.selectImageeditPage_show_main]:
                 hasVariant($state, "show", "main") &&
                 hasVariant($state, "editPage", "editPage"),
+              [sty.selectImageglobal_theme_dark]: hasVariant(
+                globalVariants,
+                "theme",
+                "dark"
+              ),
               [sty.selectImageselectImage2]: hasVariant(
                 $state,
                 "selectImage2",
@@ -5271,6 +5280,11 @@ function PlasmicHomePage__RenderFunc(props: {
                 "editPage",
                 "editPage"
               ),
+              [sty.sectionglobal_theme_dark__qBwjyBwhTo]: hasVariant(
+                globalVariants,
+                "theme",
+                "dark"
+              ),
               [sty.sectionselectImage2__qBwjybApSq]: hasVariant(
                 $state,
                 "selectImage2",
@@ -5288,6 +5302,11 @@ function PlasmicHomePage__RenderFunc(props: {
                 [sty.metoHeadereditPage_selectImage2___7Dz27CCwlhBApSq]:
                   hasVariant($state, "editPage", "editPage") &&
                   hasVariant($state, "selectImage2", "selectImage2"),
+                [sty.metoHeaderglobal_theme_dark___7Dz27BwhTo]: hasVariant(
+                  globalVariants,
+                  "theme",
+                  "dark"
+                ),
                 [sty.metoHeaderselectImage2___7Dz27BApSq]: hasVariant(
                   $state,
                   "selectImage2",
@@ -5330,6 +5349,11 @@ function PlasmicHomePage__RenderFunc(props: {
                     $state,
                     "editPage",
                     "editPage"
+                  ),
+                  [sty.metoLabelglobal_theme_dark__lsFaRbwhTo]: hasVariant(
+                    globalVariants,
+                    "theme",
+                    "dark"
                   )
                 })}
                 size={
@@ -5364,6 +5388,11 @@ function PlasmicHomePage__RenderFunc(props: {
               [sty.profileeditPage_show_main]:
                 hasVariant($state, "show", "main") &&
                 hasVariant($state, "editPage", "editPage"),
+              [sty.profileglobal_theme_dark]: hasVariant(
+                globalVariants,
+                "theme",
+                "dark"
+              ),
               [sty.profileprofile2]: hasVariant($state, "profile2", "profile2"),
               [sty.profileprofile2_chatViow]:
                 hasVariant($state, "chatViow", "chatViow") &&
@@ -5562,6 +5591,11 @@ function PlasmicHomePage__RenderFunc(props: {
                   "chatViow",
                   "chatViow"
                 ),
+                [sty.userProfileglobal_theme_dark]: hasVariant(
+                  globalVariants,
+                  "theme",
+                  "dark"
+                ),
                 [sty.userProfileprofile2]: hasVariant(
                   $state,
                   "profile2",
@@ -5657,6 +5691,11 @@ function PlasmicHomePage__RenderFunc(props: {
               [sty.editeditPage_show_main]:
                 hasVariant($state, "show", "main") &&
                 hasVariant($state, "editPage", "editPage"),
+              [sty.editglobal_theme_dark]: hasVariant(
+                globalVariants,
+                "theme",
+                "dark"
+              ),
               [sty.editprofile2]: hasVariant($state, "profile2", "profile2"),
               [sty.editselectImage2]: hasVariant(
                 $state,
@@ -5762,6 +5801,11 @@ function PlasmicHomePage__RenderFunc(props: {
                 [sty.freeBoxeditPage_show_main___3NQoscCwlhDtd1A]:
                   hasVariant($state, "show", "main") &&
                   hasVariant($state, "editPage", "editPage"),
+                [sty.freeBoxglobal_theme_dark___3NQosbwhTo]: hasVariant(
+                  globalVariants,
+                  "theme",
+                  "dark"
+                ),
                 [sty.freeBoxselectImage2___3NQoSbApSq]: hasVariant(
                   $state,
                   "selectImage2",
@@ -7513,6 +7557,11 @@ function PlasmicHomePage__RenderFunc(props: {
                 [sty.chatViow2editPage_show_main]:
                   hasVariant($state, "show", "main") &&
                   hasVariant($state, "editPage", "editPage"),
+                [sty.chatViow2global_theme_dark]: hasVariant(
+                  globalVariants,
+                  "theme",
+                  "dark"
+                ),
                 [sty.chatViow2profile2_chatViow]:
                   hasVariant($state, "profile2", "profile2") &&
                   hasVariant($state, "chatViow", "chatViow"),
@@ -7680,6 +7729,11 @@ function PlasmicHomePage__RenderFunc(props: {
                   [sty.chatPagechatViow_show_main]:
                     hasVariant($state, "show", "main") &&
                     hasVariant($state, "chatViow", "chatViow"),
+                  [sty.chatPageglobal_theme_dark]: hasVariant(
+                    globalVariants,
+                    "theme",
+                    "dark"
+                  ),
                   [sty.chatPageshow_main]: hasVariant($state, "show", "main")
                 })}
                 profile2={async () => {
@@ -7745,6 +7799,23 @@ function PlasmicHomePage__RenderFunc(props: {
                     ];
                   }
                 }}
+                token={
+                  hasVariant(globalVariants, "theme", "dark")
+                    ? (() => {
+                        try {
+                          return $state.token;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    : undefined
+                }
                 userData={
                   hasVariant($state, "show", "main")
                     ? (() => {
@@ -7877,6 +7948,11 @@ function PlasmicHomePage__RenderFunc(props: {
               [sty.sectioneditPage_show_main__nMjS9CCwlhDtd1A]:
                 hasVariant($state, "show", "main") &&
                 hasVariant($state, "editPage", "editPage"),
+              [sty.sectionglobal_theme_dark__nMjS9BwhTo]: hasVariant(
+                globalVariants,
+                "theme",
+                "dark"
+              ),
               [sty.sectionprofile2__nMjS9G4G5L]: hasVariant(
                 $state,
                 "profile2",
@@ -7911,6 +7987,11 @@ function PlasmicHomePage__RenderFunc(props: {
                   $state,
                   "editPage",
                   "editPage"
+                ),
+                [sty.sectionglobal_theme_dark___2OkD4BwhTo]: hasVariant(
+                  globalVariants,
+                  "theme",
+                  "dark"
                 ),
                 [sty.sectionshop2_show_main___2OkD4Walo1Dtd1A]:
                   hasVariant($state, "show", "main") &&
@@ -8113,6 +8194,11 @@ function PlasmicHomePage__RenderFunc(props: {
                 [sty.mainchatViow_show_main]:
                   hasVariant($state, "show", "main") &&
                   hasVariant($state, "chatViow", "chatViow"),
+                [sty.mainglobal_theme_dark]: hasVariant(
+                  globalVariants,
+                  "theme",
+                  "dark"
+                ),
                 [sty.mainprofile2_show_main]:
                   hasVariant($state, "show", "main") &&
                   hasVariant($state, "profile2", "profile2"),
@@ -8446,6 +8532,23 @@ function PlasmicHomePage__RenderFunc(props: {
                 }
               })()}
               stateId={generateStateValueProp($state, ["main", "stateId"])}
+              token={
+                hasVariant(globalVariants, "theme", "dark")
+                  ? (() => {
+                      try {
+                        return $state.token;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : undefined
+              }
               userInfo={(() => {
                 try {
                   return $state.userInfo;
@@ -9027,6 +9130,11 @@ function PlasmicHomePage__RenderFunc(props: {
             data-plasmic-name={"sideEffect"}
             data-plasmic-override={overrides.sideEffect}
             className={classNames("__wab_instance", sty.sideEffect, {
+              [sty.sideEffectglobal_theme_dark]: hasVariant(
+                globalVariants,
+                "theme",
+                "dark"
+              ),
               [sty.sideEffectshow_main]: hasVariant($state, "show", "main"),
               [sty.sideEffectshow_slide2]: hasVariant($state, "show", "slide2")
             })}
@@ -9292,29 +9400,56 @@ function PlasmicHomePage__RenderFunc(props: {
                 $steps["updateSplash"] = await $steps["updateSplash"];
               }
 
-              $steps["updateShow"] = true
-                ? (() => {
-                    const actionArgs = {
-                      vgroup: "show",
-                      operation: 0,
-                      value: "main"
-                    };
-                    return (({ vgroup, value }) => {
-                      if (typeof value === "string") {
-                        value = [value];
-                      }
+              $steps["updateShow"] =
+                $steps.getToken != ""
+                  ? (() => {
+                      const actionArgs = {
+                        vgroup: "show",
+                        operation: 0,
+                        value: "main"
+                      };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
 
-                      $stateSet($state, vgroup, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
+                        $stateSet($state, vgroup, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
               if (
                 $steps["updateShow"] != null &&
                 typeof $steps["updateShow"] === "object" &&
                 typeof $steps["updateShow"].then === "function"
               ) {
                 $steps["updateShow"] = await $steps["updateShow"];
+              }
+
+              $steps["updateShow2"] =
+                $steps.getToken == ""
+                  ? (() => {
+                      const actionArgs = {
+                        vgroup: "show",
+                        operation: 0,
+                        value: "slide1"
+                      };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateShow2"] != null &&
+                typeof $steps["updateShow2"] === "object" &&
+                typeof $steps["updateShow2"].then === "function"
+              ) {
+                $steps["updateShow2"] = await $steps["updateShow2"];
               }
             }}
           />

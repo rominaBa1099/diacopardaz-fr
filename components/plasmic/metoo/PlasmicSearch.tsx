@@ -101,6 +101,7 @@ export type PlasmicSearch__ArgsType = {
   onCityChange?: (val: string) => void;
   chatOpen?: (event: any) => void;
   profile?: () => void;
+  token?: string;
 };
 type ArgPropType = keyof PlasmicSearch__ArgsType;
 export const PlasmicSearch__ArgProps = new Array<ArgPropType>(
@@ -110,7 +111,8 @@ export const PlasmicSearch__ArgProps = new Array<ArgPropType>(
   "city",
   "onCityChange",
   "chatOpen",
-  "profile"
+  "profile",
+  "token"
 );
 
 export type PlasmicSearch__OverridesType = {
@@ -136,6 +138,7 @@ export interface DefaultSearchProps {
   onCityChange?: (val: string) => void;
   chatOpen?: (event: any) => void;
   profile?: () => void;
+  token?: string;
   post?: SingleBooleanChoiceArg<"post">;
   className?: string;
 }
@@ -1100,7 +1103,13 @@ function PlasmicSearch__RenderFunc(props: {
           </Stack__>
           <section className={classNames(projectcss.all, sty.section__mvg4O)}>
             <MetoButton
-              className={classNames("__wab_instance", sty.metoButton__zdqZz)}
+              className={classNames("__wab_instance", sty.metoButton__zdqZz, {
+                [sty.metoButtonpost__zdqZZdxBzg]: hasVariant(
+                  $state,
+                  "post",
+                  "post"
+                )
+              })}
               label={
                 <div
                   className={classNames(
@@ -1434,6 +1443,23 @@ function PlasmicSearch__RenderFunc(props: {
               }
             }}
             profile={args.profile}
+            token={
+              hasVariant($state, "post", "post")
+                ? (() => {
+                    try {
+                      return $props.token;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjEyNjg1MzMiLCJleHBpcmUiOjE3NTI1Njc3Mjd9.gfYr_i2s7WPRRXAOY10kp25hRWrtuchU2vxVrTEzHdN_ixVpPVW0jSP5M4hm7hu3FjiRhGaV-C4nALAs4BPL7g${undefined}`
+            }
           />
         </Stack__>
         <BackHandler

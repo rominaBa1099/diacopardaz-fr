@@ -740,6 +740,19 @@ function PlasmicMain__RenderFunc(props: {
           }
         }}
         stateId={generateStateValueProp($state, ["search", "stateId"])}
+        token={(() => {
+          try {
+            return $props.token;
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return undefined;
+            }
+            throw e;
+          }
+        })()}
       />
 
       <Reveal
@@ -844,6 +857,19 @@ function PlasmicMain__RenderFunc(props: {
               $steps["runProfile2"] = await $steps["runProfile2"];
             }
           }}
+          token={(() => {
+            try {
+              return $props.token;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()}
         />
       </Reveal>
       <Profile
@@ -905,6 +931,19 @@ function PlasmicMain__RenderFunc(props: {
         }}
         onclick={args.settingClick}
         selectItem={generateStateValueProp($state, ["setting", "selectItem"])}
+        token={(() => {
+          try {
+            return $props.token;
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return undefined;
+            }
+            throw e;
+          }
+        })()}
         userInfo={(() => {
           try {
             return $props.userInfo;
