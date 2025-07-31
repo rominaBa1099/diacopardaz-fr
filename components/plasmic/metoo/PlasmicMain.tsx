@@ -110,6 +110,7 @@ export type PlasmicMain__ArgsType = {
   settingClick?: () => void;
   selectSetting?: any;
   onSelectSettingChange?: (val: string) => void;
+  shopOpen?: (event: any) => void;
 };
 type ArgPropType = keyof PlasmicMain__ArgsType;
 export const PlasmicMain__ArgProps = new Array<ArgPropType>(
@@ -129,7 +130,8 @@ export const PlasmicMain__ArgProps = new Array<ArgPropType>(
   "profileOpen",
   "settingClick",
   "selectSetting",
-  "onSelectSettingChange"
+  "onSelectSettingChange",
+  "shopOpen"
 );
 
 export type PlasmicMain__OverridesType = {
@@ -162,6 +164,7 @@ export interface DefaultMainProps {
   settingClick?: () => void;
   selectSetting?: any;
   onSelectSettingChange?: (val: string) => void;
+  shopOpen?: (event: any) => void;
   show?: SingleChoiceArg<"chat" | "search" | "dating" | "profile" | "settings">;
   className?: string;
 }
@@ -901,6 +904,7 @@ function PlasmicMain__RenderFunc(props: {
           }
         }}
         shop={generateStateValueProp($state, ["profile", "shop"])}
+        shop2={args.shopOpen}
         userInfo={(() => {
           try {
             return $props.userInfo;

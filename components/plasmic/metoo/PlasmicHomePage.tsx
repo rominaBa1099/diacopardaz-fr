@@ -8681,6 +8681,45 @@ function PlasmicHomePage__RenderFunc(props: {
                 }
               }}
               shop={generateStateValueProp($state, ["main", "shop"])}
+              shopOpen={async event => {
+                const $steps = {};
+
+                $steps["updateShopModalOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["shopModal", "open"]
+                        },
+                        operation: 4
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        const oldValue = $stateGet(objRoot, variablePath);
+                        $stateSet(objRoot, variablePath, !oldValue);
+                        return !oldValue;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateShopModalOpen"] != null &&
+                  typeof $steps["updateShopModalOpen"] === "object" &&
+                  typeof $steps["updateShopModalOpen"].then === "function"
+                ) {
+                  $steps["updateShopModalOpen"] = await $steps[
+                    "updateShopModalOpen"
+                  ];
+                }
+              }}
               show={(() => {
                 try {
                   return $state.footer.selectFooter;
