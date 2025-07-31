@@ -4096,11 +4096,13 @@ function PlasmicHomePage__RenderFunc(props: {
                                   ).toUTCString();
                                   document.cookie = `${name}=${value}; expires=${expires}; path=/; secure; SameSite=Lax`;
                                 };
-                                return setCookie(
+                                setCookie(
                                   "token",
                                   $steps.newV2.data.data.token,
                                   3650
                                 );
+                                return ($state.token =
+                                  $steps.newV2.data.data.token);
                               })();
                             }
                           };
