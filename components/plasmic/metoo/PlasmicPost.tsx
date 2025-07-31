@@ -258,7 +258,9 @@ function PlasmicPost__RenderFunc(props: {
         displayMinWidth={"0"}
         displayWidth={"100%"}
         loading={"eager"}
-        onClick={args.onClick}
+        onClick={async event => {
+          const $steps = {};
+        }}
         src={(() => {
           try {
             return (() => {
@@ -288,6 +290,25 @@ function PlasmicPost__RenderFunc(props: {
             "profile"
           )
         })}
+        onClick={async event => {
+          const $steps = {};
+
+          $steps["runOnClick"] = true
+            ? (() => {
+                const actionArgs = { eventRef: $props["onClick"] };
+                return (({ eventRef, args }) => {
+                  return eventRef?.(...(args ?? []));
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["runOnClick"] != null &&
+            typeof $steps["runOnClick"] === "object" &&
+            typeof $steps["runOnClick"].then === "function"
+          ) {
+            $steps["runOnClick"] = await $steps["runOnClick"];
+          }
+        }}
       >
         {renderPlasmicSlot({
           defaultContents: (

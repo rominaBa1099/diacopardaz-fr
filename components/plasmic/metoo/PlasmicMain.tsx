@@ -104,11 +104,12 @@ export type PlasmicMain__ArgsType = {
   back?: boolean;
   onBackChange?: (val: string) => void;
   shop?: any;
-  onShopChange?: (val: string) => void;
+  onShopChange2?: (val: string) => void;
   userInfo?: any;
   profileOpen?: () => void;
   settingClick?: () => void;
   selectSetting?: any;
+  onSelectSettingChange?: (val: string) => void;
 };
 type ArgPropType = keyof PlasmicMain__ArgsType;
 export const PlasmicMain__ArgProps = new Array<ArgPropType>(
@@ -123,11 +124,12 @@ export const PlasmicMain__ArgProps = new Array<ArgPropType>(
   "back",
   "onBackChange",
   "shop",
-  "onShopChange",
+  "onShopChange2",
   "userInfo",
   "profileOpen",
   "settingClick",
-  "selectSetting"
+  "selectSetting",
+  "onSelectSettingChange"
 );
 
 export type PlasmicMain__OverridesType = {
@@ -154,11 +156,12 @@ export interface DefaultMainProps {
   back?: boolean;
   onBackChange?: (val: string) => void;
   shop?: any;
-  onShopChange?: (val: string) => void;
+  onShopChange2?: (val: string) => void;
   userInfo?: any;
   profileOpen?: () => void;
   settingClick?: () => void;
   selectSetting?: any;
+  onSelectSettingChange?: (val: string) => void;
   show?: SingleChoiceArg<"chat" | "search" | "dating" | "profile" | "settings">;
   className?: string;
 }
@@ -329,8 +332,7 @@ function PlasmicMain__RenderFunc(props: {
               { id: 30, title: "\u0647\u0645\u062f\u0627\u0646" },
               { id: 31, title: "\u06cc\u0632\u062f" }
             ]
-          },
-          selectSetting: {}
+          }
         },
         Object.fromEntries(
           Object.entries(props.args).filter(([_, v]) => v !== undefined)
@@ -460,7 +462,7 @@ function PlasmicMain__RenderFunc(props: {
         variableType: "object",
 
         valueProp: "shop",
-        onChangeProp: "onShopChange"
+        onChangeProp: "onShopChange2"
       },
       {
         path: "chat.currentuser",
@@ -472,8 +474,15 @@ function PlasmicMain__RenderFunc(props: {
         path: "setting.selectItem",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $props["selectSetting"]
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "selectSetting",
+        type: "writable",
+        variableType: "object",
+
+        valueProp: "selectSetting",
+        onChangeProp: "onSelectSettingChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -926,6 +935,41 @@ function PlasmicMain__RenderFunc(props: {
           ) {
             return;
           }
+
+          (async val => {
+            const $steps = {};
+
+            $steps["updateSelectSetting"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["selectSetting"]
+                    },
+                    operation: 0,
+                    value: $state.setting.selectItem
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateSelectSetting"] != null &&
+              typeof $steps["updateSelectSetting"] === "object" &&
+              typeof $steps["updateSelectSetting"].then === "function"
+            ) {
+              $steps["updateSelectSetting"] = await $steps[
+                "updateSelectSetting"
+              ];
+            }
+          }).apply(null, eventArgs);
         }}
         onclick={args.settingClick}
         selectItem={generateStateValueProp($state, ["setting", "selectItem"])}
@@ -1077,19 +1121,7 @@ function PlasmicMain__RenderFunc(props: {
       <BackHandler
         data-plasmic-name={"backHandler"}
         data-plasmic-override={overrides.backHandler}
-        active={(() => {
-          try {
-            return $state.back;
-          } catch (e) {
-            if (
-              e instanceof TypeError ||
-              e?.plasmicType === "PlasmicUndefinedDataError"
-            ) {
-              return true;
-            }
-            throw e;
-          }
-        })()}
+        active={false}
         className={classNames("__wab_instance", sty.backHandler)}
         onBack={async () => {
           const $steps = {};

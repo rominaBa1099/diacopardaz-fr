@@ -100,6 +100,7 @@ export type PlasmicUserProfile__ArgsType = {
   token?: string;
   goToChat?: boolean;
   onGoToChatChange?: (val: string) => void;
+  shop?: (event: any) => void;
 };
 type ArgPropType = keyof PlasmicUserProfile__ArgsType;
 export const PlasmicUserProfile__ArgProps = new Array<ArgPropType>(
@@ -110,7 +111,8 @@ export const PlasmicUserProfile__ArgProps = new Array<ArgPropType>(
   "chat",
   "token",
   "goToChat",
-  "onGoToChatChange"
+  "onGoToChatChange",
+  "shop"
 );
 
 export type PlasmicUserProfile__OverridesType = {
@@ -133,6 +135,7 @@ export interface DefaultUserProfileProps {
   token?: string;
   goToChat?: boolean;
   onGoToChatChange?: (val: string) => void;
+  shop?: (event: any) => void;
   className?: string;
 }
 
@@ -429,6 +432,7 @@ function PlasmicUserProfile__RenderFunc(props: {
             </div>
           }
           load={generateStateValueProp($state, ["button", "load"])}
+          onClick={args.shop}
           onLoadChange={async (...eventArgs: any) => {
             generateStateOnChangeProp($state, ["button", "load"]).apply(
               null,

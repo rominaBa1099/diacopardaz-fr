@@ -714,7 +714,24 @@ function PlasmicShopModal__RenderFunc(props: {
               )
             })}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__iIcyW)}>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__iIcyW)}
+              style={(() => {
+                try {
+                  return {
+                    direction: "ltr"
+                  };
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+            >
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
                   try {
