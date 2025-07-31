@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { CodeComponentMeta } from "@plasmicapp/host";
 
 type BackHandlerProps = {
@@ -7,23 +7,24 @@ type BackHandlerProps = {
 };
 
 export const BackHandler = ({ onBack, active = true }: BackHandlerProps) => {
+  const hasPushedRef = useRef(false);
+
   useEffect(() => {
     if (typeof window === "undefined" || !active) return;
 
-    window.history.pushState(null, "");
-    window.history.pushState({ isCustom: true }, "");
-
     const handlePopState = (e: PopStateEvent) => {
       if (e.state?.isCustom) {
-        const action = onBack || (() => console.log("onBack not provided - default back action"));
-        action();
-
+        onBack?.() ?? console.log("onBack not provided");
         window.history.pushState({ isCustom: true }, "");
       }
     };
 
-    window.addEventListener("popstate", handlePopState);
+    if (!hasPushedRef.current) {
+      window.history.pushState({ isCustom: true }, "");
+      hasPushedRef.current = true;
+    }
 
+    window.addEventListener("popstate", handlePopState);
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
