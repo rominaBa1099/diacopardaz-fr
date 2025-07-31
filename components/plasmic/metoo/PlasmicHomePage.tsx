@@ -2272,7 +2272,11 @@ function PlasmicHomePage__RenderFunc(props: {
         path: "shopModal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "show", "main") &&
+          hasVariant(globalVariants, "screen", "mobileOnly")
+            ? false
+            : false
       },
       {
         path: "shop2",
@@ -9682,7 +9686,8 @@ function PlasmicHomePage__RenderFunc(props: {
               [sty.shopchatViow]: hasVariant($state, "chatViow", "chatViow"),
               [sty.shopshop2_chatViow]:
                 hasVariant($state, "chatViow", "chatViow") &&
-                hasVariant($state, "shop2", "shop2")
+                hasVariant($state, "shop2", "shop2"),
+              [sty.shopshow_main]: hasVariant($state, "show", "main")
             })}
             config={{
               headers: {
