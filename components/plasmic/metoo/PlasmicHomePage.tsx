@@ -2213,7 +2213,24 @@ function PlasmicHomePage__RenderFunc(props: {
         path: "selectId",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => -1
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.userInfo?.userInfo?.state
+                ? $state.stateApi.data.list.find(
+                    state => state.title === $state.userInfo.userInfo.state
+                  )?.id ?? -1
+                : -1;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return -1;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "chatViow",
@@ -4150,9 +4167,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return (() => {
-                                return ($state.userInfo = $steps.newV2?.data);
-                              })();
+                              return ($state.userInfo =
+                                $steps.newV2?.data?.data);
                             }
                           };
                           return (({ customFunction }) => {

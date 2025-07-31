@@ -88,13 +88,15 @@ export type PlasmicProfile__ArgsType = {
   shop?: any;
   onShopChange2?: (val: string) => void;
   userInfo?: any;
+  shop2?: (event: any) => void;
 };
 type ArgPropType = keyof PlasmicProfile__ArgsType;
 export const PlasmicProfile__ArgProps = new Array<ArgPropType>(
   "onClick",
   "shop",
   "onShopChange2",
-  "userInfo"
+  "userInfo",
+  "shop2"
 );
 
 export type PlasmicProfile__OverridesType = {
@@ -110,6 +112,7 @@ export interface DefaultProfileProps {
   shop?: any;
   onShopChange2?: (val: string) => void;
   userInfo?: any;
+  shop2?: (event: any) => void;
   className?: string;
 }
 
@@ -451,6 +454,7 @@ function PlasmicProfile__RenderFunc(props: {
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox___0RpmT)}
                 key={currentIndex}
+                onClick={args.shop2}
                 style={(() => {
                   try {
                     return {

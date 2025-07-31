@@ -299,34 +299,7 @@ function PlasmicChatPage__RenderFunc(props: {
         path: "chats",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
-          {
-            id: 24370125,
-            message:
-              "\u0633\u0644\u0627\u0645 \u062e\u0648\u0628\u06cc\u061f \u062a\u0646\u0647\u0627\u06cc\u06cc\u061f \u0645\u06cc\u0634\u0647 \u0628\u06cc\u0634\u062a\u0631 \u0627\u0634\u0646\u0627 \u0628\u0634\u06cc\u0645\u061f \u0686\u0646\u062f \u0633\u0627\u0644\u062a\u0647\u061f",
-            sessionID: 13868800,
-            senderID: 1268533,
-            date: "2025-07-31",
-            timestamp: "2025-07-31 07:22:35",
-            isEdit: 0,
-            isDelete: 0,
-            timestamp_fa: "1404\u066b5\u066b9 07:22:35",
-            self: true
-          },
-          {
-            id: 24370125,
-            message:
-              "\u0633\u0644\u0627\u0645 \u062e\u0648\u0628\u06cc\u061f \u062a\u0646\u0647\u0627\u06cc\u06cc\u061f \u0645\u06cc\u0634\u0647 \u0628\u06cc\u0634\u062a\u0631 \u0627\u0634\u0646\u0627 \u0628\u0634\u06cc\u0645\u061f \u0686\u0646\u062f \u0633\u0627\u0644\u062a\u0647\u061f",
-            sessionID: 13868800,
-            senderID: 1268533,
-            date: "2025-07-31",
-            timestamp: "2025-07-31 07:22:35",
-            isEdit: 0,
-            isDelete: 0,
-            timestamp_fa: "1404\u066b5\u066b9 07:22:35",
-            self: false
-          }
-        ]
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
         path: "button.load",
