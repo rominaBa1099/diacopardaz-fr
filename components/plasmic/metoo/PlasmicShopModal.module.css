@@ -129,30 +129,15 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(0deg, #ce9fff 0%, #56b9ff 100%);
   border-top-right-radius: var(--token-WLaKK_tuDD6k);
   border-top-left-radius: var(--token-WLaKK_tuDD6k);
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
+  row-gap: var(--token-x0W5E5oV4ZKj);
   min-width: 0;
   padding: 3rem var(--token-x0W5E5oV4ZKj);
-}
-.freeBox__wo973 > :global(.__wab_flex-container) {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-width: 0;
-  margin-top: calc(0px - var(--token-x0W5E5oV4ZKj));
-  height: calc(100% + var(--token-x0W5E5oV4ZKj));
-}
-.freeBox__wo973 > :global(.__wab_flex-container) > *,
-.freeBox__wo973 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__wo973 > :global(.__wab_flex-container) > picture > img,
-.freeBox__wo973
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: var(--token-x0W5E5oV4ZKj);
 }
 .metoLabel:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;

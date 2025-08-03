@@ -182,13 +182,11 @@ function PlasmicSettingItem__RenderFunc(props: {
   });
 
   return (
-    <Stack__
-      as={"div"}
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -199,11 +197,6 @@ function PlasmicSettingItem__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
         {
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [projectcss.global_theme_light]: hasVariant(
             globalVariants,
             "theme",
@@ -294,9 +287,7 @@ function PlasmicSettingItem__RenderFunc(props: {
           </div>
         </MetoLabel>
       </div>
-      <Stack__
-        as={"div"}
-        hasGap={true}
+      <div
         className={classNames(projectcss.all, sty.freeBox__m7Ha7, {
           [sty.freeBoxtype_button__m7Ha7GUbtP]: hasVariant(
             $state,
@@ -351,7 +342,7 @@ function PlasmicSettingItem__RenderFunc(props: {
           })}
           role={"img"}
         />
-      </Stack__>
+      </div>
       {(hasVariant($state, "type", "hr") ? true : false) ? (
         <Embed
           data-plasmic-name={"embedHtml"}
@@ -362,7 +353,7 @@ function PlasmicSettingItem__RenderFunc(props: {
           code={"<hr></hr>"}
         />
       ) : null}
-    </Stack__>
+    </div>
   ) as React.ReactElement | null;
 }
 

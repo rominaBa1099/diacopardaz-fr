@@ -367,11 +367,6 @@ function PlasmicTextField__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rooticonEnd]: hasVariant($state, "iconEnd", "iconEnd"),
           [sty.rooticonStart]: hasVariant($state, "iconStart", "iconStart"),
           [sty.rooticonStart_iconEnd]:

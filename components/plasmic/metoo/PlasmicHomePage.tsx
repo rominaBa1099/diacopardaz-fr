@@ -2496,11 +2496,6 @@ function PlasmicHomePage__RenderFunc(props: {
                 "theme",
                 "light"
               ),
-              [projectcss.global_theme_light]: hasVariant(
-                globalVariants,
-                "theme",
-                "light"
-              ),
               [sty.rootchatViow]: hasVariant($state, "chatViow", "chatViow"),
               [sty.rootchatViow_show_main]:
                 hasVariant($state, "chatViow", "chatViow") &&
@@ -2580,11 +2575,9 @@ function PlasmicHomePage__RenderFunc(props: {
             reverse={false}
             triggerOnce={true}
           >
-            <Stack__
-              as={"div"}
+            <div
               data-plasmic-name={"login1"}
               data-plasmic-override={overrides.login1}
-              hasGap={true}
               className={classNames(projectcss.all, sty.login1, {
                 [sty.login1editPage]: hasVariant(
                   $state,
@@ -2595,9 +2588,7 @@ function PlasmicHomePage__RenderFunc(props: {
                 [sty.login1show_slide2]: hasVariant($state, "show", "slide2")
               })}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__ziXm, {
                   [sty.freeBoxshow_slide2__ziXmtKbpy]: hasVariant(
                     $state,
@@ -2606,11 +2597,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   )
                 })}
               >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__rv2Cr)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__rv2Cr)}>
                   <PlasmicImg__
                     alt={""}
                     className={classNames(sty.img__cg7Zk, {
@@ -2779,12 +2766,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       />
                     ) : null}
                   </div>
-                </Stack__>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__cVItL)}
-                >
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__cVItL)}>
                   <MetoLabel
                     className={classNames(
                       "__wab_instance",
@@ -2850,10 +2833,8 @@ function PlasmicHomePage__RenderFunc(props: {
                     }
                     value={generateStateValueProp($state, ["name", "value"])}
                   />
-                </Stack__>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                </div>
+                <div
                   className={classNames(projectcss.all, sty.freeBox__aCzYm, {
                     [sty.freeBoxeditPage__aCzYmcCwlh]: hasVariant(
                       $state,
@@ -2957,10 +2938,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       "value"
                     ])}
                   />
-                </Stack__>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                </div>
+                <div
                   className={classNames(projectcss.all, sty.freeBox__yoP3V, {
                     [sty.freeBoxeditPage__yoP3VCCwlh]: hasVariant(
                       $state,
@@ -3040,8 +3019,8 @@ function PlasmicHomePage__RenderFunc(props: {
                     }
                     value={generateStateValueProp($state, ["gender3", "value"])}
                   />
-                </Stack__>
-              </Stack__>
+                </div>
+              </div>
               <MetoButton
                 className={classNames("__wab_instance", sty.metoButton__nSdCs, {
                   [sty.metoButtoneditPage__nSdCscCwlh]: hasVariant(
@@ -3173,7 +3152,7 @@ function PlasmicHomePage__RenderFunc(props: {
                 }}
                 size={"extraLarge"}
               />
-            </Stack__>
+            </div>
           </Reveal>
           <Reveal
             data-plasmic-name={"slide2"}
@@ -3207,11 +3186,9 @@ function PlasmicHomePage__RenderFunc(props: {
             reverse={false}
             triggerOnce={true}
           >
-            <Stack__
-              as={"div"}
+            <div
               data-plasmic-name={"login12"}
               data-plasmic-override={overrides.login12}
-              hasGap={true}
               className={classNames(projectcss.all, sty.login12, {
                 [sty.login12editPage]: hasVariant(
                   $state,
@@ -3222,9 +3199,7 @@ function PlasmicHomePage__RenderFunc(props: {
                 [sty.login12show_slide2]: hasVariant($state, "show", "slide2")
               })}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__iyZa5, {
                   [sty.freeBoxeditPage__iyZa5CCwlh]: hasVariant(
                     $state,
@@ -3238,9 +3213,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   )
                 })}
               >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__i8I6H, {
                     [sty.freeBoxeditPage__i8I6HCCwlh]: hasVariant(
                       $state,
@@ -3580,10 +3553,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       "select"
                     ])}
                   />
-                </Stack__>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                </div>
+                <div
                   className={classNames(projectcss.all, sty.freeBox__icxYp, {
                     [sty.freeBoxeditPage__icxYpCCwlh]: hasVariant(
                       $state,
@@ -3829,10 +3800,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       "select"
                     ])}
                   />
-                </Stack__>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                </div>
+                <div
                   className={classNames(projectcss.all, sty.freeBox___8Fs5V, {
                     [sty.freeBoxeditPage___8Fs5VCCwlh]: hasVariant(
                       $state,
@@ -3934,11 +3903,9 @@ function PlasmicHomePage__RenderFunc(props: {
                     }
                     value={generateStateValueProp($state, ["addres", "value"])}
                   />
-                </Stack__>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+                </div>
+              </div>
+              <div
                 className={classNames(projectcss.all, sty.freeBox__kSqlc, {
                   [sty.freeBoxeditPage__kSqlcCCwlh]: hasVariant(
                     $state,
@@ -4395,8 +4362,8 @@ function PlasmicHomePage__RenderFunc(props: {
                   }}
                   size={"extraLarge"}
                 />
-              </Stack__>
-            </Stack__>
+              </div>
+            </div>
             <BackHandler
               active={
                 hasVariant($state, "selectImage2", "selectImage2") &&
@@ -4607,9 +4574,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   </MetoLabel>
                 </MetoHeader>
               </section>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__wmXTq, {
                   [sty.freeBoxselectImage2__wmXTqbApSq]: hasVariant(
                     $state,
@@ -4790,9 +4755,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         })()
                       : true
                   ) ? (
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(
                         projectcss.all,
                         sty.freeBox___4X9FF,
@@ -5158,7 +5121,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             : "extraLarge"
                         }
                       />
-                    </Stack__>
+                    </div>
                   ) : null}
                 </div>
                 <div
@@ -5235,7 +5198,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       : '<input type="file" id="fileInput" accept="image/*" hidden>\r\n<script>\r\nconst fileInput = document.getElementById(\'fileInput\');\r\nconst image = document.getElementById(\'image\');\r\n\r\nlet imageUrl = null;\r\nlet formData = new FormData();\r\n\r\nfileInput.addEventListener(\'change\', () => {\r\n  const file = fileInput.files[0];\r\n  if (file) {\r\n    // \u0622\u0632\u0627\u062f \u06a9\u0631\u062f\u0646 URL \u0642\u0628\u0644\u06cc \u0627\u06af\u0631 \u0648\u062c\u0648\u062f \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u0647\r\n    if (imageUrl) {\r\n      URL.revokeObjectURL(imageUrl);\r\n    }\r\n    imageUrl = URL.createObjectURL(file);\r\n    image.click();\r\n    formData.append("file", file); // \u0641\u0627\u06cc\u0644\r\n    formData.append("path", "metoo/"); // \u0645\u0633\u06cc\u0631 \u062f\u0644\u062e\u0648\u0627\u0647 \u06a9\u0647 \u0628\u0647 \u0633\u0631\u0648\u0631 \u0645\u06cc\u200c\u0641\u0631\u0633\u062a\u06cc\r\n  }\r\n});\r\n</script>\r\n'
                   }
                 />
-              </Stack__>
+              </div>
             </div>
             <BackHandler
               active={
@@ -5895,9 +5858,7 @@ function PlasmicHomePage__RenderFunc(props: {
               }}
             />
 
-            <Stack__
-              as={"div"}
-              hasGap={true}
+            <div
               className={classNames(projectcss.all, sty.freeBox___3NQos, {
                 [sty.freeBoxeditPage___3NQoscCwlh]: hasVariant(
                   $state,
@@ -5922,9 +5883,7 @@ function PlasmicHomePage__RenderFunc(props: {
                 )
               })}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__hmaDf, {
                   [sty.freeBoxeditPage__hmaDfCCwlh]: hasVariant(
                     $state,
@@ -6127,10 +6086,8 @@ function PlasmicHomePage__RenderFunc(props: {
                     }
                   />
                 </div>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              </div>
+              <div
                 className={classNames(projectcss.all, sty.freeBox__kcKv, {
                   [sty.freeBoxeditPage__kcKvCCwlh]: hasVariant(
                     $state,
@@ -6213,10 +6170,8 @@ function PlasmicHomePage__RenderFunc(props: {
                   }
                   value={generateStateValueProp($state, ["editName", "value"])}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              </div>
+              <div
                 className={classNames(projectcss.all, sty.freeBox__mApR, {
                   [sty.freeBoxeditPage__mApRcCwlh]: hasVariant(
                     $state,
@@ -6302,12 +6257,8 @@ function PlasmicHomePage__RenderFunc(props: {
                   }
                   value={generateStateValueProp($state, ["bio", "value"])}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__nbkQt)}
-              >
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__nbkQt)}>
                 <MetoLabel
                   className={classNames(
                     "__wab_instance",
@@ -6420,12 +6371,8 @@ function PlasmicHomePage__RenderFunc(props: {
                   readOnly={true}
                   value={generateStateValueProp($state, ["birthday3", "value"])}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__mEjcJ)}
-              >
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__mEjcJ)}>
                 <MetoLabel
                   className={classNames(
                     "__wab_instance",
@@ -6514,10 +6461,8 @@ function PlasmicHomePage__RenderFunc(props: {
                     "value"
                   ])}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              </div>
+              <div
                 className={classNames(projectcss.all, sty.freeBox__gzaP8, {
                   [sty.freeBoxeditPage__gzaP8CCwlh]: hasVariant(
                     $state,
@@ -6849,10 +6794,8 @@ function PlasmicHomePage__RenderFunc(props: {
                     "select"
                   ])}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              </div>
+              <div
                 className={classNames(projectcss.all, sty.freeBox__z7PJt, {
                   [sty.freeBoxeditPage__z7PJtcCwlh]: hasVariant(
                     $state,
@@ -7104,10 +7047,8 @@ function PlasmicHomePage__RenderFunc(props: {
                     "select"
                   ])}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              </div>
+              <div
                 className={classNames(projectcss.all, sty.freeBox__kxYWm, {
                   [sty.freeBoxeditPage__kxYWmCCwlh]: hasVariant(
                     $state,
@@ -7213,10 +7154,8 @@ function PlasmicHomePage__RenderFunc(props: {
                   }
                   value={generateStateValueProp($state, ["addres2", "value"])}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              </div>
+              <div
                 className={classNames(projectcss.all, sty.freeBox__sGpJ, {
                   [sty.freeBoxeditPage__sGpJcCwlh]: hasVariant(
                     $state,
@@ -7618,8 +7557,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       : "extraLarge"
                   }
                 />
-              </Stack__>
-            </Stack__>
+              </div>
+            </div>
           </Reveal>
           {(
             hasVariant($state, "profile2", "profile2") &&
@@ -8936,9 +8875,7 @@ function PlasmicHomePage__RenderFunc(props: {
             data-plasmic-override={overrides.modal}
             background={"black"}
             body={
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__k1SxG, {
                   [sty.freeBoxshow_slide1__k1SxGcApvt]: hasVariant(
                     $state,
@@ -9271,7 +9208,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   }}
                   size={"extraLarge"}
                 />
-              </Stack__>
+              </div>
             }
             className={classNames("__wab_instance", sty.modal, {
               [sty.modalselectImage2]: hasVariant(
@@ -9825,11 +9762,7 @@ function PlasmicHomePage__RenderFunc(props: {
               data-plasmic-override={overrides.splash2}
               className={classNames(projectcss.all, sty.splash2)}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__xj2Sh)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__xj2Sh)}>
                 <PlasmicImg__
                   alt={""}
                   className={classNames(sty.img__nySsk)}
@@ -9878,12 +9811,8 @@ function PlasmicHomePage__RenderFunc(props: {
                     }
                   </div>
                 </MetoLabel>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__v6NUl)}
-              >
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__v6NUl)}>
                 <MetoLabel
                   className={classNames("__wab_instance", sty.metoLabel__n1TqB)}
                   size={"lg"}
@@ -9896,7 +9825,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   className={classNames(projectcss.all, sty.svg__wmPuT)}
                   role={"img"}
                 />
-              </Stack__>
+              </div>
             </div>
           ) : null}
           {(() => {
@@ -9917,11 +9846,7 @@ function PlasmicHomePage__RenderFunc(props: {
               data-plasmic-override={overrides.noNet}
               className={classNames(projectcss.all, sty.noNet)}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__s38XT)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__s38XT)}>
                 <LottieWrapper
                   data-plasmic-name={"lottie"}
                   data-plasmic-override={overrides.lottie}
@@ -11081,7 +11006,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   roundedFull={true}
                   size={"extraLarge"}
                 />
-              </Stack__>
+              </div>
             </div>
           ) : null}
         </div>

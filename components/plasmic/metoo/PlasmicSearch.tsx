@@ -562,11 +562,6 @@ function PlasmicSearch__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootpost]: hasVariant($state, "post", "post")
         }
       )}
@@ -583,16 +578,8 @@ function PlasmicSearch__RenderFunc(props: {
         reverse={false}
         triggerOnce={true}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__ycl8G)}
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__jhrvg)}
-          >
+        <div className={classNames(projectcss.all, sty.freeBox__ycl8G)}>
+          <div className={classNames(projectcss.all, sty.freeBox__jhrvg)}>
             <MetoLabel
               className={classNames("__wab_instance", sty.metoLabel__z20Oi)}
               size={"lg"}
@@ -634,12 +621,8 @@ function PlasmicSearch__RenderFunc(props: {
               style2={"_2Radio"}
               value={generateStateValueProp($state, ["sex", "value"])}
             />
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__nq9Ye)}
-          >
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__nq9Ye)}>
             <MetoLabel
               className={classNames("__wab_instance", sty.metoLabel__yJyUh)}
               size={"lg"}
@@ -687,12 +670,8 @@ function PlasmicSearch__RenderFunc(props: {
               ]}
               value={generateStateValueProp($state, ["age", "value"])}
             />
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__hT5TW)}
-          >
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__hT5TW)}>
             <MetoLabel
               className={classNames("__wab_instance", sty.metoLabel__lHQnV)}
               size={"lg"}
@@ -933,12 +912,8 @@ function PlasmicSearch__RenderFunc(props: {
               ])}
               select={generateStateValueProp($state, ["stateList", "select"])}
             />
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__z5FkN)}
-          >
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__z5FkN)}>
             <MetoLabel
               className={classNames("__wab_instance", sty.metoLabel__tQx6E)}
               size={"lg"}
@@ -1100,7 +1075,7 @@ function PlasmicSearch__RenderFunc(props: {
               ])}
               select={generateStateValueProp($state, ["cityList", "select"])}
             />
-          </Stack__>
+          </div>
           <section className={classNames(projectcss.all, sty.section__mvg4O)}>
             <MetoButton
               className={classNames("__wab_instance", sty.metoButton__zdqZz, {
@@ -1267,7 +1242,7 @@ function PlasmicSearch__RenderFunc(props: {
               size={"extraLarge"}
             />
           </section>
-        </Stack__>
+        </div>
       </Reveal>
       <section
         className={classNames(projectcss.all, sty.section__zZgKl, {
@@ -1352,9 +1327,7 @@ function PlasmicSearch__RenderFunc(props: {
         reverse={false}
         triggerOnce={true}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox__nYepY, {
             [sty.freeBoxpost__nYepYdxBzg]: hasVariant($state, "post", "post")
           })}
@@ -1461,7 +1434,7 @@ function PlasmicSearch__RenderFunc(props: {
                 : `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjEyNjg1MzMiLCJleHBpcmUiOjE3NTI1Njc3Mjd9.gfYr_i2s7WPRRXAOY10kp25hRWrtuchU2vxVrTEzHdN_ixVpPVW0jSP5M4hm7hu3FjiRhGaV-C4nALAs4BPL7g${undefined}`
             }
           />
-        </Stack__>
+        </div>
         <BackHandler
           data-plasmic-name={"backHandler"}
           data-plasmic-override={overrides.backHandler}

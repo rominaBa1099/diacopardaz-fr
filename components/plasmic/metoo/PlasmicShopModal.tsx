@@ -427,11 +427,6 @@ function PlasmicShopModal__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.dialogbackground_black]: hasVariant(
             $state,
             "background",
@@ -487,11 +482,6 @@ function PlasmicShopModal__RenderFunc(props: {
         plasmic_meto_deign_system_css.plasmic_tokens,
         plasmic_antd_5_hostless_css.plasmic_tokens,
         {
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [projectcss.global_theme_light]: hasVariant(
             globalVariants,
             "theme",
@@ -556,11 +546,6 @@ function PlasmicShopModal__RenderFunc(props: {
               globalVariants,
               "theme",
               "light"
-            ),
-            [projectcss.global_theme_light]: hasVariant(
-              globalVariants,
-              "theme",
-              "light"
             )
           }
         )}
@@ -599,9 +584,7 @@ function PlasmicShopModal__RenderFunc(props: {
               const currentItem = __plasmic_item_0;
               const currentIndex = __plasmic_idx_0;
               return (
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__wo973)}
                   key={currentIndex}
                   style={(() => {
@@ -673,7 +656,7 @@ function PlasmicShopModal__RenderFunc(props: {
                       })()}
                     </React.Fragment>
                   </div>
-                </Stack__>
+                </div>
               );
             })}
           </SwiperSlider>
@@ -935,7 +918,7 @@ function PlasmicShopModal__RenderFunc(props: {
                         const actionArgs = {
                           args: [
                             "POST",
-                            "https://api2.friendschat.ir/shop/buy",
+                            "https://api.friendschat.ir/shop/buy",
                             undefined,
                             (() => {
                               try {
@@ -943,7 +926,7 @@ function PlasmicShopModal__RenderFunc(props: {
                                   code: "",
                                   id: $state.select.id,
                                   gate: 0,
-                                  host: "https://apps.liom.app/login/",
+                                  redirectUrl: window.location.href,
                                   scheme: "meeto"
                                 };
                               } catch (e) {

@@ -522,11 +522,6 @@ function PlasmicMain__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootshow_chat]: hasVariant($state, "show", "chat"),
           [sty.rootshow_dating]: hasVariant($state, "show", "dating"),
           [sty.rootshow_profile]: hasVariant($state, "show", "profile"),

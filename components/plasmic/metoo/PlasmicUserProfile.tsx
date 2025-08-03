@@ -263,11 +263,6 @@ function PlasmicUserProfile__RenderFunc(props: {
             globalVariants,
             "theme",
             "light"
-          ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
           )
         }
       )}
@@ -312,11 +307,7 @@ function PlasmicUserProfile__RenderFunc(props: {
 
       <div className={classNames(projectcss.all, sty.freeBox___5CgfA)}>
         <div className={classNames(projectcss.all, sty.freeBox__bhizx)}>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__qrg7)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__qrg7)}>
             <MetoLabel
               data-plasmic-name={"metoLabel"}
               data-plasmic-override={overrides.metoLabel}
@@ -372,12 +363,8 @@ function PlasmicUserProfile__RenderFunc(props: {
                 }}
               />
             ) : null}
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__kEarw)}
-          >
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__kEarw)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -412,7 +399,7 @@ function PlasmicUserProfile__RenderFunc(props: {
                 "\u0628\u0631\u0627\u06cc \u062f\u06cc\u062f\u0646 \u0622\u062f\u0631\u0633 \u062f\u0642\u06cc\u0642 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u0627\u06a9\u0627\u0646\u062a \u0648\u06cc\u0698\u0647 \u062f\u0627\u0631\u06cc\u062f"
               }
             </div>
-          </Stack__>
+          </div>
         </div>
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__cVyIb)}>
@@ -449,11 +436,7 @@ function PlasmicUserProfile__RenderFunc(props: {
           }}
         />
       </div>
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__jtY97)}
-      >
+      <div className={classNames(projectcss.all, sty.freeBox__jtY97)}>
         {(() => {
           try {
             return $state.goToChat;
@@ -624,7 +607,7 @@ function PlasmicUserProfile__RenderFunc(props: {
           roundedFull={true}
           size={"large"}
         />
-      </Stack__>
+      </div>
       <section
         data-plasmic-name={"section"}
         data-plasmic-override={overrides.section}

@@ -356,11 +356,6 @@ function PlasmicTextInput__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootflat_bottom]: hasVariant($state, "flat", "bottom"),
           [sty.rootflat_left]: hasVariant($state, "flat", "left"),
           [sty.rootflat_right]: hasVariant($state, "flat", "right"),

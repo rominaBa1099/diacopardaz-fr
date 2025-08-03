@@ -195,11 +195,6 @@ function PlasmicSelect__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.roottype_soft]: hasVariant($state, "type", "soft")
         }
       )}

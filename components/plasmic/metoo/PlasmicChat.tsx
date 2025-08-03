@@ -292,18 +292,11 @@ function PlasmicChat__RenderFunc(props: {
             globalVariants,
             "theme",
             "light"
-          ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
           )
         }
       )}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
+      <div
         className={classNames(
           projectcss.all,
           sty.freeBox__ehHb1,
@@ -505,15 +498,13 @@ function PlasmicChat__RenderFunc(props: {
             );
           })();
         })}
-      </Stack__>
+      </div>
       <section
         data-plasmic-name={"section"}
         data-plasmic-override={overrides.section}
         className={classNames(projectcss.all, sty.section)}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(
             projectcss.all,
             sty.freeBox__zeizg,
@@ -676,7 +667,7 @@ function PlasmicChat__RenderFunc(props: {
               />
             );
           })}
-        </Stack__>
+        </div>
         {(() => {
           try {
             return $state.suggstionUser.loading;

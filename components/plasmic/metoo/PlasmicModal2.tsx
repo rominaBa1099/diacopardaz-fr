@@ -258,11 +258,6 @@ function PlasmicModal2__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.dialogbackground_black]: hasVariant(
             $state,
             "background",
@@ -327,11 +322,6 @@ function PlasmicModal2__RenderFunc(props: {
             globalVariants,
             "theme",
             "light"
-          ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
           )
         }
       )}
@@ -392,11 +382,6 @@ function PlasmicModal2__RenderFunc(props: {
               globalVariants,
               "theme",
               "light"
-            ),
-            [projectcss.global_theme_light]: hasVariant(
-              globalVariants,
-              "theme",
-              "light"
             )
           }
         )}
@@ -425,9 +410,7 @@ function PlasmicModal2__RenderFunc(props: {
             )
           })}
         >
-          <Stack__
-            as={"div"}
-            hasGap={true}
+          <div
             className={classNames(projectcss.all, sty.freeBox__qR9GB, {
               [sty.freeBoxbackground_dark_fullScreen__qR9GBRUBf9RW]:
                 hasVariant($state, "background", "dark") &&
@@ -461,7 +444,7 @@ function PlasmicModal2__RenderFunc(props: {
                 })}
               </h5>
             </DialogTitle>
-          </Stack__>
+          </div>
           <div
             className={classNames(projectcss.all, sty.freeBox___7X1Zx, {
               [sty.freeBoxbackground_dark_fullScreen___7X1ZxRUBf9RW]:

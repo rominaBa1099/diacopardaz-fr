@@ -170,13 +170,11 @@ function PlasmicHeaderItem__RenderFunc(props: {
   });
 
   return (
-    <Stack__
-      as={"div"}
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -187,11 +185,6 @@ function PlasmicHeaderItem__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
         {
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [projectcss.global_theme_light]: hasVariant(
             globalVariants,
             "theme",
@@ -285,7 +278,7 @@ function PlasmicHeaderItem__RenderFunc(props: {
           </React.Fragment>
         </div>
       </MetoLabel>
-    </Stack__>
+    </div>
   ) as React.ReactElement | null;
 }
 

@@ -4,49 +4,18 @@
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  min-width: 0;
-  padding: var(--token-x0W5E5oV4ZKj);
-}
-.root > :global(.__wab_flex-container) {
-  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  row-gap: var(--token-sSm8kn4qtmC9);
   min-width: 0;
-  margin-top: calc(0px - var(--token-sSm8kn4qtmC9));
-  height: calc(100% + var(--token-sSm8kn4qtmC9));
-}
-.root > :global(.__wab_flex-container) > *,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.root > :global(.__wab_flex-container) > picture > img,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
-  margin-top: var(--token-sSm8kn4qtmC9);
+  padding: var(--token-x0W5E5oV4ZKj);
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .root {
     display: flex;
     flex-direction: column;
-  }
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .root > :global(.__wab_flex-container) {
-    flex-direction: column;
-    margin-left: calc(0px - 0px);
-    width: calc(100% + 0px);
-    margin-top: calc(0px - var(--token-x0W5E5oV4ZKj));
-    height: calc(100% + var(--token-x0W5E5oV4ZKj));
-  }
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .root > :global(.__wab_flex-container) > *,
-  .root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-  .root > :global(.__wab_flex-container) > picture > img,
-  .root
-    > :global(.__wab_flex-container)
-    > :global(.__wab_slot)
-    > picture
-    > img {
-    margin-left: 0px;
-    margin-top: var(--token-x0W5E5oV4ZKj);
+    row-gap: var(--token-x0W5E5oV4ZKj);
+    column-gap: 0px;
   }
 }
 .section__miNh {
@@ -110,26 +79,11 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  min-width: 0;
-  padding: 8px;
-}
-.freeBox__lPotF > :global(.__wab_flex-container) {
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 16px;
   min-width: 0;
-  margin-top: calc(0px - 16px);
-  height: calc(100% + 16px);
-}
-.freeBox__lPotF > :global(.__wab_flex-container) > *,
-.freeBox__lPotF > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__lPotF > :global(.__wab_flex-container) > picture > img,
-.freeBox__lPotF
-  > :global(.__wab_flex-container)
-  > :global(.__wab_slot)
-  > picture
-  > img {
-  margin-top: 16px;
+  padding: 8px;
 }
 .freeBox___9CQu {
   display: flex;

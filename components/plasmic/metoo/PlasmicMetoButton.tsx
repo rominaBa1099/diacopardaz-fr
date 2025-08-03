@@ -361,11 +361,6 @@ function PlasmicMetoButton__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootcolor_errorDestructive]: hasVariant(
             $state,
             "color",
@@ -600,9 +595,7 @@ function PlasmicMetoButton__RenderFunc(props: {
         }
       />
 
-      <Stack__
-        as={"div"}
-        hasGap={true}
+      <div
         className={classNames(projectcss.all, sty.freeBox__ipt1Z, {
           [sty.freeBoxcolor_neutral__ipt1ZaxULs]: hasVariant(
             $state,
@@ -1043,7 +1036,7 @@ function PlasmicMetoButton__RenderFunc(props: {
           })}
           role={"img"}
         />
-      </Stack__>
+      </div>
     </BaseButton>
   ) as React.ReactElement | null;
 }

@@ -225,11 +225,6 @@ function PlasmicRadioGrop__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootcolor_grey]: hasVariant($state, "color", "grey"),
           [sty.rootcolor_grey_selected]:
             hasVariant($state, "color", "grey") &&

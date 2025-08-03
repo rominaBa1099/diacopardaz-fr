@@ -249,11 +249,6 @@ function PlasmicMetoMultilineTextInput__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootendIcon]: hasVariant($state, "endIcon", "endIcon"),
           [sty.rootstartIcon]: hasVariant($state, "startIcon", "startIcon"),
           [sty.rootstartIcon_endIcon]:
