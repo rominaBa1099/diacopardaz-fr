@@ -222,11 +222,6 @@ function PlasmicPost__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootprofile]: hasVariant($state, "profile", "profile")
         }
       )}
@@ -315,9 +310,7 @@ function PlasmicPost__RenderFunc(props: {
             <React.Fragment>
               <div className={classNames(projectcss.all, sty.freeBox__an3Er)}>
                 <div className={classNames(projectcss.all, sty.freeBox__q6Ge)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__bdban)}
                   >
                     <MetoLabel
@@ -345,7 +338,7 @@ function PlasmicPost__RenderFunc(props: {
                         aspectRatio: 1.00101
                       }}
                     />
-                  </Stack__>
+                  </div>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -368,11 +361,7 @@ function PlasmicPost__RenderFunc(props: {
                   </div>
                 </div>
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__vRmAb)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__vRmAb)}>
                 <MetoButton
                   className={classNames(
                     "__wab_instance",
@@ -437,7 +426,7 @@ function PlasmicPost__RenderFunc(props: {
                   roundedFull={true}
                   size={"large"}
                 />
-              </Stack__>
+              </div>
             </React.Fragment>
           ),
           value: args.children

@@ -164,11 +164,6 @@ function PlasmicRadio__RenderFunc(props: {
             globalVariants,
             "theme",
             "light"
-          ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
           )
         }
       )}

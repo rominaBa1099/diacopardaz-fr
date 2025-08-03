@@ -305,13 +305,11 @@ function PlasmicDating__RenderFunc(props: {
   });
 
   return (
-    <Stack__
-      as={"div"}
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -323,11 +321,6 @@ function PlasmicDating__RenderFunc(props: {
         sty.root,
         "your-scroll-box",
         {
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [projectcss.global_theme_light]: hasVariant(
             globalVariants,
             "theme",
@@ -604,11 +597,7 @@ function PlasmicDating__RenderFunc(props: {
         data-plasmic-override={overrides.modal2}
         background={"dark"}
         body={
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__lPotF)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__lPotF)}>
             <div className={classNames(projectcss.all, sty.freeBox___9CQu)}>
               <div
                 className={classNames(
@@ -813,7 +802,7 @@ function PlasmicDating__RenderFunc(props: {
                 "value"
               ])}
             />
-          </Stack__>
+          </div>
         }
         className={classNames("__wab_instance", sty.modal2)}
         fullScreen={true}
@@ -919,7 +908,7 @@ function PlasmicDating__RenderFunc(props: {
           </div>
         </section>
       ) : null}
-    </Stack__>
+    </div>
   ) as React.ReactElement | null;
 }
 

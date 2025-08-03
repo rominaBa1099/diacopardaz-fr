@@ -235,11 +235,6 @@ function PlasmicList__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootopen]: hasVariant($state, "open", "open")
         }
       )}

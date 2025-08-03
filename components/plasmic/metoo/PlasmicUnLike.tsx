@@ -223,11 +223,6 @@ function PlasmicUnLike__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootunLike]: hasVariant($state, "unLike", "unLike"),
           [sty.rootwarning]: hasVariant($state, "warning", "warning")
         }

@@ -1,6 +1,8 @@
 .root {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 150px;
   max-width: 100%;
@@ -9,26 +11,13 @@
   transition-property: all;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
+  row-gap: var(--token-4Rjw4-JlxIrC);
   min-width: 0;
   -webkit-transition-property: all;
   -webkit-transition-timing-function: ease-in-out;
   -webkit-transition-duration: 0.2s;
   padding: 8px;
   border: 0px solid var(--token-b4b-6VMDx4HQ);
-}
-.root > :global(.__wab_flex-container) {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  margin-top: calc(0px - var(--token-4Rjw4-JlxIrC));
-  height: calc(100% + var(--token-4Rjw4-JlxIrC));
-}
-.root > :global(.__wab_flex-container) > *,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.root > :global(.__wab_flex-container) > picture > img,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
-  margin-top: var(--token-4Rjw4-JlxIrC);
 }
 .rootselect {
   background: none;
@@ -73,7 +62,7 @@
   height: auto;
   max-width: 100%;
   left: 0;
-  top: -30px;
+  top: -15px;
   right: 0;
   display: none;
   padding: 0px;

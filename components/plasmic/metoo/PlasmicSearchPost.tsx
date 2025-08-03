@@ -66,7 +66,6 @@ import MetoButton from "../../MetoButton"; // plasmic-import: BFnTlSYwdY0-/compo
 import Like from "../../Like"; // plasmic-import: tXJMudG_KgDC/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: mSKar170aYTo/codeComponent
 
-import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
 import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -294,18 +293,15 @@ function PlasmicSearchPost__RenderFunc(props: {
   });
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsmqI86KQCt1(),
     theme: useTheme()
   });
 
   return (
-    <Stack__
-      as={"div"}
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -317,11 +313,6 @@ function PlasmicSearchPost__RenderFunc(props: {
         sty.root,
         "your-scroll-box",
         {
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [projectcss.global_theme_light]: hasVariant(
             globalVariants,
             "theme",
@@ -382,11 +373,7 @@ function PlasmicSearchPost__RenderFunc(props: {
         }
       })()}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__ox0W)}
-      >
+      <div className={classNames(projectcss.all, sty.freeBox__ox0W)}>
         <Reveal
           data-plasmic-name={"reveal"}
           data-plasmic-override={overrides.reveal}
@@ -579,9 +566,7 @@ function PlasmicSearchPost__RenderFunc(props: {
                           sty.freeBox__kpDgr
                         )}
                       >
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__voDoo
@@ -646,7 +631,7 @@ function PlasmicSearchPost__RenderFunc(props: {
                               }}
                             />
                           ) : null}
-                        </Stack__>
+                        </div>
                         <div
                           className={classNames(
                             projectcss.all,
@@ -713,9 +698,7 @@ function PlasmicSearchPost__RenderFunc(props: {
                       </div>
                     ) : null}
                   </div>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox___0KjgZ)}
                   >
                     <MetoButton
@@ -1067,13 +1050,13 @@ function PlasmicSearchPost__RenderFunc(props: {
                       roundedFull={true}
                       size={"large"}
                     />
-                  </Stack__>
+                  </div>
                 </Post>
               );
             })();
           })}
         </Reveal>
-      </Stack__>
+      </div>
       <ApiRequest
         data-plasmic-name={"suggstionUser"}
         data-plasmic-override={overrides.suggstionUser}
@@ -1291,7 +1274,7 @@ function PlasmicSearchPost__RenderFunc(props: {
           </div>
         </section>
       ) : null}
-    </Stack__>
+    </div>
   ) as React.ReactElement | null;
 }
 

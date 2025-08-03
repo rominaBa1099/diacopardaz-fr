@@ -204,11 +204,6 @@ function PlasmicCombobox__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.roottype_plain]: hasVariant($state, "type", "plain"),
           [sty.roottype_soft]: hasVariant($state, "type", "soft")
         }

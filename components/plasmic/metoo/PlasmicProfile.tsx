@@ -249,25 +249,12 @@ function PlasmicProfile__RenderFunc(props: {
             globalVariants,
             "theme",
             "light"
-          ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
           )
         }
       )}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox___6O20D)}
-      >
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__hpprH)}
-        >
+      <div className={classNames(projectcss.all, sty.freeBox___6O20D)}>
+        <div className={classNames(projectcss.all, sty.freeBox__hpprH)}>
           <PlasmicImg__
             data-plasmic-name={"img"}
             data-plasmic-override={overrides.img}
@@ -388,7 +375,7 @@ function PlasmicProfile__RenderFunc(props: {
               </div>
             </div>
           </div>
-        </Stack__>
+        </div>
         <MetoButton
           data-plasmic-name={"metoButton"}
           data-plasmic-override={overrides.metoButton}
@@ -410,7 +397,7 @@ function PlasmicProfile__RenderFunc(props: {
           onClick={args.onClick}
           size={"extraLarge"}
         />
-      </Stack__>
+      </div>
       <section
         data-plasmic-name={"section"}
         data-plasmic-override={overrides.section}
@@ -449,9 +436,7 @@ function PlasmicProfile__RenderFunc(props: {
             const currentItem = __plasmic_item_0;
             const currentIndex = __plasmic_idx_0;
             return (
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox___0RpmT)}
                 key={currentIndex}
                 onClick={args.shop2}
@@ -525,7 +510,7 @@ function PlasmicProfile__RenderFunc(props: {
                     })()}
                   </React.Fragment>
                 </div>
-              </Stack__>
+              </div>
             );
           })}
         </SwiperSlider>

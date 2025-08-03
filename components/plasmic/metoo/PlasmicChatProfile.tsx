@@ -298,13 +298,11 @@ function PlasmicChatProfile__RenderFunc(props: {
   });
 
   return (
-    <Stack__
-      as={"div"}
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -315,11 +313,6 @@ function PlasmicChatProfile__RenderFunc(props: {
         plasmic_antd_5_hostless_css.plasmic_tokens,
         sty.root,
         {
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [projectcss.global_theme_light]: hasVariant(
             globalVariants,
             "theme",
@@ -378,11 +371,7 @@ function PlasmicChatProfile__RenderFunc(props: {
 
       <div className={classNames(projectcss.all, sty.freeBox__tde2L)}>
         <div className={classNames(projectcss.all, sty.freeBox__um1Ck)}>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__s8Zop)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__s8Zop)}>
             <MetoLabel
               data-plasmic-name={"metoLabel"}
               data-plasmic-override={overrides.metoLabel}
@@ -437,7 +426,7 @@ function PlasmicChatProfile__RenderFunc(props: {
                 }}
               />
             ) : null}
-          </Stack__>
+          </div>
           <UploudeTime
             data-plasmic-name={"uploudeTime"}
             data-plasmic-override={overrides.uploudeTime}
@@ -507,7 +496,7 @@ function PlasmicChatProfile__RenderFunc(props: {
           className={classNames(projectcss.all, sty.freeBox___4Lxo, "shimmer")}
         />
       ) : null}
-    </Stack__>
+    </div>
   ) as React.ReactElement | null;
 }
 

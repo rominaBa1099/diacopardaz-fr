@@ -374,20 +374,11 @@ function PlasmicSetting__RenderFunc(props: {
             globalVariants,
             "theme",
             "light"
-          ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
           )
         }
       )}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__jfKtD)}
-      >
+      <div className={classNames(projectcss.all, sty.freeBox__jfKtD)}>
         <div className={classNames(projectcss.all, sty.freeBox__dja2R)}>
           <MetoLabel
             className={classNames("__wab_instance", sty.metoLabel__eykT)}
@@ -557,7 +548,7 @@ function PlasmicSetting__RenderFunc(props: {
             />
           );
         })}
-      </Stack__>
+      </div>
     </div>
   ) as React.ReactElement | null;
 }

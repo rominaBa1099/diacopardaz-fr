@@ -208,13 +208,11 @@ function PlasmicMetoHeader__RenderFunc(props: {
   });
 
   return (
-    <Stack__
-      as={"div"}
+    <div
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.root_reset,
@@ -230,11 +228,6 @@ function PlasmicMetoHeader__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootchat]: hasVariant($state, "chat", "chat"),
           [sty.rootchat_profile]:
             hasVariant($state, "chat", "chat") &&
@@ -243,9 +236,7 @@ function PlasmicMetoHeader__RenderFunc(props: {
         }
       )}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
+      <div
         className={classNames(projectcss.all, sty.freeBox___4K8Uy, {
           [sty.freeBoxchat___4K8UyCahcx]: hasVariant($state, "chat", "chat")
         })}
@@ -263,9 +254,7 @@ function PlasmicMetoHeader__RenderFunc(props: {
           role={"img"}
         />
 
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox__msYF, {
             [sty.freeBoxchat__msYFCahcx]: hasVariant($state, "chat", "chat"),
             [sty.freeBoxchat_profile__msYFCahcxXbHW]:
@@ -318,7 +307,7 @@ function PlasmicMetoHeader__RenderFunc(props: {
               }
             })()}
           />
-        </Stack__>
+        </div>
         {renderPlasmicSlot({
           defaultContents: (
             <MetoLabel
@@ -329,7 +318,7 @@ function PlasmicMetoHeader__RenderFunc(props: {
 
           value: args.children
         })}
-      </Stack__>
+      </div>
       <AntdPopover
         data-plasmic-name={"popover"}
         data-plasmic-override={overrides.popover}
@@ -346,9 +335,7 @@ function PlasmicMetoHeader__RenderFunc(props: {
             : undefined
         }
         content={
-          <Stack__
-            as={"div"}
-            hasGap={true}
+          <div
             className={classNames(projectcss.all, sty.freeBox__rKxIh, {
               [sty.freeBoxchat__rKxIhCahcx]: hasVariant($state, "chat", "chat")
             })}
@@ -537,7 +524,7 @@ function PlasmicMetoHeader__RenderFunc(props: {
                 }
               />
             ) : null}
-          </Stack__>
+          </div>
         }
         contentText={"Popover contents"}
         defaultOpen={hasVariant($state, "chat", "chat") ? false : false}
@@ -549,11 +536,6 @@ function PlasmicMetoHeader__RenderFunc(props: {
           plasmic_meto_deign_system_css.plasmic_tokens,
           plasmic_antd_5_hostless_css.plasmic_tokens,
           {
-            [projectcss.global_theme_light]: hasVariant(
-              globalVariants,
-              "theme",
-              "light"
-            ),
             [projectcss.global_theme_light]: hasVariant(
               globalVariants,
               "theme",
@@ -585,7 +567,7 @@ function PlasmicMetoHeader__RenderFunc(props: {
           />
         ) : null}
       </AntdPopover>
-    </Stack__>
+    </div>
   ) as React.ReactElement | null;
 }
 

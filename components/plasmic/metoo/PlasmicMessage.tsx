@@ -315,11 +315,6 @@ function PlasmicMessage__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootbot]: hasVariant($state, "bot", "bot"),
           [sty.rootbot_endMessege]:
             hasVariant($state, "bot", "bot") &&
@@ -558,9 +553,7 @@ function PlasmicMessage__RenderFunc(props: {
               }
         }
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox___6Lcwn, {
             [sty.freeBoxliomAnswer___6LcwneKcc5]: hasVariant(
               $state,
@@ -601,7 +594,7 @@ function PlasmicMessage__RenderFunc(props: {
             })}
             role={"img"}
           />
-        </Stack__>
+        </div>
         <div
           className={classNames(
             projectcss.all,
@@ -826,9 +819,7 @@ function PlasmicMessage__RenderFunc(props: {
             {"Enter some text"}
           </div>
         </div>
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox__y39Wt, {
             [sty.freeBoxfeedback__y39Wt2OMMr]: hasVariant(
               $state,
@@ -943,7 +934,7 @@ function PlasmicMessage__RenderFunc(props: {
             onClick={args.copy}
             role={"img"}
           />
-        </Stack__>
+        </div>
       </div>
       {(() => {
         try {

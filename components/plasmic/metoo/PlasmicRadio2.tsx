@@ -197,11 +197,6 @@ function PlasmicRadio2__RenderFunc(props: {
             "theme",
             "light"
           ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootselect]: hasVariant($state, "select", "select"),
           [sty.rootstyle2_purple]: hasVariant($state, "style2", "purple"),
           [sty.rootstyle2_purple_select]:

@@ -456,11 +456,6 @@ function PlasmicChatPage__RenderFunc(props: {
             globalVariants,
             "theme",
             "light"
-          ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
           )
         }
       )}
@@ -1254,11 +1249,7 @@ function PlasmicChatPage__RenderFunc(props: {
           throw e;
         }
       })() ? (
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__jbiZu)}
-        >
+        <div className={classNames(projectcss.all, sty.freeBox__jbiZu)}>
           {(() => {
             try {
               return (
@@ -1276,11 +1267,7 @@ function PlasmicChatPage__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__ci3Te)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__ci3Te)}>
               <MetoLabel
                 className={classNames("__wab_instance", sty.metoLabel__v9Kg)}
                 size={"lg"}
@@ -1561,7 +1548,7 @@ function PlasmicChatPage__RenderFunc(props: {
                 }}
                 size={"extraLarge"}
               />
-            </Stack__>
+            </div>
           ) : null}
           {(() => {
             try {
@@ -1849,7 +1836,7 @@ function PlasmicChatPage__RenderFunc(props: {
               preview={true}
             />
           ) : null}
-        </Stack__>
+        </div>
       ) : null}
       <Modal2
         data-plasmic-name={"modal2"}
@@ -1864,11 +1851,7 @@ function PlasmicChatPage__RenderFunc(props: {
               code={"<hr></hr>"}
             />
 
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___196U6)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox___196U6)}>
               <AntdRadioGroup
                 data-plasmic-name={"radioGroup"}
                 data-plasmic-override={overrides.radioGroup}
@@ -2066,7 +2049,7 @@ function PlasmicChatPage__RenderFunc(props: {
                 }}
                 size={"extraLarge"}
               />
-            </Stack__>
+            </div>
           </React.Fragment>
         }
         className={classNames("__wab_instance", sty.modal2)}

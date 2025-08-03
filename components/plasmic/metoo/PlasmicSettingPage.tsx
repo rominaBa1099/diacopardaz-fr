@@ -213,11 +213,6 @@ function PlasmicSettingPage__RenderFunc(props: {
             globalVariants,
             "theme",
             "light"
-          ),
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
           )
         }
       )}
@@ -312,11 +307,7 @@ function PlasmicSettingPage__RenderFunc(props: {
           </MetoLabel>
         </MetoHeader>
       </section>
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox___6Seor)}
-      >
+      <div className={classNames(projectcss.all, sty.freeBox___6Seor)}>
         {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
           (() => {
             try {
@@ -382,7 +373,7 @@ function PlasmicSettingPage__RenderFunc(props: {
             </div>
           );
         })}
-      </Stack__>
+      </div>
     </div>
   ) as React.ReactElement | null;
 }
