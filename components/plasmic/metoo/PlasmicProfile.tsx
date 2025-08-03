@@ -305,25 +305,21 @@ function PlasmicProfile__RenderFunc(props: {
                   sty.text__d0Y0M
                 )}
               >
-                {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                  "\u0646\u0627\u0646\u0627\u0646\u062a\u0627\u0646\u0627\u0646\u062a\u0627\u062a\u0646\u0627"
-                ) : (
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return $props.userInfo.userInfo.name;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "\u0628\u0631\u0627\u06cc \u0628\u0631\u0642\u0631\u0627\u0631\u06cc \u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0647\u062a\u0631 \u0628\u0627 \u062f\u06cc\u06af\u0631\u0627\u0646 \u0644\u0637\u0641\u0627 \u0628\u0647\u062a\u0631\u06cc\u0646 \u0639\u06a9\u0633\u062a \u0631\u0648 \u0622\u067e\u0644\u0648\u062f \u06a9\u0646";
-                        }
-                        throw e;
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $props.userInfo.userInfo.name;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "\u0628\u0631\u0627\u06cc \u0628\u0631\u0642\u0631\u0627\u0631\u06cc \u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0647\u062a\u0631 \u0628\u0627 \u062f\u06cc\u06af\u0631\u0627\u0646 \u0644\u0637\u0641\u0627 \u0628\u0647\u062a\u0631\u06cc\u0646 \u0639\u06a9\u0633\u062a \u0631\u0648 \u0622\u067e\u0644\u0648\u062f \u06a9\u0646";
                       }
-                    })()}
-                  </React.Fragment>
-                )}
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
               </div>
             </MetoLabel>
             <div className={classNames(projectcss.all, sty.freeBox__fk3QF)}>
