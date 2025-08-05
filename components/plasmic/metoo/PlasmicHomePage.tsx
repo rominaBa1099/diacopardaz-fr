@@ -7340,9 +7340,29 @@ function PlasmicHomePage__RenderFunc(props: {
                           : "lg"
                       }
                     >
-                      {hasVariant($state, "selectImage2", "selectImage2")
-                        ? "\u062a\u0627\u06cc\u06cc\u062f \u06a9\u0631\u062f\u0646 \u0639\u06a9\u0633"
-                        : "\u062f\u062e\u06cc\u0631\u0647 \u062a\u063a\u06cc\u06cc\u0631\u0627\u062a"}
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___7Mr8L,
+                          {
+                            [sty.texteditPage___7Mr8LcCwlh]: hasVariant(
+                              $state,
+                              "editPage",
+                              "editPage"
+                            ),
+                            [sty.textselectImage2___7Mr8LbApSq]: hasVariant(
+                              $state,
+                              "selectImage2",
+                              "selectImage2"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "selectImage2", "selectImage2")
+                          ? "\u062a\u0627\u06cc\u06cc\u062f \u06a9\u0631\u062f\u0646 \u0639\u06a9\u0633"
+                          : "\u062f\u062e\u06cc\u0631\u0647 \u062a\u063a\u06cc\u06cc\u0631\u0627\u062a"}
+                      </div>
                     </MetoLabel>
                   }
                   load={generateStateValueProp($state, ["editProfile", "load"])}
