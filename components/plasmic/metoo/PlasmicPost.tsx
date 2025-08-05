@@ -319,8 +319,17 @@ function PlasmicPost__RenderFunc(props: {
                         sty.metoLabel__tFtoh
                       )}
                       size={"lg"}
-                    />
-
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__huIzb
+                        )}
+                      >
+                        {"Label"}
+                      </div>
+                    </MetoLabel>
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__eaSpv)}

@@ -101,7 +101,6 @@ export type PlasmicChatProfile__OverridesType = {
   img?: Flex__<typeof PlasmicImg__>;
   uploudeTime?: Flex__<typeof UploudeTime>;
   metoLineClamp?: Flex__<typeof MetoLineClamp>;
-  text?: Flex__<"div">;
 };
 
 export interface DefaultChatProfileProps {
@@ -377,21 +376,29 @@ function PlasmicChatProfile__RenderFunc(props: {
               data-plasmic-override={overrides.metoLabel}
               className={classNames("__wab_instance", sty.metoLabel)}
             >
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return $props.currentItem.user.name;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "Label";
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__p39O
+                )}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $props.currentItem.user.name;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "Label";
+                      }
+                      throw e;
                     }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
+                  })()}
+                </React.Fragment>
+              </div>
             </MetoLabel>
             {(() => {
               try {
@@ -453,12 +460,10 @@ function PlasmicChatProfile__RenderFunc(props: {
           className={classNames("__wab_instance", sty.metoLineClamp)}
         >
           <div
-            data-plasmic-name={"text"}
-            data-plasmic-override={overrides.text}
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text
+              sty.text___6Frkt
             )}
           >
             <React.Fragment>
@@ -507,15 +512,13 @@ const PlasmicDescendants = {
     "metoLabel",
     "img",
     "uploudeTime",
-    "metoLineClamp",
-    "text"
+    "metoLineClamp"
   ],
   metoAvatar: ["metoAvatar"],
   metoLabel: ["metoLabel"],
   img: ["img"],
   uploudeTime: ["uploudeTime"],
-  metoLineClamp: ["metoLineClamp", "text"],
-  text: ["text"]
+  metoLineClamp: ["metoLineClamp"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -527,7 +530,6 @@ type NodeDefaultElementType = {
   img: typeof PlasmicImg__;
   uploudeTime: typeof UploudeTime;
   metoLineClamp: typeof MetoLineClamp;
-  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -595,7 +597,6 @@ export const PlasmicChatProfile = Object.assign(
     img: makeNodeComponent("img"),
     uploudeTime: makeNodeComponent("uploudeTime"),
     metoLineClamp: makeNodeComponent("metoLineClamp"),
-    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicChatProfile
     internalVariantProps: PlasmicChatProfile__VariantProps,
