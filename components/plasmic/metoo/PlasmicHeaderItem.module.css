@@ -29,4 +29,6 @@
 .text {
   text-align: center;
   white-space: pre;
+  padding-bottom: 0px;
+  color: var(--token-xIHLtsKT6cI7);
 }

@@ -220,6 +220,9 @@
 .text__icCfI {
   text-align: right;
 }
+.textshow_slide1__icCfIcApvt {
+  color: var(--token-xIHLtsKT6cI7);
+}
 .metoButton__gwNjT:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
@@ -261,6 +264,9 @@
 .text__mgXy7 {
   padding-bottom: 0px;
 }
+.textshow_slide1__mgXy7CApvt {
+  color: var(--token-xIHLtsKT6cI7);
+}
 .name:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
   flex-shrink: 0;
@@ -288,6 +294,10 @@
   padding-bottom: 0px;
   text-align: right;
 }
+.textshow_slide1__hiBAcApvt {
+  padding-bottom: 0px;
+  color: var(--token-xIHLtsKT6cI7);
+}
 .birthday:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
   flex-shrink: 0;
@@ -314,6 +324,10 @@
 .text___676Lv {
   padding-bottom: 0px;
   text-align: right;
+}
+.textshow_slide1___676LVcApvt {
+  padding-bottom: 0px;
+  color: var(--token-xIHLtsKT6cI7);
 }
 .gender3:global(.__wab_instance) {
   max-width: 100%;
@@ -460,6 +474,10 @@
 .text___2Ac3Y {
   padding-bottom: 0px;
 }
+.textshow_slide2___2Ac3YtKbpy {
+  padding-bottom: 0px;
+  color: var(--token-xIHLtsKT6cI7);
+}
 .stateInput:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
   flex-shrink: 0;
@@ -511,6 +529,10 @@
   padding-bottom: 0px;
   text-align: right;
 }
+.textshow_slide2__iqiCtKbpy {
+  padding-bottom: 0px;
+  color: var(--token-xIHLtsKT6cI7);
+}
 .cityInput:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
   flex-shrink: 0;
@@ -558,6 +580,10 @@
 .text___8Pm00 {
   padding-bottom: 0px;
   text-align: right;
+}
+.textshow_slide2___8Pm00TKbpy {
+  padding-bottom: 0px;
+  color: var(--token-xIHLtsKT6cI7);
 }
 .addres:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
@@ -1842,12 +1868,14 @@
 .text__etito {
   font-size: 2rem;
   font-weight: 700;
+  color: var(--token-xIHLtsKT6cI7);
 }
 .metoLabel__n4QX:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
 }
 .text__k2FDk {
-  color: var(--token-NZ6RWKlEJd18);
+  color: var(--token-xIHLtsKT6cI7);
+  font-weight: 300;
 }
 .freeBox__v6NUl {
   display: flex;
@@ -1864,6 +1892,9 @@
 }
 .metoLabel__n1TqB:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
+}
+.text__vnQni {
+  color: var(--token-xIHLtsKT6cI7);
 }
 .svg__wmPuT {
   object-fit: cover;

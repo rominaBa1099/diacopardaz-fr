@@ -2887,7 +2887,14 @@ function PlasmicHomePage__RenderFunc(props: {
                   <MetoLabel
                     className={classNames(
                       "__wab_instance",
-                      sty.metoLabel__no6PQ
+                      sty.metoLabel__no6PQ,
+                      {
+                        [sty.metoLabelshow_slide1__no6PQcApvt]: hasVariant(
+                          $state,
+                          "show",
+                          "slide1"
+                        )
+                      }
                     )}
                     size={"lg"}
                   >
@@ -2895,7 +2902,14 @@ function PlasmicHomePage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__hiBa
+                        sty.text__hiBa,
+                        {
+                          [sty.textshow_slide1__hiBAcApvt]: hasVariant(
+                            $state,
+                            "show",
+                            "slide1"
+                          )
+                        }
                       )}
                     >
                       {
@@ -2997,7 +3011,14 @@ function PlasmicHomePage__RenderFunc(props: {
                   <MetoLabel
                     className={classNames(
                       "__wab_instance",
-                      sty.metoLabel___6CJMt
+                      sty.metoLabel___6CJMt,
+                      {
+                        [sty.metoLabelshow_slide1___6CJMtcApvt]: hasVariant(
+                          $state,
+                          "show",
+                          "slide1"
+                        )
+                      }
                     )}
                     size={"lg"}
                   >
@@ -3005,7 +3026,19 @@ function PlasmicHomePage__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text___676Lv
+                        sty.text___676Lv,
+                        {
+                          [sty.textshow_slide1___676LVcApvt]: hasVariant(
+                            $state,
+                            "show",
+                            "slide1"
+                          ),
+                          [sty.textshow_slide2___676LVtKbpy]: hasVariant(
+                            $state,
+                            "show",
+                            "slide2"
+                          )
+                        }
                       )}
                     >
                       {
@@ -3885,6 +3918,11 @@ function PlasmicHomePage__RenderFunc(props: {
                             $state,
                             "editPage",
                             "editPage"
+                          ),
+                          [sty.textshow_main___8Pm00Dtd1A]: hasVariant(
+                            $state,
+                            "show",
+                            "main"
                           ),
                           [sty.textshow_slide2___8Pm00TKbpy]: hasVariant(
                             $state,
@@ -9892,9 +9930,17 @@ function PlasmicHomePage__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.metoLabel__n1TqB)}
                   size={"lg"}
                 >
-                  {
-                    "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc ..."
-                  }
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__vnQni
+                    )}
+                  >
+                    {
+                      "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc ..."
+                    }
+                  </div>
                 </MetoLabel>
                 <Icon11Icon
                   className={classNames(projectcss.all, sty.svg__wmPuT)}

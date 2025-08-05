@@ -85,6 +85,9 @@
 .metoLabel__tFtoh:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
 }
+.text__huIzb {
+  color: var(--token-xIHLtsKT6cI7);
+}
 .img__eaSpv {
   object-fit: cover;
   max-width: 100%;
@@ -102,6 +105,7 @@
   max-width: 100%;
   color: var(--token-xIHLtsKT6cI7);
   text-align: right;
+  padding-bottom: 0px;
   min-width: 0;
 }
 .freeBox__xOio1 {

@@ -313,6 +313,10 @@
 .metoLabel__c8Bkj:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
 }
+.text__o1LE3 {
+  padding-bottom: 0px;
+  color: var(--token-xIHLtsKT6cI7);
+}
 .freeBox__jbiZu {
   display: flex;
   flex-direction: column;

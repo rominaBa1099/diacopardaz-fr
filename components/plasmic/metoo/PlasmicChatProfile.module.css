@@ -58,6 +58,10 @@
   max-width: 100%;
   align-self: center;
 }
+.text__p39O {
+  padding-bottom: 0px;
+  color: var(--token-xIHLtsKT6cI7);
+}
 .img {
   object-fit: fill;
   max-width: 100%;
@@ -74,7 +78,7 @@
 .metoLineClamp:global(.__wab_instance) {
   max-width: 100%;
 }
-.text {
+.text___6Frkt {
   position: relative;
   width: auto;
   height: auto;
@@ -82,6 +86,7 @@
   text-align: right;
   color: var(--token-xIHLtsKT6cI7);
   font-size: var(--token-o5LqR9FrbNhz);
+  padding-bottom: 0px;
 }
 .freeBox___4Lxo {
   display: flex;

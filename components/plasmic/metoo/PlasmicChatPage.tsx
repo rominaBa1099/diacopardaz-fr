@@ -1218,21 +1218,29 @@ function PlasmicChatPage__RenderFunc(props: {
             className={classNames("__wab_instance", sty.metoLabel__c8Bkj)}
             size={"lg"}
           >
-            <React.Fragment>
-              {(() => {
-                try {
-                  return $props.userData.name;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "Label";
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__o1LE3
+              )}
+            >
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return $props.userData.name;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "Label";
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()}
-            </React.Fragment>
+                })()}
+              </React.Fragment>
+            </div>
           </MetoLabel>
         </MetoHeader>
       </section>
