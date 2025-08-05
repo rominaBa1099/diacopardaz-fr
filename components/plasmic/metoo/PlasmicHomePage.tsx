@@ -2542,6 +2542,9 @@ function PlasmicHomePage__RenderFunc(props: {
                 hasVariant($state, "chatViow", "chatViow") &&
                 hasVariant($state, "show", "main"),
               [sty.rooteditPage]: hasVariant($state, "editPage", "editPage"),
+              [sty.rooteditPage_profile2]:
+                hasVariant($state, "editPage", "editPage") &&
+                hasVariant($state, "profile2", "profile2"),
               [sty.rooteditPage_selectImage2]:
                 hasVariant($state, "selectImage2", "selectImage2") &&
                 hasVariant($state, "editPage", "editPage"),
@@ -5472,9 +5475,24 @@ function PlasmicHomePage__RenderFunc(props: {
                   hasVariant($state, "editPage", "editPage") ? "lg" : undefined
                 }
               >
-                {hasVariant($state, "editPage", "editPage")
-                  ? "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u067e\u0631\u0648\u0641\u0627\u06cc\u0644"
-                  : "Label"}
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dgc0F,
+                    {
+                      [sty.texteditPage__dgc0FcCwlh]: hasVariant(
+                        $state,
+                        "editPage",
+                        "editPage"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "editPage", "editPage")
+                    ? "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u067e\u0631\u0648\u0641\u0627\u06cc\u0644"
+                    : "Label"}
+                </div>
               </MetoLabel>
             </MetoHeader>
           </section>
@@ -6337,7 +6355,15 @@ function PlasmicHomePage__RenderFunc(props: {
                   value={generateStateValueProp($state, ["bio", "value"])}
                 />
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__nbkQt)}>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__nbkQt, {
+                  [sty.freeBoxeditPage__nbkQtcCwlh]: hasVariant(
+                    $state,
+                    "editPage",
+                    "editPage"
+                  )
+                })}
+              >
                 <MetoLabel
                   className={classNames(
                     "__wab_instance",
@@ -7296,6 +7322,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         "__wab_instance",
                         sty.metoLabel___7Sr5R,
                         {
+                          [sty.metoLabeleditPage___7Sr5RCCwlh]: hasVariant(
+                            $state,
+                            "editPage",
+                            "editPage"
+                          ),
                           [sty.metoLabelselectImage2___7Sr5RbApSq]: hasVariant(
                             $state,
                             "selectImage2",
@@ -9873,7 +9904,13 @@ function PlasmicHomePage__RenderFunc(props: {
             <div
               data-plasmic-name={"splash2"}
               data-plasmic-override={overrides.splash2}
-              className={classNames(projectcss.all, sty.splash2)}
+              className={classNames(projectcss.all, sty.splash2, {
+                [sty.splash2profile2]: hasVariant(
+                  $state,
+                  "profile2",
+                  "profile2"
+                )
+              })}
             >
               <div className={classNames(projectcss.all, sty.freeBox__xj2Sh)}>
                 <PlasmicImg__

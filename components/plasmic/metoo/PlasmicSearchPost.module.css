@@ -94,6 +94,9 @@
 .metoLabel:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
 }
+.text__nZeBt {
+  color: var(--token-xIHLtsKT6cI7);
+}
 .img {
   object-fit: cover;
   max-width: 100%;

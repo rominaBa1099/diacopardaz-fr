@@ -314,21 +314,29 @@ function PlasmicUserProfile__RenderFunc(props: {
               className={classNames("__wab_instance", sty.metoLabel)}
               size={"lg"}
             >
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return `${$props.currentUser.name} | ${$props.currentUser.age} ساله `;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "Label";
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__ut0JJ
+                )}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return `${$props.currentUser.name} | ${$props.currentUser.age} ساله `;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "Label";
+                      }
+                      throw e;
                     }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
+                  })()}
+                </React.Fragment>
+              </div>
             </MetoLabel>
             {(() => {
               try {

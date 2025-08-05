@@ -180,7 +180,6 @@ function PlasmicSetting__RenderFunc(props: {
                   text: "خرید اشتراک",
                   type: "button",
                   action: "shop",
-                  number: 3,
                   style: "primary",
                   premium: false
                 },

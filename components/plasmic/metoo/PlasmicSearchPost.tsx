@@ -581,22 +581,30 @@ function PlasmicSearchPost__RenderFunc(props: {
                             )}
                             size={"lg"}
                           >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return `${currentItem.name}  |  ${currentItem.age}  ساله `;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "Label";
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__nZeBt
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return `${currentItem.name}  |  ${currentItem.age}  ساله `;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Label";
+                                    }
+                                    throw e;
                                   }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
+                                })()}
+                              </React.Fragment>
+                            </div>
                           </MetoLabel>
                           {(() => {
                             try {
