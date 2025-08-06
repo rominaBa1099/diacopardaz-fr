@@ -1,6 +1,5 @@
 import "@/styles/globals.css";
 import "@/styles/date-picker.css";
-import '@/styles/DatePickers.css';
 
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
 import type { AppProps } from "next/app";
