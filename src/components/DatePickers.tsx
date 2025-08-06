@@ -3,7 +3,6 @@ import Picker from 'rmc-picker';
 import Jalaali from 'jalaali-js';
 import { CodeComponentMeta } from '@plasmicapp/host';
 import 'rmc-picker/assets/index.css';
-// import './DatePickers.css'; // ✅ اضافه شد
 
 type DatePickersProps = {
   onChange?: (values: { day: number; month: number; year: number }) => void;
@@ -11,7 +10,7 @@ type DatePickersProps = {
   SelectedMonth?: number;
   SelectedYear?: number;
   selectedValues?: { day: number; month: number; year: number };
-  customYears?: { value: number; label: string }[];
+  customYears?: { value: number; label: string }[]; // پراپ جدید برای ورودی سال‌ها
   className?: string;
 };
 
@@ -22,7 +21,7 @@ export const DatePickers = (props: DatePickersProps) => {
     SelectedMonth = 10,
     SelectedYear = 1403,
     selectedValues = {},
-    customYears = [],
+    customYears = [], // مقدار پیش‌فرض برای customYears
     className,
   } = props;
 
@@ -45,6 +44,7 @@ export const DatePickers = (props: DatePickersProps) => {
 
   const currentYear = Jalaali.toJalaali(new Date()).jy;
 
+  // آرایه ماه‌ها
   const months = [
     { value: 1, label: 'فروردین' },
     { value: 2, label: 'اردیبهشت' },
@@ -60,6 +60,7 @@ export const DatePickers = (props: DatePickersProps) => {
     { value: 12, label: 'اسفند' },
   ].map((month) => ({ ...month, label: toPersianDigits(month.label) }));
 
+  // آرایه سال‌ها
   const years =
     customYears.length > 0
       ? customYears
@@ -115,7 +116,7 @@ export const DatePickers = (props: DatePickersProps) => {
   );
 
   return (
-    <div className={`rmc-multi-picker ${className || ''}`}> {/* ✅ کلاس اضافه شد */}
+    <div className={className}>
       <Picker selectedValue={selectedDay} onValueChange={handleChangeDay}>
         {getDaysOfMonth(selectedMonth, selectedYear).map((day) => (
           <Picker.Item key={day.value} value={day.value}>
@@ -188,3 +189,5 @@ export const DatePickersMeta: CodeComponentMeta<DatePickersProps> = {
     },
   },
 };
+
+
