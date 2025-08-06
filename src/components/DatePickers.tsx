@@ -3,7 +3,7 @@ import Picker from 'rmc-picker';
 import Jalaali from 'jalaali-js';
 import { CodeComponentMeta } from '@plasmicapp/host';
 import 'rmc-picker/assets/index.css';
-import './DatePickers.css'; // ✅ اضافه شد
+// import './DatePickers.css'; // ✅ اضافه شد
 
 type DatePickersProps = {
   onChange?: (values: { day: number; month: number; year: number }) => void;
