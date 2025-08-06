@@ -1815,9 +1815,18 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: 250px;
+  left: auto;
+  top: auto;
+  z-index: 1;
+  position: relative;
+  justify-content: space-between;
+  align-items: stretch;
+  align-self: baseline;
+  color: var(--token-mg3tskdB-3gx);
+  overflow: auto;
   min-width: 0;
-  min-height: 0;
+  flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .datePickers:global(.__wab_instance) {

@@ -1167,7 +1167,11 @@ function PlasmicHomePage__RenderFunc(props: {
         path: "datePickers.value",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({
+          day: 7,
+          month: 7,
+          year: 1377
+        })
       },
       {
         path: "stateInput.value",
@@ -9017,9 +9021,9 @@ function PlasmicHomePage__RenderFunc(props: {
                 <DatePickers
                   data-plasmic-name={"datePickers"}
                   data-plasmic-override={overrides.datePickers}
-                  SelectedDay={hasVariant($state, "show", "slide1") ? 1 : 10}
-                  SelectedMonth={hasVariant($state, "show", "slide1") ? 1 : 10}
-                  SelectedYear={1379}
+                  SelectedDay={hasVariant($state, "show", "slide1") ? 1 : 11}
+                  SelectedMonth={hasVariant($state, "show", "slide1") ? 1 : 12}
+                  SelectedYear={1380}
                   className={classNames("__wab_instance", sty.datePickers, {
                     [sty.datePickersshow_slide1]: hasVariant(
                       $state,
@@ -9032,7 +9036,6 @@ function PlasmicHomePage__RenderFunc(props: {
                       "slide2"
                     )
                   })}
-                  customYears={[]}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
                       "datePickers",
