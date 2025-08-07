@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Jalaali from 'jalaali-js';
 import { CodeComponentMeta } from '@plasmicapp/host';
-import './DatePickers.css';
 
 type DatePickersProps = {
   onChange?: (values: { day: number; month: number; year: number }) => void;
