@@ -302,9 +302,7 @@ function PlasmicShopModal__RenderFunc(props: {
                 bgColor2: "#283608"
               }
             ]
-          },
-          token:
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjEyNjg1MzMiLCJleHBpcmUiOjE3NTI1Njc3Mjd9.gfYr_i2s7WPRRXAOY10kp25hRWrtuchU2vxVrTEzHdN_ixVpPVW0jSP5M4hm7hu3FjiRhGaV-C4nALAs4BPL7g"
+          }
         },
         Object.fromEntries(
           Object.entries(props.args).filter(([_, v]) => v !== undefined)

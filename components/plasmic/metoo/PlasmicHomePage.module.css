@@ -1825,6 +1825,7 @@
   align-self: baseline;
   color: var(--token-mg3tskdB-3gx);
   overflow: auto;
+  font-size: var(--token-WKBP9DQDUfyS);
   min-width: 0;
   flex-shrink: 0;
 }
@@ -1895,7 +1896,7 @@
 .img__nySsk {
   object-fit: cover;
   max-width: 100%;
-  width: 150px;
+  width: 120px;
   height: auto;
 }
 .img__nySsk > picture > img {
