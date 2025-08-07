@@ -844,7 +844,8 @@ function PlasmicChat__RenderFunc(props: {
         body={(() => {
           try {
             return {
-              page: $state.pageChat
+              page: $state.pageChat,
+              p: window.localStorage.getItem("page") || ""
             };
           } catch (e) {
             if (

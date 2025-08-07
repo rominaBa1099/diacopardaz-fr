@@ -2313,6 +2313,9 @@ function PlasmicHomePage__RenderFunc(props: {
             : hasVariant($state, "show", "main") &&
               hasVariant($state, "chatViow", "chatViow")
             ? false
+            : hasVariant($state, "show", "main") &&
+              hasVariant($state, "editPage", "editPage")
+            ? false
             : hasVariant($state, "show", "main")
             ? true
             : false
@@ -2678,24 +2681,51 @@ function PlasmicHomePage__RenderFunc(props: {
                         : "150px"
                     }
                     loading={"lazy"}
-                    src={(() => {
-                      try {
-                        return $state.imageurl;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return {
-                            src: "/plasmic/metoo/images/image.png",
-                            fullWidth: 255,
-                            fullHeight: 327,
-                            aspectRatio: undefined
-                          };
-                        }
-                        throw e;
-                      }
-                    })()}
+                    src={
+                      hasVariant($state, "show", "slide1")
+                        ? (() => {
+                            try {
+                              return (() => {
+                                if (!/\.[^/.]+$/.test($state.imageurl)) {
+                                  return ($state.imageurl += ".jpg");
+                                } else {
+                                  return $state.imageurl;
+                                }
+                              })();
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return {
+                                  src: "/plasmic/metoo/images/image.png",
+                                  fullWidth: 255,
+                                  fullHeight: 327,
+                                  aspectRatio: undefined
+                                };
+                              }
+                              throw e;
+                            }
+                          })()
+                        : (() => {
+                            try {
+                              return $state.imageurl;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return {
+                                  src: "/plasmic/metoo/images/image.png",
+                                  fullWidth: 255,
+                                  fullHeight: 327,
+                                  aspectRatio: undefined
+                                };
+                              }
+                              throw e;
+                            }
+                          })()
+                    }
                   />
 
                   <div
@@ -4717,6 +4747,32 @@ function PlasmicHomePage__RenderFunc(props: {
                     displayWidth={"100%"}
                     id={"preview"}
                     loading={"lazy"}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (() => {
+                                  $state.url = "";
+                                  return fileInput.click();
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    }}
                     src={
                       hasVariant($state, "selectImage2", "selectImage2")
                         ? (() => {
@@ -5050,7 +5106,11 @@ function PlasmicHomePage__RenderFunc(props: {
                             ];
                           }
 
-                          $steps["updateSelectImage2"] = true
+                          $steps["updateSelectImage2"] = (
+                            $steps.invokeGlobalAction?.data?.status
+                              ? true
+                              : false
+                          )
                             ? (() => {
                                 const actionArgs = {
                                   vgroup: "selectImage2",
@@ -5116,6 +5176,73 @@ function PlasmicHomePage__RenderFunc(props: {
                             $steps["updateSendImageLoad2"] = await $steps[
                               "updateSendImageLoad2"
                             ];
+                          }
+
+                          $steps["invokeGlobalAction2"] = (
+                            $steps.invokeGlobalAction?.data?.status
+                              ? false
+                              : true
+                          )
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "error",
+                                    "\u0645\u062a\u0627\u0633\u0641\u0627\u0646\u0647 \u0639\u06a9\u0633 \u0622\u067e\u0644\u0648\u062f \u0646\u0634\u062f.",
+                                    "bottom-center"
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.showToast"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction2"] != null &&
+                            typeof $steps["invokeGlobalAction2"] === "object" &&
+                            typeof $steps["invokeGlobalAction2"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction2"] = await $steps[
+                              "invokeGlobalAction2"
+                            ];
+                          }
+
+                          $steps["updateUrl"] = (
+                            $steps.invokeGlobalAction?.data?.status
+                              ? true
+                              : false
+                          )
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["url"]
+                                  },
+                                  operation: 0,
+                                  value: ""
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateUrl"] != null &&
+                            typeof $steps["updateUrl"] === "object" &&
+                            typeof $steps["updateUrl"].then === "function"
+                          ) {
+                            $steps["updateUrl"] = await $steps["updateUrl"];
                           }
                         }}
                         onLoadChange={async (...eventArgs: any) => {
@@ -5205,6 +5332,40 @@ function PlasmicHomePage__RenderFunc(props: {
                             $steps["updateSelectImage2"] = await $steps[
                               "updateSelectImage2"
                             ];
+                          }
+
+                          $steps["updateUrl"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["url"]
+                                  },
+                                  operation: 0,
+                                  value: ""
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateUrl"] != null &&
+                            typeof $steps["updateUrl"] === "object" &&
+                            typeof $steps["updateUrl"].then === "function"
+                          ) {
+                            $steps["updateUrl"] = await $steps["updateUrl"];
                           }
                         }}
                         size={
@@ -7877,6 +8038,26 @@ function PlasmicHomePage__RenderFunc(props: {
                   ) {
                     $steps["updateChatViow"] = await $steps["updateChatViow"];
                   }
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return window.localStorage.setItem("page", "chat");
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
                 }}
               />
 
@@ -7906,6 +8087,26 @@ function PlasmicHomePage__RenderFunc(props: {
                     typeof $steps["updateChatViow"].then === "function"
                   ) {
                     $steps["updateChatViow"] = await $steps["updateChatViow"];
+                  }
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return window.localStorage.setItem("page", "chat1");
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
                   }
                 }}
                 className={classNames("__wab_instance", sty.chatPage, {
@@ -8002,7 +8203,19 @@ function PlasmicHomePage__RenderFunc(props: {
                           throw e;
                         }
                       })()
-                    : undefined
+                    : (() => {
+                        try {
+                          return $state.token;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
                 }
                 userData={
                   hasVariant($state, "show", "main")
@@ -8382,6 +8595,10 @@ function PlasmicHomePage__RenderFunc(props: {
                 [sty.mainchatViow_show_main]:
                   hasVariant($state, "show", "main") &&
                   hasVariant($state, "chatViow", "chatViow"),
+                [sty.maineditPage]: hasVariant($state, "editPage", "editPage"),
+                [sty.maineditPage_show_main]:
+                  hasVariant($state, "show", "main") &&
+                  hasVariant($state, "editPage", "editPage"),
                 [sty.mainglobal_theme_dark]: hasVariant(
                   globalVariants,
                   "theme",
@@ -8727,7 +8944,7 @@ function PlasmicHomePage__RenderFunc(props: {
                 const $steps = {};
 
                 $steps["updateShopModalOpen"] =
-                  $state.main.selectSetting.action == "buySubscription"
+                  $state.main.selectSetting.action == "action"
                     ? (() => {
                         const actionArgs = {
                           variable: {

@@ -160,86 +160,79 @@ function PlasmicSetting__RenderFunc(props: {
             try {
               return [
                 {
-                  text: "کی پروفایلم رو دید؟",
+                  text: "کی پروفایلم رو دید\u061F",
                   type: "text",
                   action: "getEvent",
                   number: $props.userInfo.userInfo.cView,
                   premium: true
                 },
                 {
-                  text: "کی پروفایلمو رو لایک کرد؟",
+                  text: "کی پروفایلمو رو لایک کرد\u061F",
                   type: "text",
                   action: "likeProfile",
                   number: $props.userInfo.userInfo.cLike,
                   premium: true
                 },
+                { type: "hr" },
                 {
-                  type: "hr"
-                },
-                {
-                  text: "خرید اشتراک",
-                  type: "button",
+                  text: $props.userInfo.userInfo.isVip
+                    ? "وضعیت اشتراک: فعال"
+                    : "خرید اشتراک",
+                  type: "vip",
+                  number: $props.userInfo.userInfo.isVip
+                    ? new Date(
+                        $props.userInfo.userInfo.premiumEndDate
+                      ).toLocaleDateString("fa-IR")
+                    : null,
                   action: "shop",
-                  style: "primary",
+                  style: "vip",
                   premium: false
                 },
+
+                { type: "hr" },
                 {
-                  type: "hr"
-                },
-                {
-                  text: "کی بلاکم کرد؟",
+                  text: "کی بلاکم کرد\u061F",
                   type: "text",
                   action: "whoBlock",
-                  // "number": $props.userInfo.userInfo.c,
                   premium: true
                 },
                 {
                   text: "افرادی که بلاک کردم",
                   type: "action",
                   action: "myBlock",
-                  // "number": 5,
                   premium: false
                 },
-                {
-                  type: "hr"
-                },
+                { type: "hr" },
                 {
                   text: "رایگان ها",
                   type: "button",
                   action: "freeItems",
-                  // "number": 6,
                   style: "onScaffold",
                   premium: false
                 },
-                {
-                  type: "hr"
-                },
+                { type: "hr" },
                 {
                   text: "ثبت رمز عبور",
                   type: "text",
                   action: "setPassword",
-                  // "number": 7,
                   premium: false
                 },
                 {
                   text: "افرادی که لایک کردم",
                   type: "action",
                   action: "myLike",
-                  // "number": 8,
                   premium: false
                 },
                 {
                   text: "حریم خصوصی",
                   type: "text",
                   action: "privacy",
-                  // "number": 9,
                   premium: false
                 },
                 {
                   text: "قوانین",
                   type: "text",
                   action: "terms",
-                  // "number": 10,
                   premium: false
                 }
               ];

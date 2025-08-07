@@ -1814,20 +1814,17 @@
   object-fit: cover;
   width: 100%;
   display: flex;
-  flex-direction: row;
-  height: 250px;
+  height: auto;
   left: auto;
   top: auto;
   z-index: 1;
   position: relative;
-  justify-content: space-between;
-  align-items: stretch;
-  align-self: baseline;
+  align-self: center;
   color: var(--token-mg3tskdB-3gx);
-  overflow: auto;
   font-size: var(--token-WKBP9DQDUfyS);
+  flex-direction: row;
+  justify-content: space-between;
   min-width: 0;
-  flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .datePickers:global(.__wab_instance) {
