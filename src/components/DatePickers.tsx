@@ -10,7 +10,7 @@ type DatePickersProps = {
   SelectedMonth?: number;
   SelectedYear?: number;
   selectedValues?: { day: number; month: number; year: number };
-  customYears?: { value: number; label: string }[];
+  customYears?: { value: number; label: string }[]; // پراپ جدید برای ورودی سال‌ها
   className?: string;
 };
 
@@ -21,7 +21,7 @@ export const DatePickers = (props: DatePickersProps) => {
     SelectedMonth = 10,
     SelectedYear = 1403,
     selectedValues = {},
-    customYears = [],
+    customYears = [], // مقدار پیش‌فرض برای customYears
     className,
   } = props;
 
@@ -44,6 +44,7 @@ export const DatePickers = (props: DatePickersProps) => {
 
   const currentYear = Jalaali.toJalaali(new Date()).jy;
 
+  // آرایه ماه‌ها
   const months = [
     { value: 1, label: 'فروردین' },
     { value: 2, label: 'اردیبهشت' },
@@ -59,6 +60,7 @@ export const DatePickers = (props: DatePickersProps) => {
     { value: 12, label: 'اسفند' },
   ].map((month) => ({ ...month, label: toPersianDigits(month.label) }));
 
+  // آرایه سال‌ها
   const years =
     customYears.length > 0
       ? customYears
@@ -86,61 +88,58 @@ export const DatePickers = (props: DatePickersProps) => {
     setSelectedYear(SelectedYear);
   }, [SelectedDay, SelectedMonth, SelectedYear]);
 
-  const centerScroll = (selector: string) => {
-    const container = document.querySelector(selector);
-    if (container) {
-      const selected = container.querySelector('.selected') as HTMLElement;
-      if (selected) {
-        const containerHeight = container.clientHeight;
-        const selectedOffset = selected.offsetTop + selected.clientHeight / 2;
-        container.scrollTop = selectedOffset - containerHeight / 2;
+  const handleChangeDay = useCallback(
+    (value: string | number) => {
+      if (selectedDay !== Number(value)) {
+        setSelectedDay(Number(value));
       }
-    }
-  };
+    },
+    [selectedDay]
+  );
 
-  useEffect(() => {
-    centerScroll('.scroll-day');
-    centerScroll('.scroll-month');
-    centerScroll('.scroll-year');
-  }, [selectedDay, selectedMonth, selectedYear]);
+  const handleChangeMonth = useCallback(
+    (value: string | number) => {
+      if (selectedMonth !== Number(value)) {
+        setSelectedMonth(Number(value));
+      }
+    },
+    [selectedMonth]
+  );
+
+  const handleChangeYear = useCallback(
+    (value: string | number) => {
+      if (selectedYear !== Number(value)) {
+        setSelectedYear(Number(value));
+      }
+    },
+    [selectedYear]
+  );
 
   return (
-    <div className={scroll-picker-container ${className}} dir="rtl">
-      <div className="scroll-column scroll-day">
-        {getDaysOfMonth(selectedMonth, selectedYear).map((d) => (
-          <div
-            key={d.value}
-            className={scroll-item ${selectedDay === d.value ? 'selected' : ''}}
-            onClick={() => setSelectedDay(d.value)}
-          >
-            {d.label}
-          </div>
+    <div className={className}>
+      <Picker selectedValue={selectedDay} onValueChange={handleChangeDay}>
+        {getDaysOfMonth(selectedMonth, selectedYear).map((day) => (
+          <Picker.Item key={day.value} value={day.value}>
+            {day.label}
+          </Picker.Item>
         ))}
-      </div>
+      </Picker>
 
-      <div className="scroll-column scroll-month">
-        {months.map((m) => (
-          <div
-            key={m.value}
-            className={scroll-item ${selectedMonth === m.value ? 'selected' : ''}}
-            onClick={() => setSelectedMonth(m.value)}
-          >
-            {m.label}
-          </div>
+      <Picker selectedValue={selectedMonth} onValueChange={handleChangeMonth}>
+        {months.map((month) => (
+          <Picker.Item key={month.value} value={month.value}>
+            {month.label}
+          </Picker.Item>
         ))}
-      </div>
+      </Picker>
 
-      <div className="scroll-column scroll-year">
-        {years.map((y) => (
-          <div
-            key={y.value}
-            className={scroll-item ${selectedYear === y.value ? 'selected' : ''}}
-            onClick={() => setSelectedYear(y.value)}
-          >
-            {y.label}
-          </div>
+      <Picker selectedValue={selectedYear} onValueChange={handleChangeYear}>
+        {years.map((year) => (
+          <Picker.Item key={year.value} value={year.value}>
+            {year.label}
+          </Picker.Item>
         ))}
-      </div>
+      </Picker>
     </div>
   );
 };
@@ -157,38 +156,28 @@ export const DatePickersMeta: CodeComponentMeta<DatePickersProps> = {
           type: 'object',
         },
       ],
-      description: 'Callback for when the date is changed',
+      description: 'Callback function to handle changes in selected day, month, and year.',
     },
     SelectedDay: {
       type: 'number',
-      defaultValue: 1,
+      defaultValue: 10,
     },
     SelectedMonth: {
       type: 'number',
-      defaultValue: 1,
+      defaultValue: 10,
     },
     SelectedYear: {
       type: 'number',
-      defaultValue: 1400,
+      defaultValue: 1379,
     },
     selectedValues: {
       type: 'object',
       defaultValue: {},
     },
-    className: {
-      type: 'class',
-    },
     customYears: {
-      type: 'array',
-      displayName: 'Custom Years',
-      description: 'Optional custom year list',
-      itemType: {
-        type: 'object',
-        fields: {
-          value: { type: 'number' },
-          label: { type: 'string' },
-        },
-      },
+      type: 'object',
+      defaultValue: [],
+      description: 'Custom years array to override the default generated years.',
     },
   },
   states: {
@@ -199,4 +188,4 @@ export const DatePickersMeta: CodeComponentMeta<DatePickersProps> = {
       onChangeProp: 'onChange',
     },
   },
-};  
+};
