@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Picker from 'rmc-picker';
 import Jalaali from 'jalaali-js';
-import { CodeComponentMeta } from '@plasmicapp/host';
 import 'rmc-picker/assets/index.css';
 
 type DatePickersProps = {
@@ -10,9 +9,11 @@ type DatePickersProps = {
   SelectedMonth?: number;
   SelectedYear?: number;
   selectedValues?: { day: number; month: number; year: number };
-  customYears?: { value: number; label: string }[]; // پراپ جدید برای ورودی سال‌ها
+  customYears?: { value: number; label: string }[];
   className?: string;
 };
+
+const ITEM_HEIGHT = 34; // ارتفاع ثابت هر آیتم
 
 export const DatePickers = (props: DatePickersProps) => {
   const {
@@ -21,13 +22,17 @@ export const DatePickers = (props: DatePickersProps) => {
     SelectedMonth = 10,
     SelectedYear = 1403,
     selectedValues = {},
-    customYears = [], // مقدار پیش‌فرض برای customYears
+    customYears = [],
     className,
   } = props;
 
   const [selectedDay, setSelectedDay] = useState<number>(SelectedDay);
   const [selectedMonth, setSelectedMonth] = useState<number>(SelectedMonth);
   const [selectedYear, setSelectedYear] = useState<number>(SelectedYear);
+
+  const dayPickerRef = useRef<HTMLDivElement>(null);
+  const monthPickerRef = useRef<HTMLDivElement>(null);
+  const yearPickerRef = useRef<HTMLDivElement>(null);
 
   const toPersianDigits = (num: number | string): string => {
     const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
@@ -44,7 +49,6 @@ export const DatePickers = (props: DatePickersProps) => {
 
   const currentYear = Jalaali.toJalaali(new Date()).jy;
 
-  // آرایه ماه‌ها
   const months = [
     { value: 1, label: 'فروردین' },
     { value: 2, label: 'اردیبهشت' },
@@ -60,7 +64,6 @@ export const DatePickers = (props: DatePickersProps) => {
     { value: 12, label: 'اسفند' },
   ].map((month) => ({ ...month, label: toPersianDigits(month.label) }));
 
-  // آرایه سال‌ها
   const years =
     customYears.length > 0
       ? customYears
@@ -68,6 +71,48 @@ export const DatePickers = (props: DatePickersProps) => {
           const year = 1300 + i;
           return { value: year, label: toPersianDigits(year) };
         });
+
+  // اصلاح موقعیت بر اساس آیتم انتخاب شده
+  const fixPickerPosition = (pickerRef: React.RefObject<HTMLDivElement>, selectedValue: number) => {
+    if (!pickerRef.current) return;
+
+    const content = pickerRef.current.querySelector('.rmc-picker-content') as HTMLElement | null;
+    if (!content) return;
+
+    const items = content.querySelectorAll('.rmc-picker-item');
+    let selectedIndex = -1;
+
+    // پیدا کردن اندیس آیتم انتخاب شده
+    items.forEach((item, index) => {
+      if (Number(item.textContent?.replace(/[۰-۹]/g, (d) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)))) === selectedValue) {
+        selectedIndex = index;
+      }
+    });
+
+    if (selectedIndex === -1) return;
+
+    const expectedY = -selectedIndex * ITEM_HEIGHT;
+    const currentTransform = content.style.transform;
+    const match = currentTransform.match(/translate3d\(0px,\s*(-?\d+(?:\.\d+)?)px,\s*0px\)/);
+    const currentY = match ? parseFloat(match[1]) : 0;
+
+    if (currentY !== expectedY) {
+      content.style.transform = `translate3d(0px, ${expectedY}px, 0px)`;
+    }
+  };
+
+  // هر بار مقدار انتخابی تغییر کرد موقعیت اصلاح می‌شود
+  useEffect(() => {
+    fixPickerPosition(dayPickerRef, selectedDay);
+  }, [selectedDay]);
+
+  useEffect(() => {
+    fixPickerPosition(monthPickerRef, selectedMonth);
+  }, [selectedMonth]);
+
+  useEffect(() => {
+    fixPickerPosition(yearPickerRef, selectedYear);
+  }, [selectedYear]);
 
   const onChangeRef = useRef(onChange);
 
@@ -88,58 +133,37 @@ export const DatePickers = (props: DatePickersProps) => {
     setSelectedYear(SelectedYear);
   }, [SelectedDay, SelectedMonth, SelectedYear]);
 
-  const handleChangeDay = useCallback(
-    (value: string | number) => {
-      if (selectedDay !== Number(value)) {
-        setSelectedDay(Number(value));
-      }
-    },
-    [selectedDay]
-  );
-
-  const handleChangeMonth = useCallback(
-    (value: string | number) => {
-      if (selectedMonth !== Number(value)) {
-        setSelectedMonth(Number(value));
-      }
-    },
-    [selectedMonth]
-  );
-
-  const handleChangeYear = useCallback(
-    (value: string | number) => {
-      if (selectedYear !== Number(value)) {
-        setSelectedYear(Number(value));
-      }
-    },
-    [selectedYear]
-  );
-
   return (
     <div className={className}>
-      <Picker selectedValue={selectedDay} onValueChange={handleChangeDay}>
-        {getDaysOfMonth(selectedMonth, selectedYear).map((day) => (
-          <Picker.Item key={day.value} value={day.value}>
-            {day.label}
-          </Picker.Item>
-        ))}
-      </Picker>
+      <div ref={dayPickerRef}>
+        <Picker selectedValue={selectedDay} onValueChange={setSelectedDay}>
+          {getDaysOfMonth(selectedMonth, selectedYear).map((day) => (
+            <Picker.Item key={day.value} value={day.value}>
+              {day.label}
+            </Picker.Item>
+          ))}
+        </Picker>
+      </div>
 
-      <Picker selectedValue={selectedMonth} onValueChange={handleChangeMonth}>
-        {months.map((month) => (
-          <Picker.Item key={month.value} value={month.value}>
-            {month.label}
-          </Picker.Item>
-        ))}
-      </Picker>
+      <div ref={monthPickerRef}>
+        <Picker selectedValue={selectedMonth} onValueChange={setSelectedMonth}>
+          {months.map((month) => (
+            <Picker.Item key={month.value} value={month.value}>
+              {month.label}
+            </Picker.Item>
+          ))}
+        </Picker>
+      </div>
 
-      <Picker selectedValue={selectedYear} onValueChange={handleChangeYear}>
-        {years.map((year) => (
-          <Picker.Item key={year.value} value={year.value}>
-            {year.label}
-          </Picker.Item>
-        ))}
-      </Picker>
+      <div ref={yearPickerRef}>
+        <Picker selectedValue={selectedYear} onValueChange={setSelectedYear}>
+          {years.map((year) => (
+            <Picker.Item key={year.value} value={year.value}>
+              {year.label}
+            </Picker.Item>
+          ))}
+        </Picker>
+      </div>
     </div>
   );
 };
