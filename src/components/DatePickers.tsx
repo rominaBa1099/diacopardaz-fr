@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import Picker from 'rmc-picker';
+import React, { useState, useEffect, useRef } from 'react';
 import Jalaali from 'jalaali-js';
 import { CodeComponentMeta } from '@plasmicapp/host';
-import 'rmc-picker/assets/index.css';
+import './DatePickers.css';
 
 type DatePickersProps = {
   onChange?: (values: { day: number; month: number; year: number }) => void;
@@ -13,6 +12,8 @@ type DatePickersProps = {
   customYears?: { value: number; label: string }[];
   className?: string;
 };
+
+const ITEM_HEIGHT = 40;
 
 export const DatePickers = (props: DatePickersProps) => {
   const {
@@ -28,6 +29,10 @@ export const DatePickers = (props: DatePickersProps) => {
   const [selectedDay, setSelectedDay] = useState<number>(SelectedDay);
   const [selectedMonth, setSelectedMonth] = useState<number>(SelectedMonth);
   const [selectedYear, setSelectedYear] = useState<number>(SelectedYear);
+
+  const dayRef = useRef<HTMLDivElement>(null);
+  const monthRef = useRef<HTMLDivElement>(null);
+  const yearRef = useRef<HTMLDivElement>(null);
 
   const toPersianDigits = (num: number | string): string => {
     const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
@@ -45,19 +50,9 @@ export const DatePickers = (props: DatePickersProps) => {
   const currentYear = Jalaali.toJalaali(new Date()).jy;
 
   const months = [
-    { value: 1, label: 'فروردین' },
-    { value: 2, label: 'اردیبهشت' },
-    { value: 3, label: 'خرداد' },
-    { value: 4, label: 'تیر' },
-    { value: 5, label: 'مرداد' },
-    { value: 6, label: 'شهریور' },
-    { value: 7, label: 'مهر' },
-    { value: 8, label: 'آبان' },
-    { value: 9, label: 'آذر' },
-    { value: 10, label: 'دی' },
-    { value: 11, label: 'بهمن' },
-    { value: 12, label: 'اسفند' },
-  ].map((month) => ({ ...month, label: toPersianDigits(month.label) }));
+    'فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور',
+    'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند',
+  ].map((label, index) => ({ value: index + 1, label: toPersianDigits(label) }));
 
   const years =
     customYears.length > 0
@@ -67,84 +62,87 @@ export const DatePickers = (props: DatePickersProps) => {
           return { value: year, label: toPersianDigits(year) };
         });
 
-  const onChangeRef = useRef(onChange);
-
-  useEffect(() => {
-    onChangeRef.current = onChange;
-  }, [onChange]);
-
-  useEffect(() => {
-    const values = { day: selectedDay, month: selectedMonth, year: selectedYear };
-    if (onChangeRef.current) {
-      onChangeRef.current(values);
+  const handleScroll = (ref: React.RefObject<HTMLDivElement>, items: { value: number }[], setSelected: (val: number) => void) => {
+    if (ref.current) {
+      const scrollTop = ref.current.scrollTop;
+      const index = Math.round(scrollTop / ITEM_HEIGHT);
+      const item = items[index];
+      if (item) setSelected(item.value);
     }
+  };
+
+  const handleScrollWithDebounce = (ref: React.RefObject<HTMLDivElement>, items: { value: number }[], setSelected: (val: number) => void) => {
+    let timeout: NodeJS.Timeout;
+    return () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => handleScroll(ref, items, setSelected), 100);
+    };
+  };
+
+  useEffect(() => {
+    onChange?.({ day: selectedDay, month: selectedMonth, year: selectedYear });
   }, [selectedDay, selectedMonth, selectedYear]);
 
-  useEffect(() => {
-    setSelectedDay(SelectedDay);
-    setSelectedMonth(SelectedMonth);
-    setSelectedYear(SelectedYear);
-  }, [SelectedDay, SelectedMonth, SelectedYear]);
-
-  const centerScroll = (selector: string) => {
-    const container = document.querySelector(selector);
-    if (container) {
-      const selected = container.querySelector('.selected') as HTMLElement;
-      if (selected) {
-        const containerHeight = container.clientHeight;
-        const selectedOffset = selected.offsetTop + selected.clientHeight / 2;
-        container.scrollTop = selectedOffset - containerHeight / 2;
-      }
+  const scrollToValue = (ref: React.RefObject<HTMLDivElement>, value: number) => {
+    if (ref.current) {
+      ref.current.scrollTop = (value - 1) * ITEM_HEIGHT;
     }
   };
 
   useEffect(() => {
-    centerScroll('.scroll-day');
-    centerScroll('.scroll-month');
-    centerScroll('.scroll-year');
-  }, [selectedDay, selectedMonth, selectedYear]);
+    scrollToValue(dayRef, selectedDay);
+    scrollToValue(monthRef, selectedMonth);
+    scrollToValue(yearRef, selectedYear);
+  }, []);
 
   return (
     <div className={`scroll-picker-container ${className}`} dir="rtl">
-      <div className="scroll-column scroll-day">
+      <div className="scroll-column" ref={dayRef} onScroll={handleScrollWithDebounce(dayRef, getDaysOfMonth(selectedMonth, selectedYear), setSelectedDay)}>
+        <div className="padding" />
         {getDaysOfMonth(selectedMonth, selectedYear).map((d) => (
           <div
             key={d.value}
             className={`scroll-item ${selectedDay === d.value ? 'selected' : ''}`}
-            onClick={() => setSelectedDay(d.value)}
+            style={{ height: ITEM_HEIGHT }}
           >
             {d.label}
           </div>
         ))}
+        <div className="padding" />
       </div>
 
-      <div className="scroll-column scroll-month">
+      <div className="scroll-column" ref={monthRef} onScroll={handleScrollWithDebounce(monthRef, months, setSelectedMonth)}>
+        <div className="padding" />
         {months.map((m) => (
           <div
             key={m.value}
             className={`scroll-item ${selectedMonth === m.value ? 'selected' : ''}`}
-            onClick={() => setSelectedMonth(m.value)}
+            style={{ height: ITEM_HEIGHT }}
           >
             {m.label}
           </div>
         ))}
+        <div className="padding" />
       </div>
 
-      <div className="scroll-column scroll-year">
+      <div className="scroll-column" ref={yearRef} onScroll={handleScrollWithDebounce(yearRef, years, setSelectedYear)}>
+        <div className="padding" />
         {years.map((y) => (
           <div
             key={y.value}
             className={`scroll-item ${selectedYear === y.value ? 'selected' : ''}`}
-            onClick={() => setSelectedYear(y.value)}
+            style={{ height: ITEM_HEIGHT }}
           >
             {y.label}
           </div>
         ))}
+        <div className="padding" />
       </div>
     </div>
   );
 };
 
+// 👇👇👇 حفظ شده بدون تغییر 👇👇👇
 export const DatePickersMeta: CodeComponentMeta<DatePickersProps> = {
   name: 'DatePickers',
   importPath: '@/components/DatePickers',
