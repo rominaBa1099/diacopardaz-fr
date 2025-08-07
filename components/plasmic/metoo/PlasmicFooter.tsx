@@ -281,15 +281,10 @@ function PlasmicFooter__RenderFunc(props: {
                 ? (() => {
                     const actionArgs = {
                       customFunction: async () => {
-                        return (() => {
-                          const params = new URLSearchParams(
-                            window.location.search
-                          );
-                          params.set("page", currentItem.value);
-                          const newUrl =
-                            window.location.pathname + "?" + params.toString();
-                          return window.history.replaceState({}, "", newUrl);
-                        })();
+                        return window.localStorage.setItem(
+                          "page",
+                          currentItem.value
+                        );
                       }
                     };
                     return (({ customFunction }) => {

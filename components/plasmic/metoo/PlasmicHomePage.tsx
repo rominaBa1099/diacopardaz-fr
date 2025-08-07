@@ -9630,15 +9630,13 @@ function PlasmicHomePage__RenderFunc(props: {
                           if (status) {
                             $state.resultBool = status;
                             urlParams.delete("status");
-                            $state.footer.selectFooter = urlParams.get("page");
-                            urlParams.delete("page");
                             const newQuery = urlParams.toString();
                             const newUrl =
                               window.location.pathname +
                               (newQuery ? "?" + newQuery : "");
                             window.history.replaceState({}, "", newUrl);
                             return ($state.footer.selectFooter =
-                              urlParams.get("page"));
+                              window.localStorage.getItem("page"));
                           }
                         })();
                       }
