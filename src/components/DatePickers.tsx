@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Picker from 'rmc-picker';
 import Jalaali from 'jalaali-js';
+import { CodeComponentMeta } from '@plasmicapp/host';
 import 'rmc-picker/assets/index.css';
 
 type DatePickersProps = {
