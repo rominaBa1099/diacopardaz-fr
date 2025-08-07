@@ -9539,11 +9539,15 @@ function PlasmicHomePage__RenderFunc(props: {
                           if (status) {
                             $state.resultBool = status;
                             urlParams.delete("status");
+                            $state.footer.selectFooter = urlParams.get("page");
+                            urlParams.delete("page");
                             const newQuery = urlParams.toString();
                             const newUrl =
                               window.location.pathname +
                               (newQuery ? "?" + newQuery : "");
-                            return window.history.replaceState({}, "", newUrl);
+                            window.history.replaceState({}, "", newUrl);
+                            return ($state.footer.selectFooter =
+                              urlParams.get("page"));
                           }
                         })();
                       }
@@ -9909,6 +9913,19 @@ function PlasmicHomePage__RenderFunc(props: {
               }
             }}
             open={generateStateValueProp($state, ["shopModal", "open"])}
+            token={(() => {
+              try {
+                return $state.token;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
           />
 
           {(() => {
@@ -9944,7 +9961,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   displayMaxWidth={"100%"}
                   displayMinHeight={"0"}
                   displayMinWidth={"0"}
-                  displayWidth={"150px"}
+                  displayWidth={"120px"}
                   loading={"lazy"}
                   src={{
                     src: "/plasmic/metoo/images/unnamedPng.png",
