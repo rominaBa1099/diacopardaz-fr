@@ -61,6 +61,7 @@ import {
 
 import MetoLabel from "../../MetoLabel"; // plasmic-import: 4JtC8N_iZ8lG/component
 import MetoButton from "../../MetoButton"; // plasmic-import: BFnTlSYwdY0-/component
+import SettingItem from "../../SettingItem"; // plasmic-import: TBGwfoojuj_s/component
 import { SwiperSlider } from "@/components/SwiperSlider"; // plasmic-import: 1MaU8rw9HIJe/codeComponent
 
 import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
@@ -103,6 +104,7 @@ export type PlasmicProfile__OverridesType = {
   root?: Flex__<"div">;
   img?: Flex__<typeof PlasmicImg__>;
   metoButton?: Flex__<typeof MetoButton>;
+  settingItem?: Flex__<typeof SettingItem>;
   section?: Flex__<"section">;
   swiperSlider?: Flex__<typeof SwiperSlider>;
 };
@@ -393,6 +395,55 @@ function PlasmicProfile__RenderFunc(props: {
           onClick={args.onClick}
           size={"extraLarge"}
         />
+
+        {(() => {
+          try {
+            return $props.userInfo.userInfo.isVip == 1;
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return true;
+            }
+            throw e;
+          }
+        })() ? (
+          <div className={classNames(projectcss.all, sty.freeBox__tlvlz)}>
+            <SettingItem
+              data-plasmic-name={"settingItem"}
+              data-plasmic-override={overrides.settingItem}
+              back={"vip"}
+              className={classNames("__wab_instance", sty.settingItem)}
+              currentItem={(() => {
+                try {
+                  return {
+                    text: $props.userInfo.userInfo.isVip
+                      ? "وضعیت اشتراک: فعال"
+                      : "خرید اشتراک",
+                    type: "vip",
+                    number: $props.userInfo.userInfo.isVip
+                      ? new Date(
+                          $props.userInfo.userInfo.premiumEndDate
+                        ).toLocaleDateString("fa-IR")
+                      : null,
+                    action: "shop",
+                    style: "vip",
+                    premium: false
+                  };
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+            />
+          </div>
+        ) : null}
       </div>
       <section
         data-plasmic-name={"section"}
@@ -516,9 +567,10 @@ function PlasmicProfile__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "img", "metoButton", "section", "swiperSlider"],
+  root: ["root", "img", "metoButton", "settingItem", "section", "swiperSlider"],
   img: ["img"],
   metoButton: ["metoButton"],
+  settingItem: ["settingItem"],
   section: ["section", "swiperSlider"],
   swiperSlider: ["swiperSlider"]
 } as const;
@@ -529,6 +581,7 @@ type NodeDefaultElementType = {
   root: "div";
   img: typeof PlasmicImg__;
   metoButton: typeof MetoButton;
+  settingItem: typeof SettingItem;
   section: "section";
   swiperSlider: typeof SwiperSlider;
 };
@@ -595,6 +648,7 @@ export const PlasmicProfile = Object.assign(
     // Helper components rendering sub-elements
     img: makeNodeComponent("img"),
     metoButton: makeNodeComponent("metoButton"),
+    settingItem: makeNodeComponent("settingItem"),
     section: makeNodeComponent("section"),
     swiperSlider: makeNodeComponent("swiperSlider"),
 

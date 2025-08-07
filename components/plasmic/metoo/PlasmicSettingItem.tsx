@@ -62,6 +62,7 @@ import {
 import MetoLabel from "../../MetoLabel"; // plasmic-import: 4JtC8N_iZ8lG/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
+import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
 import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -77,11 +78,11 @@ createPlasmicElementProxy;
 
 export type PlasmicSettingItem__VariantMembers = {
   type: "button" | "hr";
-  back: "onScaffold" | "primary";
+  back: "onScaffold" | "primary" | "vip";
 };
 export type PlasmicSettingItem__VariantsArgs = {
   type?: SingleChoiceArg<"button" | "hr">;
-  back?: SingleChoiceArg<"onScaffold" | "primary">;
+  back?: SingleChoiceArg<"onScaffold" | "primary" | "vip">;
 };
 type VariantPropType = keyof PlasmicSettingItem__VariantsArgs;
 export const PlasmicSettingItem__VariantProps = new Array<VariantPropType>(
@@ -110,7 +111,7 @@ export interface DefaultSettingItemProps {
   currentItem?: any;
   onClick?: (event: any) => void;
   type?: SingleChoiceArg<"button" | "hr">;
-  back?: SingleChoiceArg<"onScaffold" | "primary">;
+  back?: SingleChoiceArg<"onScaffold" | "primary" | "vip">;
   className?: string;
 }
 
@@ -178,6 +179,7 @@ function PlasmicSettingItem__RenderFunc(props: {
   });
 
   const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsmqI86KQCt1(),
     theme: useTheme()
   });
 
@@ -210,6 +212,13 @@ function PlasmicSettingItem__RenderFunc(props: {
           [sty.rootback_primary_type_button]:
             hasVariant($state, "back", "primary") &&
             hasVariant($state, "type", "button"),
+          [sty.rootback_primary_type_hr]:
+            hasVariant($state, "type", "hr") &&
+            hasVariant($state, "back", "primary"),
+          [sty.rootback_vip]: hasVariant($state, "back", "vip"),
+          [sty.rootback_vip_type_button]:
+            hasVariant($state, "back", "vip") &&
+            hasVariant($state, "type", "button"),
           [sty.roottype_button]: hasVariant($state, "type", "button"),
           [sty.roottype_hr]: hasVariant($state, "type", "hr")
         }
@@ -234,6 +243,7 @@ function PlasmicSettingItem__RenderFunc(props: {
           [sty.freeBoxback_primary_type_button__hlqhRpdOhkGUbtP]:
             hasVariant($state, "back", "primary") &&
             hasVariant($state, "type", "button"),
+          [sty.freeBoxback_vip__hlqhRXIm]: hasVariant($state, "back", "vip"),
           [sty.freeBoxtype_button__hlqhRgUbtP]: hasVariant(
             $state,
             "type",
@@ -251,6 +261,7 @@ function PlasmicSettingItem__RenderFunc(props: {
               "back",
               "onScaffold"
             ),
+            [sty.metoLabelback_vip]: hasVariant($state, "back", "vip"),
             [sty.metoLabeltype_button]: hasVariant($state, "type", "button")
           })}
           size={"lg"}
@@ -261,6 +272,7 @@ function PlasmicSettingItem__RenderFunc(props: {
               projectcss.__wab_text,
               sty.text__nCaUd,
               {
+                [sty.textback_vip__nCaUdXIm]: hasVariant($state, "back", "vip"),
                 [sty.texttype_button__nCaUdgUbtP]: hasVariant(
                   $state,
                   "type",
@@ -314,30 +326,52 @@ function PlasmicSettingItem__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text__zdBRo
+              sty.text__zdBRo,
+              {
+                [sty.textback_vip__zdBRoXIm]: hasVariant($state, "back", "vip")
+              }
             )}
           >
-            <React.Fragment>
-              {(() => {
-                try {
-                  return $props.currentItem.number;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "";
+            {hasVariant($state, "back", "vip") ? (
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return "تاریخ اتمام اشراک : " + $props.currentItem.number;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "";
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()}
-            </React.Fragment>
+                })()}
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return $props.currentItem.number;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
+            )}
           </div>
         ) : null}
         <ChevronLeftIcon
           data-plasmic-name={"svg"}
           data-plasmic-override={overrides.svg}
           className={classNames(projectcss.all, sty.svg, {
+            [sty.svgback_vip]: hasVariant($state, "back", "vip"),
             [sty.svgtype_button]: hasVariant($state, "type", "button")
           })}
           role={"img"}
