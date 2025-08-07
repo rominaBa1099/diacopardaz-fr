@@ -1167,11 +1167,7 @@ function PlasmicHomePage__RenderFunc(props: {
         path: "datePickers.value",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({
-          day: 7,
-          month: 7,
-          year: 1377
-        })
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       },
       {
         path: "stateInput.value",
@@ -2494,6 +2490,16 @@ function PlasmicHomePage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "selectDate",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({
+          day: 7,
+          month: 7,
+          year: 1377
+        })
       }
     ],
     [$props, $ctx, $refs]
@@ -9021,9 +9027,53 @@ function PlasmicHomePage__RenderFunc(props: {
                 <DatePickers
                   data-plasmic-name={"datePickers"}
                   data-plasmic-override={overrides.datePickers}
-                  SelectedDay={hasVariant($state, "show", "slide1") ? 1 : 11}
-                  SelectedMonth={hasVariant($state, "show", "slide1") ? 1 : 12}
-                  SelectedYear={1380}
+                  SelectedDay={
+                    hasVariant($state, "show", "slide1")
+                      ? 1
+                      : (() => {
+                          try {
+                            return $state.selectDate.day;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return 11;
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
+                  SelectedMonth={
+                    hasVariant($state, "show", "slide1")
+                      ? 1
+                      : (() => {
+                          try {
+                            return $state.selectDate.month;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return 12;
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
+                  SelectedYear={(() => {
+                    try {
+                      return $state.selectDate.year;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return 1380;
+                      }
+                      throw e;
+                    }
+                  })()}
                   className={classNames("__wab_instance", sty.datePickers, {
                     [sty.datePickersshow_slide1]: hasVariant(
                       $state,
@@ -9036,11 +9086,52 @@ function PlasmicHomePage__RenderFunc(props: {
                       "slide2"
                     )
                   })}
+                  customYears={[]}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
                       "datePickers",
                       "value"
                     ]).apply(null, eventArgs);
+
+                    (async selectedValues => {
+                      const $steps = {};
+
+                      $steps["updateSelectDate"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["selectDate"]
+                              },
+                              operation: 0,
+                              value: $state.datePickers.value
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateSelectDate"] != null &&
+                        typeof $steps["updateSelectDate"] === "object" &&
+                        typeof $steps["updateSelectDate"].then === "function"
+                      ) {
+                        $steps["updateSelectDate"] = await $steps[
+                          "updateSelectDate"
+                        ];
+                      }
+                    }).apply(null, eventArgs);
                   }}
                   selectedValues={generateStateValueProp($state, [
                     "datePickers",
@@ -9539,11 +9630,15 @@ function PlasmicHomePage__RenderFunc(props: {
                           if (status) {
                             $state.resultBool = status;
                             urlParams.delete("status");
+                            $state.footer.selectFooter = urlParams.get("page");
+                            urlParams.delete("page");
                             const newQuery = urlParams.toString();
                             const newUrl =
                               window.location.pathname +
                               (newQuery ? "?" + newQuery : "");
-                            return window.history.replaceState({}, "", newUrl);
+                            window.history.replaceState({}, "", newUrl);
+                            return ($state.footer.selectFooter =
+                              urlParams.get("page"));
                           }
                         })();
                       }
@@ -9909,6 +10004,19 @@ function PlasmicHomePage__RenderFunc(props: {
               }
             }}
             open={generateStateValueProp($state, ["shopModal", "open"])}
+            token={(() => {
+              try {
+                return $state.token;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
           />
 
           {(() => {
@@ -9944,7 +10052,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   displayMaxWidth={"100%"}
                   displayMinHeight={"0"}
                   displayMinWidth={"0"}
-                  displayWidth={"150px"}
+                  displayWidth={"120px"}
                   loading={"lazy"}
                   src={{
                     src: "/plasmic/metoo/images/unnamedPng.png",

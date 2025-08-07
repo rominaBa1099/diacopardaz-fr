@@ -276,6 +276,36 @@ function PlasmicFooter__RenderFunc(props: {
                   "updateSelectFooter"
                 ];
               }
+
+              $steps["updateSelectFooter2"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const params = new URLSearchParams(
+                            window.location.search
+                          );
+                          params.set("page", currentItem.value);
+                          const newUrl =
+                            window.location.pathname + "?" + params.toString();
+                          return window.history.replaceState({}, "", newUrl);
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateSelectFooter2"] != null &&
+                typeof $steps["updateSelectFooter2"] === "object" &&
+                typeof $steps["updateSelectFooter2"].then === "function"
+              ) {
+                $steps["updateSelectFooter2"] = await $steps[
+                  "updateSelectFooter2"
+                ];
+              }
             }}
             select={(() => {
               try {
