@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Picker from 'rmc-picker';
 import { CodeComponentMeta } from "@plasmicapp/host";
+import 'rmc-picker/assets/index.css';
 
 type PickersProps = {
   data ?: { value: string | number; label: string }[];
