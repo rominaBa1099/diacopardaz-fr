@@ -136,7 +136,7 @@ export const DatePickers = (props: DatePickersProps) => {
 
   return (
     <div className={className}>
-      <div ref={dayPickerRef}>
+      <div ref={dayPickerRef} style={{ width: '100%' }}>
         <Picker selectedValue={selectedDay} onValueChange={setSelectedDay}>
           {getDaysOfMonth(selectedMonth, selectedYear).map((day) => (
             <Picker.Item key={day.value} value={day.value}>
@@ -146,7 +146,7 @@ export const DatePickers = (props: DatePickersProps) => {
         </Picker>
       </div>
 
-      <div ref={monthPickerRef}>
+      <div ref={monthPickerRef} style={{ width: '100%' }}>
         <Picker selectedValue={selectedMonth} onValueChange={setSelectedMonth}>
           {months.map((month) => (
             <Picker.Item key={month.value} value={month.value}>
@@ -156,7 +156,7 @@ export const DatePickers = (props: DatePickersProps) => {
         </Picker>
       </div>
 
-      <div ref={yearPickerRef}>
+      <div ref={yearPickerRef} style={{ width: '100%' }}>
         <Picker selectedValue={selectedYear} onValueChange={setSelectedYear}>
           {years.map((year) => (
             <Picker.Item key={year.value} value={year.value}>
