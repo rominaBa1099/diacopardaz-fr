@@ -6105,14 +6105,15 @@ function PlasmicHomePage__RenderFunc(props: {
 
                 $steps["updateEditPage"] = true
                   ? (() => {
-                      const actionArgs = { vgroup: "editPage", operation: 6 };
+                      const actionArgs = { vgroup: "editPage", operation: 2 };
                       return (({ vgroup, value }) => {
                         if (typeof value === "string") {
                           value = [value];
                         }
 
-                        $stateSet($state, vgroup, false);
-                        return false;
+                        const oldValue = $stateGet($state, vgroup);
+                        $stateSet($state, vgroup, !oldValue);
+                        return !oldValue;
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
