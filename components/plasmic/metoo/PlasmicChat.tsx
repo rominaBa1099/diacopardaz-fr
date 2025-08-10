@@ -103,6 +103,7 @@ export type PlasmicChat__OverridesType = {
   headerItem?: Flex__<typeof HeaderItem>;
   suggstionUser?: Flex__<typeof ApiRequest>;
   getSession?: Flex__<typeof ApiRequest>;
+  getSession2?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultChatProps {
@@ -256,6 +257,24 @@ function PlasmicChat__RenderFunc(props: {
 
         valueProp: "currentuser",
         onChangeProp: "onCurrentuserChange"
+      },
+      {
+        path: "getSession2.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "getSession2.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "getSession2.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -844,7 +863,7 @@ function PlasmicChat__RenderFunc(props: {
         body={(() => {
           try {
             return {
-              page: 0
+              page: $state.pageChat
               // "p":window.localStorage.getItem("page")||""
             };
           } catch (e) {
@@ -1012,6 +1031,138 @@ function PlasmicChat__RenderFunc(props: {
         })()}
         url={"https://api.friendschat.ir/chat/getSession"}
       />
+
+      <ApiRequest
+        data-plasmic-name={"getSession2"}
+        data-plasmic-override={overrides.getSession2}
+        body={(() => {
+          try {
+            return {
+              page: 0,
+              p: window.localStorage.getItem("page") || ""
+            };
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return undefined;
+            }
+            throw e;
+          }
+        })()}
+        className={classNames("__wab_instance", sty.getSession2)}
+        config={(() => {
+          try {
+            return {
+              headers: {
+                appid: "your-app-id",
+                Authorization: $props.token,
+                "Content-Type": "application/json",
+                Version: "1.0"
+              }
+            };
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return {
+                headers: {
+                  appid: "your-app-id",
+                  Authorization: "Bearer your-token",
+                  "Content-Type": "application/json",
+                  Version: "1.0"
+                }
+              };
+            }
+            throw e;
+          }
+        })()}
+        errorDisplay={null}
+        loadingDisplay={null}
+        method={"POST"}
+        onError={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["getSession2", "error"]).apply(
+            null,
+            eventArgs
+          );
+        }}
+        onLoading={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["getSession2", "loading"]).apply(
+            null,
+            eventArgs
+          );
+        }}
+        onSuccess={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["getSession2", "data"]).apply(
+            null,
+            eventArgs
+          );
+
+          (async data => {
+            const $steps = {};
+
+            $steps["runCode"] = $state.getSession2?.data?.list
+              ? (() => {
+                  const actionArgs = {
+                    customFunction: async () => {
+                      return (() => {
+                        var updatedChats = $state.chats;
+                        $state.getSession2.data.list.forEach(responseItem => {
+                          const existingChatIndex = updatedChats.findIndex(
+                            chat => chat.id === responseItem.id
+                          );
+                          if (existingChatIndex !== -1) {
+                            updatedChats[existingChatIndex] = {
+                              ...updatedChats[existingChatIndex],
+                              ...responseItem
+                            };
+                            console.log(
+                              `چت با id ${responseItem.id} آپدیت شد.`
+                            );
+                          } else {
+                            updatedChats.unshift(responseItem);
+                            console.log(
+                              `چت با id ${responseItem.id} به ابتدای لیست اضافه شد.`
+                            );
+                          }
+                        });
+                        return ($state.chats = updatedChats);
+                      })();
+                    }
+                  };
+                  return (({ customFunction }) => {
+                    return customFunction();
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["runCode"] != null &&
+              typeof $steps["runCode"] === "object" &&
+              typeof $steps["runCode"].then === "function"
+            ) {
+              $steps["runCode"] = await $steps["runCode"];
+            }
+          }).apply(null, eventArgs);
+        }}
+        shouldFetch={(() => {
+          try {
+            return (
+              $state.chats != [] && window.localStorage.getItem("page") != null
+            );
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return true;
+            }
+            throw e;
+          }
+        })()}
+        url={"https://api.friendschat.ir/chat/getSession"}
+      />
     </div>
   ) as React.ReactElement | null;
 }
@@ -1023,13 +1174,15 @@ const PlasmicDescendants = {
     "section",
     "headerItem",
     "suggstionUser",
-    "getSession"
+    "getSession",
+    "getSession2"
   ],
   chatProfile: ["chatProfile"],
   section: ["section", "headerItem"],
   headerItem: ["headerItem"],
   suggstionUser: ["suggstionUser"],
-  getSession: ["getSession"]
+  getSession: ["getSession"],
+  getSession2: ["getSession2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1041,6 +1194,7 @@ type NodeDefaultElementType = {
   headerItem: typeof HeaderItem;
   suggstionUser: typeof ApiRequest;
   getSession: typeof ApiRequest;
+  getSession2: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1108,6 +1262,7 @@ export const PlasmicChat = Object.assign(
     headerItem: makeNodeComponent("headerItem"),
     suggstionUser: makeNodeComponent("suggstionUser"),
     getSession: makeNodeComponent("getSession"),
+    getSession2: makeNodeComponent("getSession2"),
 
     // Metadata about props expected for PlasmicChat
     internalVariantProps: PlasmicChat__VariantProps,
