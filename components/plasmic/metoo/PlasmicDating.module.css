@@ -24,8 +24,6 @@
   align-content: flex-start;
   justify-items: center;
   width: auto;
-  padding-left: 0;
-  padding-right: 0;
   left: 0;
   top: 0;
   z-index: 1;
@@ -37,6 +35,7 @@
       calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
     )
     minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+  padding: var(--token-x0W5E5oV4ZKj) 0;
 }
 .section__miNh > * {
   grid-column: 4;
