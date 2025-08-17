@@ -5,7 +5,8 @@
 // Plasmic Project: a37ZtVtYSDC6FmRkqCLyA3
 
 import * as React from "react";
-import { hasVariant, ensureGlobalVariants } from "@plasmicapp/react-web";
+
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/projectModule
 import { Fragment } from "@/fragment/fragment"; // plasmic-import: poubRIW68Z7o/codeComponent
 import { GrowthBook } from "@/fragment/growthbook"; // plasmic-import: qei5DOC8-0Zk/codeComponent
 import { Splunk } from "@/fragment/splunk"; // plasmic-import: cLueeKfxdC-a/codeComponent

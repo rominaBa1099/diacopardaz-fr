@@ -33,7 +33,6 @@ import {
   classNames,
   createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants,
   generateOnMutateForSpec,
   generateStateOnChangeProp,
   generateStateOnChangePropForCodeComponents,
@@ -79,14 +78,13 @@ import { DatePickers } from "@/components/DatePickers"; // plasmic-import: iVNUV
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import ShopModal from "../../ShopModal"; // plasmic-import: -kGhM5VnTq5-/component
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
-
-import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
-import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_meto_deign_system } from ""; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_meto_deign_system_css from "../meto_deign_system/plasmic.module.css"; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/projectcss
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/projectcss
 import sty from "./PlasmicHomePage.module.css"; // plasmic-import: H2AdtkVzvCjM/css
 
@@ -2514,10 +2512,12 @@ function PlasmicHomePage__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = ensureGlobalVariants({
-    theme: useTheme(),
-    screen: useScreenVariantsmqI86KQCt1()
-  });
+  const globalVariants = _useGlobalVariants();
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_meto_deign_system =
+    useStyleTokens_meto_deign_system();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
 
   return (
     <React.Fragment>
@@ -2540,16 +2540,11 @@ function PlasmicHomePage__RenderFunc(props: {
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_meto_deign_system_css.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
+            styleTokensClassNames,
+            styleTokensClassNames_meto_deign_system,
+            styleTokensClassNames_antd_5_hostless,
             sty.root,
             {
-              [projectcss.global_theme_light]: hasVariant(
-                globalVariants,
-                "theme",
-                "light"
-              ),
               [sty.rootchatViow]: hasVariant($state, "chatViow", "chatViow"),
               [sty.rootchatViow_show_main]:
                 hasVariant($state, "chatViow", "chatViow") &&
@@ -5450,6 +5445,10 @@ function PlasmicHomePage__RenderFunc(props: {
                       ? '<input type="file" id="fileInput" accept="image/*" hidden>\r\n<script>\r\nconst fileInput = document.getElementById(\'fileInput\');\r\nconst image = document.getElementById(\'image\');\r\n\r\nlet imageUrl = null;\r\nlet formData = new FormData();\r\n\r\nfileInput.addEventListener(\'change\', () => {\r\n  const file = fileInput.files[0];\r\n  if (file) {\r\n    // \u0622\u0632\u0627\u062f \u06a9\u0631\u062f\u0646 URL \u0642\u0628\u0644\u06cc \u0627\u06af\u0631 \u0648\u062c\u0648\u062f \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u0647\r\n    if (imageUrl) {\r\n      URL.revokeObjectURL(imageUrl);\r\n    }\r\n    imageUrl = URL.createObjectURL(file);\r\n    image.click();\r\n    formData.append("file", file); // \u0641\u0627\u06cc\u0644\r\n    formData.append("path", "metoo/"); // \u0645\u0633\u06cc\u0631 \u062f\u0644\u062e\u0648\u0627\u0647 \u06a9\u0647 \u0628\u0647 \u0633\u0631\u0648\u0631 \u0645\u06cc\u200c\u0641\u0631\u0633\u062a\u06cc\r\n  }\r\n});\r\n</script>\r\n'
                       : '<input type="file" id="fileInput" accept="image/*" hidden>\r\n<script>\r\nconst fileInput = document.getElementById(\'fileInput\');\r\nconst image = document.getElementById(\'image\');\r\n\r\nlet imageUrl = null;\r\nlet formData = new FormData();\r\n\r\nfileInput.addEventListener(\'change\', () => {\r\n  const file = fileInput.files[0];\r\n  if (file) {\r\n    // \u0622\u0632\u0627\u062f \u06a9\u0631\u062f\u0646 URL \u0642\u0628\u0644\u06cc \u0627\u06af\u0631 \u0648\u062c\u0648\u062f \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u0647\r\n    if (imageUrl) {\r\n      URL.revokeObjectURL(imageUrl);\r\n    }\r\n    imageUrl = URL.createObjectURL(file);\r\n    image.click();\r\n    formData.append("file", file); // \u0641\u0627\u06cc\u0644\r\n    formData.append("path", "metoo/"); // \u0645\u0633\u06cc\u0631 \u062f\u0644\u062e\u0648\u0627\u0647 \u06a9\u0647 \u0628\u0647 \u0633\u0631\u0648\u0631 \u0645\u06cc\u200c\u0641\u0631\u0633\u062a\u06cc\r\n  }\r\n});\r\n</script>\r\n'
                   }
+                />
+
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__fQjGg)}
                 />
               </div>
             </div>

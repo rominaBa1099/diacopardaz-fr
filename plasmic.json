@@ -78,7 +78,8 @@
         }
       ],
       "customFunctions": [],
-      "jsBundleThemes": []
+      "styleTokensProviderFilePath": "plasmic/plasmic_basic_components/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/plasmic_basic_components/plasmic.tsx"
     },
     {
       "projectId": "sqPBLwEBBKHA2WDuGb17eV",
@@ -169,7 +170,8 @@
         }
       ],
       "customFunctions": [],
-      "jsBundleThemes": []
+      "styleTokensProviderFilePath": "plasmic/radix_ui/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/radix_ui/plasmic.tsx"
     },
     {
       "projectId": "gmeH6XgPaBtkt51HunAo4g",
@@ -378,7 +380,8 @@
         }
       ],
       "customFunctions": [],
-      "jsBundleThemes": []
+      "styleTokensProviderFilePath": "plasmic/react_aria/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/react_aria/plasmic.tsx"
     },
     {
       "projectId": "5dGW8Awro3qq8Hh5MveXLP",
@@ -407,7 +410,8 @@
         }
       ],
       "customFunctions": [],
-      "jsBundleThemes": []
+      "styleTokensProviderFilePath": "plasmic/lottie_react/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/lottie_react/plasmic.tsx"
     },
     {
       "projectId": "aEHVN5v6mfM4eovDsL8Z7d",
@@ -423,7 +427,8 @@
       "splitsProviderFilePath": "",
       "codeComponents": [],
       "customFunctions": [],
-      "jsBundleThemes": []
+      "styleTokensProviderFilePath": "plasmic/copy_to_clipboard/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/copy_to_clipboard/plasmic.tsx"
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -824,7 +829,8 @@
         }
       ],
       "customFunctions": [],
-      "jsBundleThemes": []
+      "styleTokensProviderFilePath": "plasmic/antd_5_hostless/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/antd_5_hostless/plasmic.tsx"
     },
     {
       "projectId": "8PtdGodUbexNYgkuyBUcWu",
@@ -847,7 +853,8 @@
         }
       ],
       "customFunctions": [],
-      "jsBundleThemes": []
+      "styleTokensProviderFilePath": "plasmic/plasmic_embed_css/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/plasmic_embed_css/plasmic.tsx"
     },
     {
       "projectId": "58GpZjZCWTaJ8AUhpCwt2K",
@@ -870,7 +877,8 @@
         }
       ],
       "customFunctions": [],
-      "jsBundleThemes": []
+      "styleTokensProviderFilePath": "plasmic/react_awesome_reveal/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/react_awesome_reveal/plasmic.tsx"
     },
     {
       "projectId": "2X77A6CrJVTC8zJTD8qsTc",
@@ -1074,7 +1082,9 @@
         }
       ],
       "customFunctions": [],
-      "jsBundleThemes": []
+      "jsBundleThemes": [],
+      "styleTokensProviderFilePath": "",
+      "projectModuleFilePath": ""
     },
     {
       "projectId": "a37ZtVtYSDC6FmRkqCLyA3",
@@ -2285,7 +2295,9 @@
           "componentImportPath": "@/components/BackHandler"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "styleTokensProviderFilePath": "plasmic/metoo/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/metoo/plasmic.tsx"
     }
   ],
   "globalVariants": {
@@ -2314,6 +2326,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.341",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.341/dist/plasmic.schema.json"
+  "cliVersion": "0.1.342",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.342/dist/plasmic.schema.json"
 }

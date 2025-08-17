@@ -33,7 +33,6 @@ import {
   classNames,
   createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants,
   generateOnMutateForSpec,
   generateStateOnChangeProp,
   generateStateOnChangePropForCodeComponents,
@@ -61,14 +60,13 @@ import {
 
 import MetoLabel from "../../MetoLabel"; // plasmic-import: 4JtC8N_iZ8lG/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
-
-import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
-import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_meto_deign_system } from ""; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_meto_deign_system_css from "../meto_deign_system/plasmic.module.css"; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/projectcss
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/projectcss
 import sty from "./PlasmicSettingItem.module.css"; // plasmic-import: TBGwfoojuj_s/css
 
@@ -178,10 +176,12 @@ function PlasmicSettingItem__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsmqI86KQCt1(),
-    theme: useTheme()
-  });
+  const globalVariants = _useGlobalVariants();
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_meto_deign_system =
+    useStyleTokens_meto_deign_system();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
 
   return (
     <div
@@ -194,16 +194,11 @@ function PlasmicSettingItem__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_meto_deign_system_css.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_meto_deign_system,
+        styleTokensClassNames_antd_5_hostless,
         sty.root,
         {
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.rootback_onScaffold]: hasVariant($state, "back", "onScaffold"),
           [sty.rootback_onScaffold_type_button]:
             hasVariant($state, "back", "onScaffold") &&

@@ -33,7 +33,6 @@ import {
   classNames,
   createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants,
   generateOnMutateForSpec,
   generateStateOnChangeProp,
   generateStateOnChangePropForCodeComponents,
@@ -64,14 +63,13 @@ import { DialogContent } from "@plasmicpkgs/radix-ui";
 import { DialogTitle } from "@plasmicpkgs/radix-ui";
 import { DialogClose } from "@plasmicpkgs/radix-ui";
 import { BackHandler } from "@/components/BackHandler"; // plasmic-import: SjBUwY_Y_i3-/codeComponent
-
-import { useScreenVariants as useScreenVariantsmqI86KQCt1 } from "../meto_deign_system/PlasmicGlobalVariant__Screen"; // plasmic-import: mqI__86kQCt1/globalVariant
-import { ThemeValue, useTheme } from "./PlasmicGlobalVariant__Theme"; // plasmic-import: G0urM0rvD4xu/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_meto_deign_system } from ""; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_meto_deign_system_css from "../meto_deign_system/plasmic.module.css"; // plasmic-import: 2X77A6CrJVTC8zJTD8qsTc/projectcss
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: a37ZtVtYSDC6FmRkqCLyA3/projectcss
 import sty from "./PlasmicModal2.module.css"; // plasmic-import: b0WRwkBcq6Fa/css
 
@@ -232,10 +230,12 @@ function PlasmicModal2__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsmqI86KQCt1(),
-    theme: useTheme()
-  });
+  const globalVariants = _useGlobalVariants();
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_meto_deign_system =
+    useStyleTokens_meto_deign_system();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
 
   return (
     <Dialog
@@ -248,16 +248,11 @@ function PlasmicModal2__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_meto_deign_system_css.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_meto_deign_system,
+        styleTokensClassNames_antd_5_hostless,
         sty.dialog,
         {
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          ),
           [sty.dialogbackground_black]: hasVariant(
             $state,
             "background",
@@ -314,16 +309,9 @@ function PlasmicModal2__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_meto_deign_system_css.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens,
-        {
-          [projectcss.global_theme_light]: hasVariant(
-            globalVariants,
-            "theme",
-            "light"
-          )
-        }
+        styleTokensClassNames,
+        styleTokensClassNames_meto_deign_system,
+        styleTokensClassNames_antd_5_hostless
       )}
       triggerSlot={null}
     >
@@ -374,16 +362,9 @@ function PlasmicModal2__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          projectcss.plasmic_tokens,
-          plasmic_meto_deign_system_css.plasmic_tokens,
-          plasmic_antd_5_hostless_css.plasmic_tokens,
-          {
-            [projectcss.global_theme_light]: hasVariant(
-              globalVariants,
-              "theme",
-              "light"
-            )
-          }
+          styleTokensClassNames,
+          styleTokensClassNames_meto_deign_system,
+          styleTokensClassNames_antd_5_hostless
         )}
       >
         <section
